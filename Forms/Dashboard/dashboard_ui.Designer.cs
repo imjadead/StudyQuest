@@ -65,7 +65,7 @@
             percentCount.BorderStyle = BorderStyle.None;
             percentCount.Font = new Font("Urbanist", 10F);
             percentCount.ForeColor = Color.White;
-            percentCount.Location = new Point(208, 123);
+            percentCount.Location = new Point(189, 127);
             percentCount.Name = "percentCount";
             percentCount.PlaceholderText = "50%";
             percentCount.Size = new Size(43, 20);
@@ -75,10 +75,10 @@
             // progressBar1
             // 
             progressBar1.ForeColor = Color.DarkSeaGreen;
-            progressBar1.Location = new Point(12, 133);
+            progressBar1.Location = new Point(12, 135);
             progressBar1.MarqueeAnimationSpeed = 150;
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(180, 10);
+            progressBar1.Size = new Size(171, 10);
             progressBar1.TabIndex = 1;
             progressBar1.Value = 50;
             // 
@@ -86,12 +86,12 @@
             // 
             userCurrentLvl.BackColor = Color.FromArgb(17, 28, 46);
             userCurrentLvl.BorderStyle = BorderStyle.None;
-            userCurrentLvl.Font = new Font("Urbanist", 8F);
+            userCurrentLvl.Font = new Font("Urbanist", 10F);
             userCurrentLvl.ForeColor = Color.White;
-            userCurrentLvl.Location = new Point(92, 66);
+            userCurrentLvl.Location = new Point(92, 63);
             userCurrentLvl.Name = "userCurrentLvl";
             userCurrentLvl.PlaceholderText = "Lvl. 10";
-            userCurrentLvl.Size = new Size(125, 16);
+            userCurrentLvl.Size = new Size(125, 20);
             userCurrentLvl.TabIndex = 2;
             userCurrentLvl.TextChanged += textBox1_TextChanged;
             // 
@@ -99,21 +99,21 @@
             // 
             nameTextbox.BackColor = Color.FromArgb(17, 28, 46);
             nameTextbox.BorderStyle = BorderStyle.None;
-            nameTextbox.Font = new Font("Urbanist", 11F);
+            nameTextbox.Font = new Font("Urbanist", 12F);
             nameTextbox.ForeColor = Color.White;
-            nameTextbox.Location = new Point(92, 39);
+            nameTextbox.Location = new Point(92, 36);
             nameTextbox.Name = "nameTextbox";
             nameTextbox.PlaceholderText = "User's name";
-            nameTextbox.Size = new Size(125, 22);
+            nameTextbox.Size = new Size(125, 24);
             nameTextbox.TabIndex = 1;
             nameTextbox.TextChanged += nameTextbox_TextChanged;
             // 
             // userPicture
             // 
             userPicture.Image = (Image)resources.GetObject("userPicture.Image");
-            userPicture.Location = new Point(12, 33);
+            userPicture.Location = new Point(22, 36);
             userPicture.Name = "userPicture";
-            userPicture.Size = new Size(74, 72);
+            userPicture.Size = new Size(61, 59);
             userPicture.SizeMode = PictureBoxSizeMode.Zoom;
             userPicture.TabIndex = 1;
             userPicture.TabStop = false;
@@ -133,7 +133,7 @@
             sidebar.Font = new Font("Urbanist", 10F);
             sidebar.Location = new Point(0, 0);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(256, 744);
+            sidebar.Size = new Size(244, 744);
             sidebar.TabIndex = 0;
             sidebar.Paint += sidebar_Paint;
             // 
@@ -142,13 +142,13 @@
             logoutButton.BackColor = Color.FromArgb(17, 28, 46);
             logoutButton.FlatAppearance.BorderSize = 0;
             logoutButton.FlatStyle = FlatStyle.Flat;
-            logoutButton.Font = new Font("Urbanist", 13F);
+            logoutButton.Font = new Font("Urbanist", 12F);
             logoutButton.ForeColor = Color.White;
             logoutButton.Image = (Image)resources.GetObject("logoutButton.Image");
             logoutButton.ImageAlign = ContentAlignment.MiddleLeft;
-            logoutButton.Location = new Point(12, 667);
+            logoutButton.Location = new Point(22, 674);
             logoutButton.Name = "logoutButton";
-            logoutButton.Size = new Size(244, 54);
+            logoutButton.Size = new Size(222, 52);
             logoutButton.TabIndex = 6;
             logoutButton.Text = "Logout";
             logoutButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -161,13 +161,13 @@
             avatarButton.BackColor = Color.FromArgb(17, 28, 46);
             avatarButton.FlatAppearance.BorderSize = 0;
             avatarButton.FlatStyle = FlatStyle.Flat;
-            avatarButton.Font = new Font("Urbanist", 13F);
+            avatarButton.Font = new Font("Urbanist", 12F);
             avatarButton.ForeColor = Color.White;
             avatarButton.Image = (Image)resources.GetObject("avatarButton.Image");
             avatarButton.ImageAlign = ContentAlignment.MiddleLeft;
-            avatarButton.Location = new Point(12, 527);
+            avatarButton.Location = new Point(27, 517);
             avatarButton.Name = "avatarButton";
-            avatarButton.Size = new Size(244, 53);
+            avatarButton.Size = new Size(217, 52);
             avatarButton.TabIndex = 5;
             avatarButton.Text = "Avatar";
             avatarButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -180,13 +180,13 @@
             badgesButton.BackColor = Color.FromArgb(17, 28, 46);
             badgesButton.FlatAppearance.BorderSize = 0;
             badgesButton.FlatStyle = FlatStyle.Flat;
-            badgesButton.Font = new Font("Urbanist", 13F);
+            badgesButton.Font = new Font("Urbanist", 12F);
             badgesButton.ForeColor = Color.White;
             badgesButton.Image = (Image)resources.GetObject("badgesButton.Image");
             badgesButton.ImageAlign = ContentAlignment.MiddleLeft;
-            badgesButton.Location = new Point(12, 439);
+            badgesButton.Location = new Point(27, 434);
             badgesButton.Name = "badgesButton";
-            badgesButton.Size = new Size(244, 56);
+            badgesButton.Size = new Size(217, 52);
             badgesButton.TabIndex = 4;
             badgesButton.Text = "Badges";
             badgesButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -199,13 +199,13 @@
             leaderboardButton.BackColor = Color.FromArgb(17, 28, 46);
             leaderboardButton.FlatAppearance.BorderSize = 0;
             leaderboardButton.FlatStyle = FlatStyle.Flat;
-            leaderboardButton.Font = new Font("Urbanist", 13F);
+            leaderboardButton.Font = new Font("Urbanist", 12F);
             leaderboardButton.ForeColor = Color.White;
             leaderboardButton.Image = (Image)resources.GetObject("leaderboardButton.Image");
             leaderboardButton.ImageAlign = ContentAlignment.MiddleLeft;
-            leaderboardButton.Location = new Point(12, 352);
+            leaderboardButton.Location = new Point(27, 350);
             leaderboardButton.Name = "leaderboardButton";
-            leaderboardButton.Size = new Size(244, 55);
+            leaderboardButton.Size = new Size(217, 52);
             leaderboardButton.TabIndex = 3;
             leaderboardButton.Text = "Leaderboard";
             leaderboardButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -218,13 +218,13 @@
             taskButton.BackColor = Color.FromArgb(17, 28, 46);
             taskButton.FlatAppearance.BorderSize = 0;
             taskButton.FlatStyle = FlatStyle.Flat;
-            taskButton.Font = new Font("Urbanist", 13F);
+            taskButton.Font = new Font("Urbanist", 12F);
             taskButton.ForeColor = Color.White;
             taskButton.Image = (Image)resources.GetObject("taskButton.Image");
             taskButton.ImageAlign = ContentAlignment.MiddleLeft;
-            taskButton.Location = new Point(12, 270);
+            taskButton.Location = new Point(27, 267);
             taskButton.Name = "taskButton";
-            taskButton.Size = new Size(244, 56);
+            taskButton.Size = new Size(217, 52);
             taskButton.TabIndex = 2;
             taskButton.Text = "Task";
             taskButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -237,13 +237,13 @@
             dashboardButton.BackColor = Color.FromArgb(17, 28, 46);
             dashboardButton.FlatAppearance.BorderSize = 0;
             dashboardButton.FlatStyle = FlatStyle.Flat;
-            dashboardButton.Font = new Font("Urbanist", 13F);
+            dashboardButton.Font = new Font("Urbanist", 12F);
             dashboardButton.ForeColor = Color.White;
             dashboardButton.Image = (Image)resources.GetObject("dashboardButton.Image");
             dashboardButton.ImageAlign = ContentAlignment.MiddleLeft;
-            dashboardButton.Location = new Point(12, 187);
+            dashboardButton.Location = new Point(27, 187);
             dashboardButton.Name = "dashboardButton";
-            dashboardButton.Size = new Size(244, 54);
+            dashboardButton.Size = new Size(217, 52);
             dashboardButton.TabIndex = 1;
             dashboardButton.Text = "Dashboard";
             dashboardButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -280,7 +280,6 @@
         private Panel sidebar;
         private Button dashboardButton;
         private Button logoutButton;
-        private Button avatar;
         private Button badgesButton;
         private Button leaderboardButton;
         private Button taskButton;
