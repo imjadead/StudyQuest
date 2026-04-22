@@ -160,24 +160,8 @@ namespace StudyQuest
             logoutButton.TextAlign = ContentAlignment.MiddleLeft;
             logoutButton.TextImageRelation = TextImageRelation.ImageBeforeText;
             logoutButton.UseVisualStyleBackColor = false;
-            logoutButton.BackColor = Color.FromArgb(17, 28, 46);
-            logoutButton.FlatAppearance.BorderSize = 0;
-            logoutButton.FlatStyle = FlatStyle.Flat;
-            logoutButton.Font = new Font("Urbanist", 12F);
-            logoutButton.ForeColor = Color.White;
-            logoutButton.Image = (Image)resources.GetObject("logoutButton.Image");
-            logoutButton.ImageAlign = ContentAlignment.MiddleLeft;
-            logoutButton.Location = new Point(0, 674);
-            logoutButton.Name = "logoutButton";
-            logoutButton.Size = new Size(244, 52);
-            logoutButton.TabIndex = 6;
-            logoutButton.Text = "Logout";
-            logoutButton.TextAlign = ContentAlignment.MiddleLeft;
-            logoutButton.TextImageRelation = TextImageRelation.ImageBeforeText;
-            logoutButton.UseVisualStyleBackColor = false;
             logoutButton.Click += logoutButton_Click;
-            logoutButton.Leave += logoutButton_Leave; 
-
+            logoutButton.Leave += logoutButton_Leave;
             // 
             // avatarButton
             // 
