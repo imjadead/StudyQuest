@@ -149,7 +149,7 @@ namespace StudyQuest
             logoutButton.BackColor = Color.FromArgb(17, 28, 46);
             logoutButton.FlatAppearance.BorderSize = 0;
             logoutButton.FlatStyle = FlatStyle.Flat;
-            logoutButton.Font = new Font("Urbanist", 12F);
+            logoutButton.Font = new Font("Urbanist", 14F);
             logoutButton.ForeColor = Color.White;
             logoutButton.Image = (Image)resources.GetObject("logoutButton.Image");
             logoutButton.ImageAlign = ContentAlignment.MiddleLeft;
@@ -170,7 +170,7 @@ namespace StudyQuest
             avatarButton.BackColor = Color.FromArgb(17, 28, 46);
             avatarButton.FlatAppearance.BorderSize = 0;
             avatarButton.FlatStyle = FlatStyle.Flat;
-            avatarButton.Font = new Font("Urbanist", 12F);
+            avatarButton.Font = new Font("Urbanist", 14F);
             avatarButton.ForeColor = Color.White;
             avatarButton.Image = (Image)resources.GetObject("avatarButton.Image");
             avatarButton.ImageAlign = ContentAlignment.MiddleLeft;
@@ -190,7 +190,7 @@ namespace StudyQuest
             badgesButton.BackColor = Color.FromArgb(17, 28, 46);
             badgesButton.FlatAppearance.BorderSize = 0;
             badgesButton.FlatStyle = FlatStyle.Flat;
-            badgesButton.Font = new Font("Urbanist", 12F);
+            badgesButton.Font = new Font("Urbanist", 14F);
             badgesButton.ForeColor = Color.White;
             badgesButton.Image = (Image)resources.GetObject("badgesButton.Image");
             badgesButton.ImageAlign = ContentAlignment.MiddleLeft;
@@ -210,7 +210,7 @@ namespace StudyQuest
             leaderboardButton.BackColor = Color.FromArgb(17, 28, 46);
             leaderboardButton.FlatAppearance.BorderSize = 0;
             leaderboardButton.FlatStyle = FlatStyle.Flat;
-            leaderboardButton.Font = new Font("Urbanist", 12F);
+            leaderboardButton.Font = new Font("Urbanist", 14F);
             leaderboardButton.ForeColor = Color.White;
             leaderboardButton.Image = (Image)resources.GetObject("leaderboardButton.Image");
             leaderboardButton.ImageAlign = ContentAlignment.MiddleLeft;
@@ -230,7 +230,7 @@ namespace StudyQuest
             taskButton.BackColor = Color.FromArgb(17, 28, 46);
             taskButton.FlatAppearance.BorderSize = 0;
             taskButton.FlatStyle = FlatStyle.Flat;
-            taskButton.Font = new Font("Urbanist", 12F);
+            taskButton.Font = new Font("Urbanist", 14F);
             taskButton.ForeColor = Color.White;
             taskButton.Image = (Image)resources.GetObject("taskButton.Image");
             taskButton.ImageAlign = ContentAlignment.MiddleLeft;
@@ -250,7 +250,7 @@ namespace StudyQuest
             dashboardButton.BackColor = Color.FromArgb(17, 28, 46);
             dashboardButton.FlatAppearance.BorderSize = 0;
             dashboardButton.FlatStyle = FlatStyle.Flat;
-            dashboardButton.Font = new Font("Urbanist", 12F);
+            dashboardButton.Font = new Font("Urbanist", 14F);
             dashboardButton.ForeColor = Color.White;
             dashboardButton.Image = (Image)resources.GetObject("dashboardButton.Image");
             dashboardButton.ImageAlign = ContentAlignment.MiddleLeft;

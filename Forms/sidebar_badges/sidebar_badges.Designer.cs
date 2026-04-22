@@ -47,7 +47,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 23, 42);
-            ClientSize = new Size(993, 697);
+            ClientSize = new Size(1011, 744);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "sidebar_badges";
