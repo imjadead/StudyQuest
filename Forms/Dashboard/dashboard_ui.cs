@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -156,5 +156,23 @@ namespace StudyQuest
         {
             logoutButton.BackColor = Color.FromArgb(17, 28, 46);
         }
+
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to logout?",
+                "Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                login_ui loginForm = new login_ui();
+                loginForm.Show();
+                this.Close();
+            }
+        }
+
     }
 }
