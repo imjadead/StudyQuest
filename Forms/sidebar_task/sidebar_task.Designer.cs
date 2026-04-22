@@ -1,6 +1,6 @@
 ﻿namespace StudyQuest
 {
-    partial class sidebar_dashboard
+    partial class sidebar_task
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
             SuspendLayout();
             // 
-            // sidebar_dashboard
+            // label1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            label1.AutoSize = true;
+            label1.Font = new Font("Urbanist", 20F);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(376, 251);
+            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(159, 44);
+            label1.TabIndex = 0;
+            label1.Text = "task here";
+            // 
+            // sidebar_task
+            // 
+            AutoScaleDimensions = new SizeF(17F, 39F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 23, 42);
             ClientSize = new Size(1011, 744);
+            Controls.Add(label1);
+            Font = new Font("Urbanist", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "sidebar_dashboard";
-            Text = "sidebar_dashboard";
+            Margin = new Padding(6);
+            Name = "sidebar_task";
+            Text = "sidebar_task";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
     }
 }

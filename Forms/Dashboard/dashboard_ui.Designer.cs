@@ -43,6 +43,7 @@ namespace StudyQuest
             leaderboardButton = new Button();
             taskButton = new Button();
             dashboardButton = new Button();
+            pnlFormLoader = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)userPicture).BeginInit();
             sidebar.SuspendLayout();
@@ -264,12 +265,21 @@ namespace StudyQuest
             dashboardButton.Click += dashboardButton_Click;
             dashboardButton.Leave += dashboardButton_Leave;
             // 
+            // pnlFormLoader
+            // 
+            pnlFormLoader.Dock = DockStyle.Bottom;
+            pnlFormLoader.Location = new Point(244, 0);
+            pnlFormLoader.Name = "pnlFormLoader";
+            pnlFormLoader.Size = new Size(1011, 744);
+            pnlFormLoader.TabIndex = 1;
+            // 
             // dashboard_ui
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 23, 42);
             ClientSize = new Size(1255, 744);
+            Controls.Add(pnlFormLoader);
             Controls.Add(sidebar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "dashboard_ui";
@@ -299,5 +309,6 @@ namespace StudyQuest
         private Label usernameTextbox;
         private Label userCurrentLvl;
         private Panel pnlNav;
+        private Panel pnlFormLoader;
     }
 }

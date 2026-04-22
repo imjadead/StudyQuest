@@ -36,6 +36,12 @@ namespace StudyQuest
             pnlNav.Top = dashboardButton.Top;
             pnlNav.Left = dashboardButton.Left;
             dashboardButton.BackColor = Color.FromArgb(15, 23, 42);
+
+            this.pnlFormLoader.Controls.Clear();
+            sidebar_dashboard sidebar_dashboard_Vrb = new sidebar_dashboard() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            sidebar_dashboard_Vrb.FormBorderStyle = FormBorderStyle.None;
+            this.pnlFormLoader.Controls.Add(sidebar_dashboard_Vrb);
+            sidebar_dashboard_Vrb.Show();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -75,6 +81,12 @@ namespace StudyQuest
             pnlNav.Left = dashboardButton.Left;
             dashboardButton.BackColor = Color.FromArgb(15, 23, 42);
 
+            this.pnlFormLoader.Controls.Clear();
+            sidebar_dashboard sidebar_dashboard_Vrb = new sidebar_dashboard() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            sidebar_dashboard_Vrb.FormBorderStyle = FormBorderStyle.None;
+            this.pnlFormLoader.Controls.Add(sidebar_dashboard_Vrb);
+            sidebar_dashboard_Vrb.Show();
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -94,6 +106,12 @@ namespace StudyQuest
             pnlNav.Height = avatarButton.Height;
             pnlNav.Top = avatarButton.Top;
             avatarButton.BackColor = Color.FromArgb(15, 23, 42);
+
+            this.pnlFormLoader.Controls.Clear();
+            sidebar_avatar sidebar_avatar_Vrb = new sidebar_avatar() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            sidebar_avatar_Vrb.FormBorderStyle = FormBorderStyle.None;
+            this.pnlFormLoader.Controls.Add(sidebar_avatar_Vrb);
+            sidebar_avatar_Vrb.Show();
         }
 
         private void leaderboardButton_Click(object sender, EventArgs e)
@@ -101,6 +119,12 @@ namespace StudyQuest
             pnlNav.Height = leaderboardButton.Height;
             pnlNav.Top = leaderboardButton.Top;
             leaderboardButton.BackColor = Color.FromArgb(15, 23, 42);
+
+            this.pnlFormLoader.Controls.Clear();
+            sidebar_leaderboard sidebar_leaderboard_Vrb = new sidebar_leaderboard() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            sidebar_leaderboard_Vrb.FormBorderStyle = FormBorderStyle.None;
+            this.pnlFormLoader.Controls.Add(sidebar_leaderboard_Vrb);
+            sidebar_leaderboard_Vrb.Show();
         }
 
         private void badgesButton_Click(object sender, EventArgs e)
@@ -108,6 +132,12 @@ namespace StudyQuest
             pnlNav.Height = badgesButton.Height;
             pnlNav.Top = badgesButton.Top;
             badgesButton.BackColor = Color.FromArgb(15, 23, 42);
+
+            this.pnlFormLoader.Controls.Clear();
+            sidebar_badges sidebar_badges_Vrb = new sidebar_badges() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            sidebar_badges_Vrb.FormBorderStyle = FormBorderStyle.None;
+            this.pnlFormLoader.Controls.Add(sidebar_badges_Vrb);
+            sidebar_badges_Vrb.Show();
         }
 
         private void taskButton_Click(object sender, EventArgs e)
@@ -115,6 +145,12 @@ namespace StudyQuest
             pnlNav.Height = taskButton.Height;
             pnlNav.Top = taskButton.Top;
             taskButton.BackColor = Color.FromArgb(15, 23, 42);
+
+            this.pnlFormLoader.Controls.Clear();
+            sidebar_task sidebar_task_Vrb = new sidebar_task() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            sidebar_task_Vrb.FormBorderStyle = FormBorderStyle.None;
+            this.pnlFormLoader.Controls.Add(sidebar_task_Vrb);
+            sidebar_task_Vrb.Show();
         }
 
         private void label1_Click(object sender, EventArgs e)

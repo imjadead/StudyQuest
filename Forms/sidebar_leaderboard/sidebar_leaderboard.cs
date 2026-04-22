@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace StudyQuest
 {
-    public partial class sidebar_dashboard : Form
+    public partial class sidebar_leaderboard : Form
     {
-        public sidebar_dashboard()
+        public sidebar_leaderboard()
         {
             InitializeComponent();
         }
