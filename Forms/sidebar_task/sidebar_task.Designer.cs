@@ -85,7 +85,7 @@
             numTaskDone.Name = "numTaskDone";
             numTaskDone.Size = new Size(47, 55);
             numTaskDone.TabIndex = 1;
-            numTaskDone.Text = "4";
+            numTaskDone.Text = "0";
             // 
             // noOfTasktext
             // 
@@ -116,7 +116,7 @@
             numTaskCompleted.Name = "numTaskCompleted";
             numTaskCompleted.Size = new Size(47, 55);
             numTaskCompleted.TabIndex = 1;
-            numTaskCompleted.Text = "6";
+            numTaskCompleted.Text = "0";
             // 
             // completedTaskText
             // 
