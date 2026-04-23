@@ -1,6 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 
 namespace StudyQuest
@@ -12,7 +15,7 @@ namespace StudyQuest
         private int tasksDone = 0;
         private string rank = "1st";
         private int streakDays = 0;
-        private DateTime lastLoginDate;
+        private DateTime lastLoginDate = DateTime.Today.AddDays(-1);
 
         private List<string> mustDoTasks = new List<string>();
         private List<string> myTasks = new List<string>();
@@ -63,19 +66,15 @@ namespace StudyQuest
                 }
             }
 
-            // 2) Sort by XP descending
             leaderboard.Sort((a, b) => b.XP.CompareTo(a.XP));
 
-            // 3) Find current user's position
             int position = leaderboard.FindIndex(p => p.Name == username) + 1;
 
-            // 4) Set rank as ordinal number only
             rank = GetOrdinal(position);
         }
 
         private string GetOrdinal(int position)
         {
-            // Handle 11th, 12th, 13th edge cases
             if (position % 100 >= 11 && position % 100 <= 13)
                 return $"{position}th";
 
@@ -90,17 +89,23 @@ namespace StudyQuest
 
         private void RefreshUI()
         {
-            greetingsUser.Text = $"Good day {username}!";
-            numTotalXP.Text = $"{totalXP_value} XP";
-            numTaskDone.Text = tasksDone.ToString();
-            numRank.Text = rank;
-            numDayStreak.Text = streakDays.ToString();
+            if (greetingsUser != null) greetingsUser.Text = $"Good day {username}!";
+            if (numTotalXP != null) numTotalXP.Text = $"{totalXP_value} XP";
+            if (numTaskDone != null) numTaskDone.Text = tasksDone.ToString();
+            if (numRank != null) numRank.Text = rank;
+            if (numDayStreak != null) numDayStreak.Text = streakDays.ToString();
 
-            mustDOListBox.Items.Clear();
-            foreach (string t in mustDoTasks) mustDOListBox.Items.Add(t);
+            if (mustDOListBox != null)
+            {
+                mustDOListBox.Items.Clear();
+                foreach (string t in mustDoTasks) mustDOListBox.Items.Add(t);
+            }
 
-            myTaskListBox.Items.Clear();
-            foreach (string t in myTasks) myTaskListBox.Items.Add(t);
+            if (myTaskListBox != null)
+            {
+                myTaskListBox.Items.Clear();
+                foreach (string t in myTasks) myTaskListBox.Items.Add(t);
+            }
         }
 
         private void HighlightTodayLabel()
@@ -112,9 +117,10 @@ namespace StudyQuest
             Color highlight = Color.FromArgb(100, 200, 255);
 
             foreach (Label l in days)
-                l.BackColor = normal;
+                if (l != null) l.BackColor = normal;
 
-            days[todayIndex].BackColor = highlight;
+            if (days[todayIndex] != null)
+                days[todayIndex].BackColor = highlight;
         }
 
         private void mustDOListBox_DoubleClick(object sender, EventArgs e)
@@ -129,7 +135,7 @@ namespace StudyQuest
 
         private void CompleteTask(ListBox listBox, List<string> taskList, int xpReward)
         {
-            if (listBox.SelectedIndex < 0) return;
+            if (listBox == null || listBox.SelectedIndex < 0) return;
 
             taskList.RemoveAt(listBox.SelectedIndex);
             listBox.Items.RemoveAt(listBox.SelectedIndex);
@@ -151,7 +157,7 @@ namespace StudyQuest
 
         private void RemoveTask(ListBox listBox, List<string> taskList)
         {
-            if (listBox.SelectedIndex < 0) return;
+            if (listBox == null || listBox.SelectedIndex < 0) return;
             taskList.RemoveAt(listBox.SelectedIndex);
             listBox.Items.RemoveAt(listBox.SelectedIndex);
             RefreshUI();
