@@ -137,11 +137,12 @@
             // 
             mustDOListBox.BackColor = Color.FromArgb(17, 28, 46);
             mustDOListBox.BorderStyle = BorderStyle.FixedSingle;
+            mustDOListBox.Font = new Font("Urbanist", 12F);
             mustDOListBox.ForeColor = Color.White;
             mustDOListBox.FormattingEnabled = true;
             mustDOListBox.Location = new Point(48, 324);
             mustDOListBox.Name = "mustDOListBox";
-            mustDOListBox.Size = new Size(431, 398);
+            mustDOListBox.Size = new Size(431, 392);
             mustDOListBox.TabIndex = 7;
             // 
             // label1
@@ -328,11 +329,12 @@
             // richTextBox1
             // 
             richTextBox1.BackColor = Color.FromArgb(17, 28, 46);
+            richTextBox1.BorderStyle = BorderStyle.FixedSingle;
             richTextBox1.Font = new Font("Urbanist", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
             richTextBox1.ForeColor = Color.White;
             richTextBox1.Location = new Point(527, 324);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(431, 398);
+            richTextBox1.Size = new Size(431, 392);
             richTextBox1.TabIndex = 20;
             richTextBox1.Text = "Notes";
             // 
