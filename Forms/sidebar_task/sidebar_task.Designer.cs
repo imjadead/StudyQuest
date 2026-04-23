@@ -47,7 +47,9 @@
             textBox2 = new TextBox();
             dateTimePicker1 = new DateTimePicker();
             textBox1 = new TextBox();
-            taskListBox = new ListBox();
+            EasyTaskListBox = new ListBox();
+            MediumTaskListBox = new ListBox();
+            HardTaskListBox = new ListBox();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
@@ -59,12 +61,13 @@
             label1.AutoSize = true;
             label1.Font = new Font("Urbanist", 18F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(26, 21);
+            label1.Location = new Point(31, 20);
             label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
             label1.Size = new Size(134, 39);
             label1.TabIndex = 0;
             label1.Text = "My tasks";
+            label1.Click += label1_Click;
             // 
             // panel2
             // 
@@ -72,7 +75,7 @@
             panel2.Controls.Add(numTaskDone);
             panel2.Controls.Add(noOfTasktext);
             panel2.ForeColor = Color.White;
-            panel2.Location = new Point(26, 76);
+            panel2.Location = new Point(31, 76);
             panel2.Name = "panel2";
             panel2.Size = new Size(237, 82);
             panel2.TabIndex = 20;
@@ -83,7 +86,7 @@
             numTaskDone.Font = new Font("Urbanist", 25F);
             numTaskDone.Location = new Point(143, 6);
             numTaskDone.Name = "numTaskDone";
-            numTaskDone.Size = new Size(47, 55);
+            numTaskDone.Size = new Size(49, 55);
             numTaskDone.TabIndex = 1;
             numTaskDone.Text = "0";
             // 
@@ -103,7 +106,7 @@
             panel4.Controls.Add(numTaskCompleted);
             panel4.Controls.Add(completedTaskText);
             panel4.ForeColor = Color.White;
-            panel4.Location = new Point(26, 173);
+            panel4.Location = new Point(31, 173);
             panel4.Name = "panel4";
             panel4.Size = new Size(237, 82);
             panel4.TabIndex = 24;
@@ -114,7 +117,7 @@
             numTaskCompleted.Font = new Font("Urbanist", 25F);
             numTaskCompleted.Location = new Point(143, 6);
             numTaskCompleted.Name = "numTaskCompleted";
-            numTaskCompleted.Size = new Size(47, 55);
+            numTaskCompleted.Size = new Size(49, 55);
             numTaskCompleted.TabIndex = 1;
             numTaskCompleted.Text = "0";
             // 
@@ -134,7 +137,7 @@
             panel5.Controls.Add(numTaskMissed);
             panel5.Controls.Add(missedtaskText);
             panel5.ForeColor = Color.White;
-            panel5.Location = new Point(26, 267);
+            panel5.Location = new Point(31, 267);
             panel5.Name = "panel5";
             panel5.Size = new Size(237, 82);
             panel5.TabIndex = 25;
@@ -252,17 +255,42 @@
             textBox1.Size = new Size(456, 31);
             textBox1.TabIndex = 0;
             // 
-            // taskListBox
+            // EasyTaskListBox
             // 
-            taskListBox.BackColor = Color.FromArgb(17, 28, 46);
-            taskListBox.BorderStyle = BorderStyle.FixedSingle;
-            taskListBox.Font = new Font("Urbanist", 12F);
-            taskListBox.ForeColor = Color.White;
-            taskListBox.FormattingEnabled = true;
-            taskListBox.Location = new Point(26, 379);
-            taskListBox.Name = "taskListBox";
-            taskListBox.Size = new Size(953, 340);
-            taskListBox.TabIndex = 27;
+            EasyTaskListBox.BackColor = Color.FromArgb(17, 28, 46);
+            EasyTaskListBox.BorderStyle = BorderStyle.FixedSingle;
+            EasyTaskListBox.Font = new Font("Urbanist", 12F);
+            EasyTaskListBox.ForeColor = Color.White;
+            EasyTaskListBox.FormattingEnabled = true;
+            EasyTaskListBox.Location = new Point(31, 379);
+            EasyTaskListBox.Name = "EasyTaskListBox";
+            EasyTaskListBox.Size = new Size(291, 340);
+            EasyTaskListBox.TabIndex = 27;
+            // 
+            // MediumTaskListBox
+            // 
+            MediumTaskListBox.BackColor = Color.FromArgb(17, 28, 46);
+            MediumTaskListBox.BorderStyle = BorderStyle.FixedSingle;
+            MediumTaskListBox.Font = new Font("Urbanist", 12F);
+            MediumTaskListBox.ForeColor = Color.White;
+            MediumTaskListBox.FormattingEnabled = true;
+            MediumTaskListBox.Location = new Point(361, 379);
+            MediumTaskListBox.Name = "MediumTaskListBox";
+            MediumTaskListBox.Size = new Size(291, 340);
+            MediumTaskListBox.TabIndex = 28;
+            MediumTaskListBox.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            // 
+            // HardTaskListBox
+            // 
+            HardTaskListBox.BackColor = Color.FromArgb(17, 28, 46);
+            HardTaskListBox.BorderStyle = BorderStyle.FixedSingle;
+            HardTaskListBox.Font = new Font("Urbanist", 12F);
+            HardTaskListBox.ForeColor = Color.White;
+            HardTaskListBox.FormattingEnabled = true;
+            HardTaskListBox.Location = new Point(688, 379);
+            HardTaskListBox.Name = "HardTaskListBox";
+            HardTaskListBox.Size = new Size(291, 340);
+            HardTaskListBox.TabIndex = 29;
             // 
             // sidebar_task
             // 
@@ -270,7 +298,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 23, 42);
             ClientSize = new Size(1011, 744);
-            Controls.Add(taskListBox);
+            Controls.Add(HardTaskListBox);
+            Controls.Add(MediumTaskListBox);
+            Controls.Add(EasyTaskListBox);
             Controls.Add(panel1);
             Controls.Add(panel5);
             Controls.Add(panel4);
@@ -314,6 +344,8 @@
         private Label label3;
         private Button button1;
         private Label label4;
-        private ListBox taskListBox;
+        private ListBox EasyTaskListBox;
+        private ListBox MediumTaskListBox;
+        private ListBox HardTaskListBox;
     }
 }
