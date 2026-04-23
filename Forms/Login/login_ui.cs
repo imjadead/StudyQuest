@@ -20,11 +20,42 @@ namespace StudyQuest
         private System.Windows.Forms.Timer? lockoutTimer;
         private int remainingSeconds;
 
+        private bool isPasswordVisible = false;
+        private Button togglePasswordBtn = new Button();
+
         public login_ui()
         {
             InitializeComponent();
             passwordTextbox.UseSystemPasswordChar = true;
             InitializeLockoutTimer();
+            InitializeTogglePasswordButton();
+        }
+
+        private void InitializeTogglePasswordButton()
+        {
+            togglePasswordBtn.Text = "👁 Show";
+            togglePasswordBtn.AutoSize = true;
+            togglePasswordBtn.FlatStyle = FlatStyle.Flat;
+            togglePasswordBtn.FlatAppearance.BorderSize = 0;
+            togglePasswordBtn.BackColor = Color.Transparent;
+            togglePasswordBtn.ForeColor = Color.White;
+            togglePasswordBtn.Font = new Font("Segoe UI", 8f);
+            togglePasswordBtn.Cursor = Cursors.Hand;
+
+            togglePasswordBtn.Location = new Point(
+                passwordTextbox.Right - togglePasswordBtn.Width - 5,
+                passwordTextbox.Bottom + 5
+            );
+
+            togglePasswordBtn.Click += TogglePasswordBtn_Click;
+            this.Controls.Add(togglePasswordBtn);
+        }
+
+        private void TogglePasswordBtn_Click(object? sender, EventArgs e)
+        {
+            isPasswordVisible = !isPasswordVisible;
+            passwordTextbox.UseSystemPasswordChar = !isPasswordVisible;
+            togglePasswordBtn.Text = isPasswordVisible ? "🙈 Hide" : "👁 Show";
         }
 
         private void InitializeLockoutTimer()
@@ -48,6 +79,9 @@ namespace StudyQuest
                 loginButton.Text = "Login";
                 usernameTextbox.Enabled = true;
                 passwordTextbox.Enabled = true;
+
+                togglePasswordBtn.Enabled = true;
+
                 usernameTextbox.Focus();
             }
         }
@@ -59,6 +93,9 @@ namespace StudyQuest
             loginButton.Text = $"Wait {remainingSeconds}s...";
             usernameTextbox.Enabled = false;
             passwordTextbox.Enabled = false;
+
+            togglePasswordBtn.Enabled = false;
+
             lockoutTimer!.Start();
 
             MessageBox.Show($"Too many failed attempts. Please wait {lockoutSeconds} seconds before trying again.",
@@ -85,6 +122,11 @@ namespace StudyQuest
             if (usernameTextbox.Text == defaultUsername && passwordTextbox.Text == defaultPassword)
             {
                 failedAttempts = 0;
+
+                isPasswordVisible = false;
+                passwordTextbox.UseSystemPasswordChar = true;
+                togglePasswordBtn.Text = "👁 Show";
+
                 new dashboard_ui().Show();
                 this.Hide();
             }
@@ -98,6 +140,11 @@ namespace StudyQuest
                 {
                     usernameTextbox.Clear();
                     passwordTextbox.Clear();
+
+                    isPasswordVisible = false;
+                    passwordTextbox.UseSystemPasswordChar = true;
+                    togglePasswordBtn.Text = "👁 Show";
+
                     StartLockout();
                 }
                 else
