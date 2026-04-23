@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sidebar_dashboard));
             greetingsUser = new Label();
-            button1 = new Button();
             pnlTotalXP = new Panel();
+            panel1 = new Panel();
+            numTotalXP = new Label();
+            totalXPText = new Label();
             label8 = new Label();
-            listBox1 = new ListBox();
+            totalXP = new Label();
+            mustDOListBox = new ListBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -41,18 +43,15 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            dayStreak = new Label();
+            dayStreakText = new Label();
             numDayStreak = new Label();
-            totalXP = new Label();
-            panel1 = new Panel();
-            label9 = new Label();
-            label10 = new Label();
             panel2 = new Panel();
-            label11 = new Label();
-            label12 = new Label();
+            numTaskDone = new Label();
+            taskDonetext = new Label();
             panel3 = new Panel();
-            label13 = new Label();
-            label14 = new Label();
+            numRank = new Label();
+            rankText = new Label();
+            myTaskListBox = new ListBox();
             pnlTotalXP.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -71,22 +70,6 @@
             greetingsUser.Text = "Good day {username}!";
             greetingsUser.Click += label1_Click_1;
             // 
-            // button1
-            // 
-            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Urbanist", 10F);
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(853, 288);
-            button1.Name = "button1";
-            button1.Size = new Size(127, 40);
-            button1.TabIndex = 1;
-            button1.Text = "Add Task";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // pnlTotalXP
             // 
             pnlTotalXP.BorderStyle = BorderStyle.Fixed3D;
@@ -97,6 +80,36 @@
             pnlTotalXP.Name = "pnlTotalXP";
             pnlTotalXP.Size = new Size(217, 40);
             pnlTotalXP.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(numTotalXP);
+            panel1.Controls.Add(totalXPText);
+            panel1.Location = new Point(-2, -2);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(217, 40);
+            panel1.TabIndex = 3;
+            // 
+            // numTotalXP
+            // 
+            numTotalXP.AutoSize = true;
+            numTotalXP.Font = new Font("Urbanist", 12F);
+            numTotalXP.Location = new Point(137, 3);
+            numTotalXP.Name = "numTotalXP";
+            numTotalXP.Size = new Size(73, 26);
+            numTotalXP.TabIndex = 1;
+            numTotalXP.Text = "1170 XP";
+            // 
+            // totalXPText
+            // 
+            totalXPText.AutoSize = true;
+            totalXPText.Font = new Font("Urbanist", 10F);
+            totalXPText.Location = new Point(3, 6);
+            totalXPText.Name = "totalXPText";
+            totalXPText.Size = new Size(77, 22);
+            totalXPText.TabIndex = 0;
+            totalXPText.Text = "Total XP:";
             // 
             // label8
             // 
@@ -109,15 +122,27 @@
             label8.Text = "1170 XP";
             label8.Click += label8_Click_3;
             // 
-            // listBox1
+            // totalXP
             // 
-            listBox1.BackColor = Color.FromArgb(17, 28, 46);
-            listBox1.BorderStyle = BorderStyle.FixedSingle;
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(27, 334);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(953, 398);
-            listBox1.TabIndex = 7;
+            totalXP.AutoSize = true;
+            totalXP.Font = new Font("Urbanist", 10F);
+            totalXP.Location = new Point(3, 6);
+            totalXP.Name = "totalXP";
+            totalXP.Size = new Size(77, 22);
+            totalXP.TabIndex = 0;
+            totalXP.Text = "Total XP:";
+            totalXP.Click += label8_Click_1;
+            // 
+            // mustDOListBox
+            // 
+            mustDOListBox.BackColor = Color.FromArgb(17, 28, 46);
+            mustDOListBox.BorderStyle = BorderStyle.FixedSingle;
+            mustDOListBox.ForeColor = Color.White;
+            mustDOListBox.FormattingEnabled = true;
+            mustDOListBox.Location = new Point(48, 324);
+            mustDOListBox.Name = "mustDOListBox";
+            mustDOListBox.Size = new Size(431, 398);
+            mustDOListBox.TabIndex = 7;
             // 
             // label1
             // 
@@ -218,16 +243,16 @@
             label7.Text = "Su";
             label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // dayStreak
+            // dayStreakText
             // 
-            dayStreak.AutoSize = true;
-            dayStreak.Location = new Point(91, 237);
-            dayStreak.Name = "dayStreak";
-            dayStreak.Size = new Size(142, 36);
-            dayStreak.TabIndex = 15;
-            dayStreak.Text = "day streak";
-            dayStreak.TextAlign = ContentAlignment.MiddleCenter;
-            dayStreak.Click += label8_Click;
+            dayStreakText.AutoSize = true;
+            dayStreakText.Location = new Point(91, 237);
+            dayStreakText.Name = "dayStreakText";
+            dayStreakText.Size = new Size(142, 36);
+            dayStreakText.TabIndex = 15;
+            dayStreakText.Text = "day streak";
+            dayStreakText.TextAlign = ContentAlignment.MiddleCenter;
+            dayStreakText.Click += label8_Click;
             // 
             // numDayStreak
             // 
@@ -240,106 +265,76 @@
             numDayStreak.Text = "7";
             numDayStreak.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // totalXP
-            // 
-            totalXP.AutoSize = true;
-            totalXP.Font = new Font("Urbanist", 10F);
-            totalXP.Location = new Point(3, 6);
-            totalXP.Name = "totalXP";
-            totalXP.Size = new Size(77, 22);
-            totalXP.TabIndex = 0;
-            totalXP.Text = "Total XP:";
-            totalXP.Click += label8_Click_1;
-            // 
-            // panel1
-            // 
-            panel1.BorderStyle = BorderStyle.Fixed3D;
-            panel1.Controls.Add(label9);
-            panel1.Controls.Add(label10);
-            panel1.Location = new Point(-2, -2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(217, 40);
-            panel1.TabIndex = 3;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Urbanist", 12F);
-            label9.Location = new Point(137, 3);
-            label9.Name = "label9";
-            label9.Size = new Size(73, 26);
-            label9.TabIndex = 1;
-            label9.Text = "1170 XP";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Urbanist", 10F);
-            label10.Location = new Point(3, 6);
-            label10.Name = "label10";
-            label10.Size = new Size(77, 22);
-            label10.TabIndex = 0;
-            label10.Text = "Total XP:";
-            // 
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(label11);
-            panel2.Controls.Add(label12);
+            panel2.Controls.Add(numTaskDone);
+            panel2.Controls.Add(taskDonetext);
             panel2.Location = new Point(659, 30);
             panel2.Name = "panel2";
             panel2.Size = new Size(176, 40);
             panel2.TabIndex = 17;
             // 
-            // label11
+            // numTaskDone
             // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Urbanist", 12F);
-            label11.Location = new Point(137, 3);
-            label11.Name = "label11";
-            label11.Size = new Size(34, 26);
-            label11.TabIndex = 1;
-            label11.Text = "25";
+            numTaskDone.AutoSize = true;
+            numTaskDone.Font = new Font("Urbanist", 12F);
+            numTaskDone.Location = new Point(137, 3);
+            numTaskDone.Name = "numTaskDone";
+            numTaskDone.Size = new Size(34, 26);
+            numTaskDone.TabIndex = 1;
+            numTaskDone.Text = "25";
             // 
-            // label12
+            // taskDonetext
             // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Urbanist", 10F);
-            label12.Location = new Point(3, 6);
-            label12.Name = "label12";
-            label12.Size = new Size(92, 22);
-            label12.TabIndex = 0;
-            label12.Text = "Task Done:";
+            taskDonetext.AutoSize = true;
+            taskDonetext.Font = new Font("Urbanist", 10F);
+            taskDonetext.Location = new Point(3, 6);
+            taskDonetext.Name = "taskDonetext";
+            taskDonetext.Size = new Size(92, 22);
+            taskDonetext.TabIndex = 0;
+            taskDonetext.Text = "Task Done:";
             // 
             // panel3
             // 
             panel3.BorderStyle = BorderStyle.Fixed3D;
-            panel3.Controls.Add(label13);
-            panel3.Controls.Add(label14);
+            panel3.Controls.Add(numRank);
+            panel3.Controls.Add(rankText);
             panel3.Location = new Point(852, 30);
             panel3.Name = "panel3";
             panel3.Size = new Size(128, 40);
             panel3.TabIndex = 18;
             // 
-            // label13
+            // numRank
             // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Urbanist", 12F);
-            label13.Location = new Point(99, 3);
-            label13.Name = "label13";
-            label13.Size = new Size(22, 26);
-            label13.TabIndex = 1;
-            label13.Text = "3";
+            numRank.AutoSize = true;
+            numRank.Font = new Font("Urbanist", 12F);
+            numRank.Location = new Point(99, 3);
+            numRank.Name = "numRank";
+            numRank.Size = new Size(22, 26);
+            numRank.TabIndex = 1;
+            numRank.Text = "3";
             // 
-            // label14
+            // rankText
             // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Urbanist", 10F);
-            label14.Location = new Point(3, 6);
-            label14.Name = "label14";
-            label14.Size = new Size(49, 22);
-            label14.TabIndex = 0;
-            label14.Text = "Rank:";
+            rankText.AutoSize = true;
+            rankText.Font = new Font("Urbanist", 10F);
+            rankText.Location = new Point(3, 6);
+            rankText.Name = "rankText";
+            rankText.Size = new Size(49, 22);
+            rankText.TabIndex = 0;
+            rankText.Text = "Rank:";
+            // 
+            // myTaskListBox
+            // 
+            myTaskListBox.BackColor = Color.FromArgb(17, 28, 46);
+            myTaskListBox.BorderStyle = BorderStyle.FixedSingle;
+            myTaskListBox.ForeColor = Color.White;
+            myTaskListBox.FormattingEnabled = true;
+            myTaskListBox.Location = new Point(527, 324);
+            myTaskListBox.Name = "myTaskListBox";
+            myTaskListBox.Size = new Size(431, 398);
+            myTaskListBox.TabIndex = 19;
             // 
             // sidebar_dashboard
             // 
@@ -347,10 +342,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 23, 42);
             ClientSize = new Size(1011, 744);
+            Controls.Add(myTaskListBox);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(numDayStreak);
-            Controls.Add(dayStreak);
+            Controls.Add(dayStreakText);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -358,11 +354,10 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(listBox1);
+            Controls.Add(mustDOListBox);
             Controls.Add(pnlTotalXP);
-            Controls.Add(button1);
             Controls.Add(greetingsUser);
-            Font = new Font("Urbanist", 16.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Font = new Font("Urbanist", 16F);
             ForeColor = Color.White;
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(6, 4, 6, 4);
@@ -387,7 +382,7 @@
         private Label greetingsUser;
         private Button button1;
         private Panel pnlTotalXP;
-        private ListBox listBox1;
+        private ListBox mustDOListBox;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -395,18 +390,19 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private Label dayStreak;
+        private Label dayStreakText;
         private Label numDayStreak;
         private Label totalXP;
         private Label label8;
         private Panel panel1;
-        private Label label9;
-        private Label label10;
+        private Label numTotalXP;
+        private Label totalXPText;
         private Panel panel2;
-        private Label label11;
-        private Label label12;
+        private Label numTaskDone;
+        private Label taskDonetext;
         private Panel panel3;
-        private Label label13;
-        private Label label14;
+        private Label numRank;
+        private Label rankText;
+        private ListBox myTaskListBox;
     }
 }

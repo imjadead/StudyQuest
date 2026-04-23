@@ -36,7 +36,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Urbanist", 20F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(376, 251);
+            label1.Location = new Point(572, 536);
             label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
             label1.Size = new Size(159, 44);
