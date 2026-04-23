@@ -51,7 +51,7 @@
             panel3 = new Panel();
             numRank = new Label();
             rankText = new Label();
-            myTaskListBox = new ListBox();
+            richTextBox1 = new RichTextBox();
             pnlTotalXP.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -325,16 +325,16 @@
             rankText.TabIndex = 0;
             rankText.Text = "Rank:";
             // 
-            // myTaskListBox
+            // richTextBox1
             // 
-            myTaskListBox.BackColor = Color.FromArgb(17, 28, 46);
-            myTaskListBox.BorderStyle = BorderStyle.FixedSingle;
-            myTaskListBox.ForeColor = Color.White;
-            myTaskListBox.FormattingEnabled = true;
-            myTaskListBox.Location = new Point(527, 324);
-            myTaskListBox.Name = "myTaskListBox";
-            myTaskListBox.Size = new Size(431, 398);
-            myTaskListBox.TabIndex = 19;
+            richTextBox1.BackColor = Color.FromArgb(17, 28, 46);
+            richTextBox1.Font = new Font("Urbanist", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            richTextBox1.ForeColor = Color.White;
+            richTextBox1.Location = new Point(527, 324);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(431, 398);
+            richTextBox1.TabIndex = 20;
+            richTextBox1.Text = "Notes";
             // 
             // sidebar_dashboard
             // 
@@ -342,7 +342,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 23, 42);
             ClientSize = new Size(1011, 744);
-            Controls.Add(myTaskListBox);
+            Controls.Add(richTextBox1);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(numDayStreak);
@@ -404,5 +404,6 @@
         private Label numRank;
         private Label rankText;
         private ListBox myTaskListBox;
+        private RichTextBox richTextBox1;
     }
 }
