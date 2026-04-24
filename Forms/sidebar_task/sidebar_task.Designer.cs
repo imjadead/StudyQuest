@@ -321,7 +321,7 @@
             lblHardHeader.TabIndex = 32;
             lblHardHeader.Text = "🔴  Hard  (≤ 1 day)";
             // 
-            // unlockButton
+            // unlockButton  (Task Complete)
             // 
             unlockButton.FlatStyle = FlatStyle.Flat;
             unlockButton.Font = new Font("Urbanist", 11F);
@@ -334,8 +334,9 @@
             unlockButton.Text = "Task Complete";
             unlockButton.TextImageRelation = TextImageRelation.ImageBeforeText;
             unlockButton.UseVisualStyleBackColor = true;
+            unlockButton.Click += unlockButton_Click;   // ← wired up
             // 
-            // button2
+            // button2  (Delete Task)
             // 
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Urbanist", 11F);
@@ -348,6 +349,7 @@
             button2.Text = "Delete Task";
             button2.TextImageRelation = TextImageRelation.ImageBeforeText;
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;             // ← wired up
             // 
             // sidebar_task
             // 
@@ -410,8 +412,6 @@
         private ListBox EasyTaskListBox;
         private ListBox MediumTaskListBox;
         private ListBox HardTaskListBox;
-
-        // ── NEW header labels ──────────────────────────────────────────────────
         private Label lblEasyHeader;
         private Label lblMediumHeader;
         private Label lblHardHeader;

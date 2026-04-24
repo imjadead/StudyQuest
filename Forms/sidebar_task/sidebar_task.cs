@@ -105,13 +105,8 @@ namespace StudyQuest
                 return;
             }
 
-            // Classify difficulty by days remaining until deadline
             string difficulty = ClassifyByDeadline(deadline);
 
-            // EXP reward per flowchart:
-            //   Easy   → +20 exp
-            //   Medium → +30 exp
-            //   Hard   → +50 exp
             int expReward = difficulty switch
             {
                 "Easy" => 20,
@@ -166,50 +161,53 @@ namespace StudyQuest
         }
 
         // =====================================================================
-        // STEP 2 — Is "Task Complete!" clicked?
-        //   No  → display "YOU HAVENT COMPLETED THE TASK YET"
-        //   Yes → Mark Task as "Completed" → check difficulty → add EXP
-        // Double-click any list box item
+        // HELPER — get the currently selected TaskItem across all three listboxes
+        // Returns (listbox, task) or (null, null) if nothing is selected
         // =====================================================================
-        private void TaskListBox_DoubleClick(object sender, EventArgs e)
+        private (ListBox? box, TaskItem? task) GetSelectedTask()
         {
-            var listBox = (ListBox)sender;
-            if (listBox.SelectedItem == null) return;
-
-            // Already-completed / missed items are stored as plain strings
-            if (listBox.SelectedItem is string)
+            foreach (var lb in new[] { EasyTaskListBox, MediumTaskListBox, HardTaskListBox })
             {
-                // Flowchart No branch: "YOU HAVENT COMPLETED THE TASK YET"
-                MessageBox.Show("YOU HAVENT COMPLETED THE TASK YET",
-                                "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (lb.SelectedItem is TaskItem t)
+                    return (lb, t);
+            }
+            return (null, null);
+        }
+
+        // =====================================================================
+        // COMPLETE BUTTON — unlockButton Click
+        // Select a task first, then click "Task Complete"
+        // =====================================================================
+        private void unlockButton_Click(object sender, EventArgs e)
+        {
+            var (listBox, task) = GetSelectedTask();
+
+            if (listBox == null || task == null)
+            {
+                MessageBox.Show("Please select a task first.", "No Task Selected",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var task = (TaskItem)listBox.SelectedItem;
-
-            // ── No branch: task is missed (deadline passed, not completed) ────
             if (task.IsMissed)
             {
-                MessageBox.Show("YOU HAVENT COMPLETED THE TASK YET\n\n" +
-                                $"\"{task.Title}\" deadline has already passed.",
-                                "Missed Task", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    $"YOU HAVEN'T COMPLETED THE TASK YET\n\n" +
+                    $"\"{task.Title}\" deadline has already passed.",
+                    "Missed Task", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // ── No branch: already completed ──────────────────────────────────
             if (task.IsCompleted)
             {
-                MessageBox.Show("YOU HAVENT COMPLETED THE TASK YET",
+                MessageBox.Show($"\"{task.Title}\" is already completed! ✓",
                                 "Already Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            // ── Yes branch: Mark Task as "Completed" ──────────────────────────
+            // ── Mark as completed ─────────────────────────────────────────────
             task.IsCompleted = true;
 
-            // ── Is task "Easy"? Yes → Add +20 exp ────────────────────────────
-            // ── Is task "Medium"? Yes → Add +30 exp ──────────────────────────
-            // ── Is task "Hard"? Yes → Add +50 exp ────────────────────────────
             int expGain = task.Difficulty switch
             {
                 "Easy" => 20,
@@ -218,13 +216,15 @@ namespace StudyQuest
                 _ => 0
             };
 
-            // ── Apply EXP formula from flowchart ──────────────────────────────
             ApplyEXP(expGain);
 
-            // Replace the TaskItem in the list box with a completion string
+            // Replace TaskItem in the listbox with a completion indicator string
             int idx = listBox.Items.IndexOf(task);
             listBox.Items[idx] =
                 $"✓  {task.Title}  [{task.Deadline:MM/dd/yyyy}]  (+{expGain} EXP)";
+
+            // Deselect so the ✓ indicator is clearly visible
+            listBox.ClearSelected();
 
             RefreshCounters();
 
@@ -238,19 +238,106 @@ namespace StudyQuest
         }
 
         // =====================================================================
-        // EXP FORMULA:
-        //   1. exp = exp + amount  (no upper limit on EXP)
-        //   2. exp >= (currentLevel + 1) * 100?
-        //        Yes → currentLevel + 1 → loop back (stops at Level 100)
-        //        No  → continue
+        // DELETE BUTTON — button2 Click
+        // Select a task (pending OR completed string) then click "Delete Task"
+        // =====================================================================
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var (listBox, task) = GetSelectedTask();
+
+            if (listBox == null || task == null)
+            {
+                // Check if a completed / missed string entry is selected
+                ListBox? strBox = null;
+                int strIdx = -1;
+
+                foreach (var lb in new[] { EasyTaskListBox, MediumTaskListBox, HardTaskListBox })
+                {
+                    if (lb.SelectedItem is string)
+                    {
+                        strBox = lb;
+                        strIdx = lb.SelectedIndex;
+                        break;
+                    }
+                }
+
+                if (strBox == null)
+                {
+                    MessageBox.Show("Please select a task to delete.", "No Task Selected",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string selected = (string)strBox.Items[strIdx];
+
+                var confirm = MessageBox.Show(
+                    $"Delete this task?\n\n{selected}",
+                    "Confirm Delete",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirm != DialogResult.Yes) return;
+
+                // Remove matching TaskItem from master list
+                var match = _allTasks.Find(t =>
+                    selected.Contains(t.Title) &&
+                    selected.Contains(t.Deadline.ToString("MM/dd/yyyy")));
+
+                if (match != null) _allTasks.Remove(match);
+                strBox.Items.RemoveAt(strIdx);
+                RefreshCounters();
+                return;
+            }
+
+            // Pending task selected
+            var confirmPending = MessageBox.Show(
+                $"Delete \"{task.Title}\"?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmPending != DialogResult.Yes) return;
+
+            _allTasks.Remove(task);
+            listBox.Items.Remove(task);
+            RefreshCounters();
+        }
+
+        // =====================================================================
+        // DOUBLE-CLICK — shows task details (completing is now via button)
+        // =====================================================================
+        private void TaskListBox_DoubleClick(object sender, EventArgs e)
+        {
+            var listBox = (ListBox)sender;
+            if (listBox.SelectedItem == null) return;
+
+            if (listBox.SelectedItem is string s)
+            {
+                MessageBox.Show(s, "Task Info",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var task = (TaskItem)listBox.SelectedItem;
+            MessageBox.Show(
+                $"Title     : {task.Title}\n" +
+                $"Details   : {task.Details}\n" +
+                $"Deadline  : {task.Deadline:MM/dd/yyyy}\n" +
+                $"Difficulty: {task.Difficulty}  (+{task.ExpReward} EXP)\n" +
+                $"Status    : {(task.IsMissed ? "⚠ Missed" : "Pending")}",
+                "Task Details",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // =====================================================================
+        // EXP FORMULA
         // =====================================================================
         private const int MaxLevel = 100;
 
         private static void ApplyEXP(int amount)
         {
-            CurrentEXP += amount;   // EXP has no cap — accumulates freely
+            CurrentEXP += amount;
 
-            // ── Level-up loop — stops at Level 100 ───────────────────────────
             while (CurrentLevel < MaxLevel &&
                    CurrentEXP >= (CurrentLevel + 1) * 100)
             {
@@ -269,13 +356,12 @@ namespace StudyQuest
                         "Level Up", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            // No branch → continue (EXP keeps accumulating even at max level)
 
             EXPChanged?.Invoke();
         }
 
         // =====================================================================
-        // EXP PENALTY (missed task — top-left of flowchart: apply exp penalty -10)
+        // EXP PENALTY (missed task)
         // =====================================================================
         private static void ApplyEXPPenalty(int penalty = 10)
         {
@@ -285,15 +371,13 @@ namespace StudyQuest
 
         // =====================================================================
         // DEADLINE CHECKER — fires every 60 s
-        // Flowchart (top-left):
-        //   missed → apply exp penalty (-10) → sort users by exp (descending)
         // =====================================================================
         private void InitDeadlineTimer()
         {
             _deadlineTimer = new System.Windows.Forms.Timer { Interval = 60_000 };
             _deadlineTimer.Tick += DeadlineTimer_Tick;
             _deadlineTimer.Start();
-            DeadlineTimer_Tick(this, EventArgs.Empty); // run immediately on load
+            DeadlineTimer_Tick(this, EventArgs.Empty);
         }
 
         private void DeadlineTimer_Tick(object? sender, EventArgs e)
@@ -307,7 +391,7 @@ namespace StudyQuest
                 if (DateTime.Today > task.Deadline.Date)
                 {
                     task.IsMissed = true;
-                    ApplyEXPPenalty(10);   // flowchart: apply exp penalty (-10)
+                    ApplyEXPPenalty(10);
                     anyChange = true;
                 }
             }
@@ -316,13 +400,12 @@ namespace StudyQuest
             {
                 RefreshAllListBoxes();
                 RefreshCounters();
-                SortLeaderboard();         // flowchart: sort users by exp (descending)
+                SortLeaderboard();
             }
         }
 
         // =====================================================================
         // REFRESH LIST BOXES
-        // Re-classifies difficulty as deadlines get closer each day
         // =====================================================================
         private void RefreshAllListBoxes()
         {
@@ -352,7 +435,6 @@ namespace StudyQuest
                     continue;
                 }
 
-                // Re-classify — a task that was Easy yesterday may be Medium today
                 string newDiff = ClassifyByDeadline(task.Deadline);
                 if (newDiff != task.Difficulty)
                 {
@@ -371,27 +453,23 @@ namespace StudyQuest
         }
 
         // =====================================================================
-        // COUNTERS (top panels)
+        // COUNTERS
         // =====================================================================
         private void RefreshCounters()
         {
-            // Update static counters so dashboard can read them live
             TotalCount = _allTasks.Count;
             CompletedCount = _allTasks.FindAll(t => t.IsCompleted).Count;
             MissedCount = _allTasks.FindAll(t => t.IsMissed && !t.IsCompleted).Count;
 
-            // Update this form's labels
             numTaskDone.Text = TotalCount.ToString();
             numTaskCompleted.Text = CompletedCount.ToString();
             numTaskMissed.Text = MissedCount.ToString();
 
-            // Notify dashboard to refresh
             EXPChanged?.Invoke();
         }
 
         // =====================================================================
         // LEADERBOARD SORT HOOK
-        // Flowchart: "sort users by exp (descending)"
         // =====================================================================
         private static void SortLeaderboard()
         {
