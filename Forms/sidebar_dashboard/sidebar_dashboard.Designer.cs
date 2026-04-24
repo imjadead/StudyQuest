@@ -382,7 +382,7 @@
         #endregion
 
         private Label greetingsUser;
-        private Button button1;
+        //private Button button1;
         private Panel pnlTotalXP;
         private ListBox mustDOListBox;
         private Label label1;
@@ -405,7 +405,7 @@
         private Panel panel3;
         private Label numRank;
         private Label rankText;
-        private ListBox myTaskListBox;
+        //private ListBox myTaskListBox;
         private RichTextBox richTextBox1;
     }
 }

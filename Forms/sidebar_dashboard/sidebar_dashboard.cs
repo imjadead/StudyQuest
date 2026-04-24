@@ -11,23 +11,23 @@ namespace StudyQuest
     public partial class sidebar_dashboard : Form
     {
         private string username = "admin";
-        private int totalXP_value = 0;
-        private int tasksDone = 0;
-        private string rank = "1st";
         private int streakDays = 0;
         private DateTime lastLoginDate = DateTime.Today.AddDays(-1);
 
-        private List<string> mustDoTasks = new List<string>();
-        private List<string> myTasks = new List<string>();
-
+        // ── Pull EXP and task counts directly from sidebar_task ──────────────
+        private int TotalXP => sidebar_task.CurrentEXP;
+        private int CurrentLevel => sidebar_task.CurrentLevel;
+        private int TasksDone => sidebar_task.CompletedCount;
+        private int TasksMissed => sidebar_task.MissedCount;
+        private int TasksTotal => sidebar_task.TotalCount;
 
         private List<(string Name, int XP)> leaderboard = new List<(string, int)>
         {
-            ("Alice",   5200),
-            ("Bob",     3800),
-            ("Carol",   3100),
-            ("Dave",    2500),
-            ("admin", 0),
+            ("Alice",  5200),
+            ("Bob",    3800),
+            ("Carol",  3100),
+            ("Dave",   2500),
+            ("admin",  0),
         };
 
         public sidebar_dashboard()
@@ -37,12 +37,38 @@ namespace StudyQuest
 
         private void sidebar_dashboard_Load(object sender, EventArgs e)
         {
+            // Subscribe to EXP changes from sidebar_task
+            sidebar_task.EXPChanged += OnEXPChanged;
+
             UpdateStreak();
             UpdateRank();
             RefreshUI();
             HighlightTodayLabel();
         }
 
+        // ── Called every time a task is completed or missed ───────────────────
+        private void OnEXPChanged()
+        {
+            // Marshal to UI thread if needed
+            if (this.InvokeRequired)
+                this.Invoke(new Action(OnEXPChanged));
+            else
+            {
+                UpdateRank();
+                RefreshUI();
+            }
+        }
+
+        // ── Unsubscribe when dashboard is hidden / closed ─────────────────────
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            sidebar_task.EXPChanged -= OnEXPChanged;
+            base.OnFormClosing(e);
+        }
+
+        // =====================================================================
+        // STREAK
+        // =====================================================================
         private void UpdateStreak()
         {
             DateTime today = DateTime.Today;
@@ -54,14 +80,19 @@ namespace StudyQuest
             lastLoginDate = today;
         }
 
+        // =====================================================================
+        // RANK  — uses live EXP from sidebar_task
+        // =====================================================================
+        private string rank = "1st";
+
         private void UpdateRank()
         {
-
+            // Update admin's XP in the leaderboard list
             for (int i = 0; i < leaderboard.Count; i++)
             {
                 if (leaderboard[i].Name == username)
                 {
-                    leaderboard[i] = (username, totalXP_value);
+                    leaderboard[i] = (username, TotalXP);
                     break;
                 }
             }
@@ -69,7 +100,6 @@ namespace StudyQuest
             leaderboard.Sort((a, b) => b.XP.CompareTo(a.XP));
 
             int position = leaderboard.FindIndex(p => p.Name == username) + 1;
-
             rank = GetOrdinal(position);
         }
 
@@ -78,36 +108,46 @@ namespace StudyQuest
             if (position % 100 >= 11 && position % 100 <= 13)
                 return $"{position}th";
 
-            switch (position % 10)
+            return (position % 10) switch
             {
-                case 1: return $"{position}st";
-                case 2: return $"{position}nd";
-                case 3: return $"{position}rd";
-                default: return $"{position}th";
-            }
+                1 => $"{position}st",
+                2 => $"{position}nd",
+                3 => $"{position}rd",
+                _ => $"{position}th"
+            };
         }
 
+        // =====================================================================
+        // REFRESH UI — binds all labels to live sidebar_task data
+        // =====================================================================
         private void RefreshUI()
         {
-            if (greetingsUser != null) greetingsUser.Text = $"Good day {username}!";
-            if (numTotalXP != null) numTotalXP.Text = $"{totalXP_value} XP";
-            if (numTaskDone != null) numTaskDone.Text = tasksDone.ToString();
-            if (numRank != null) numRank.Text = rank;
-            if (numDayStreak != null) numDayStreak.Text = streakDays.ToString();
+            if (greetingsUser != null)
+                greetingsUser.Text = $"Good day, {username}!";
 
-            if (mustDOListBox != null)
-            {
-                mustDOListBox.Items.Clear();
-                foreach (string t in mustDoTasks) mustDOListBox.Items.Add(t);
-            }
+            // ── EXP & Level ───────────────────────────────────────────────────
+            if (numTotalXP != null)
+                numTotalXP.Text = $"{TotalXP} XP";
 
-            if (myTaskListBox != null)
-            {
-                myTaskListBox.Items.Clear();
-                foreach (string t in myTasks) myTaskListBox.Items.Add(t);
-            }
+            // Show Level next to XP if you have a label for it
+            // e.g. numLevel.Text = $"Level {CurrentLevel}";
+
+            // ── Task counters from sidebar_task ───────────────────────────────
+            if (numTaskDone != null)
+                numTaskDone.Text = TasksDone.ToString();
+
+            // ── Rank ──────────────────────────────────────────────────────────
+            if (numRank != null)
+                numRank.Text = rank;
+
+            // ── Streak ────────────────────────────────────────────────────────
+            if (numDayStreak != null)
+                numDayStreak.Text = streakDays.ToString();
         }
 
+        // =====================================================================
+        // HIGHLIGHT TODAY
+        // =====================================================================
         private void HighlightTodayLabel()
         {
             Label[] days = { label1, label2, label3, label4, label6, label5, label7 };
@@ -123,46 +163,13 @@ namespace StudyQuest
                 days[todayIndex].BackColor = highlight;
         }
 
-        private void mustDOListBox_DoubleClick(object sender, EventArgs e)
-        {
-            CompleteTask(mustDOListBox, mustDoTasks, xpReward: 50);
-        }
-
-        private void myTaskListBox_DoubleClick(object sender, EventArgs e)
-        {
-            CompleteTask(myTaskListBox, myTasks, xpReward: 20);
-        }
-
-        private void CompleteTask(ListBox listBox, List<string> taskList, int xpReward)
-        {
-            if (listBox == null || listBox.SelectedIndex < 0) return;
-
-            taskList.RemoveAt(listBox.SelectedIndex);
-            listBox.Items.RemoveAt(listBox.SelectedIndex);
-            totalXP_value += xpReward;
-            tasksDone++;
-            UpdateRank();
-            RefreshUI();
-        }
-
-        private void mustDOListBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete) RemoveTask(mustDOListBox, mustDoTasks);
-        }
-
-        private void myTaskListBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete) RemoveTask(myTaskListBox, myTasks);
-        }
-
-        private void RemoveTask(ListBox listBox, List<string> taskList)
-        {
-            if (listBox == null || listBox.SelectedIndex < 0) return;
-            taskList.RemoveAt(listBox.SelectedIndex);
-            listBox.Items.RemoveAt(listBox.SelectedIndex);
-            RefreshUI();
-        }
-
+        // =====================================================================
+        // STUBS (keep to satisfy designer)
+        // =====================================================================
+        private void mustDOListBox_DoubleClick(object sender, EventArgs e) { }
+        private void myTaskListBox_DoubleClick(object sender, EventArgs e) { }
+        private void mustDOListBox_KeyDown(object sender, KeyEventArgs e) { }
+        private void myTaskListBox_KeyDown(object sender, KeyEventArgs e) { }
         private void label1_Click(object sender, EventArgs e) { }
         private void label1_Click_1(object sender, EventArgs e) { }
         private void button1_Click(object sender, EventArgs e) { }
