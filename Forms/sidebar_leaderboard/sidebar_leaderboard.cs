@@ -22,30 +22,20 @@ namespace StudyQuest
         }
 
         // =====================================================================
-        // DUMMY PLAYERS
-        // =====================================================================
-        private List<(string Username, int Level, int XP)> otherPlayers = new()
-        {
-            ("Alice",  15, 5200),
-            ("Bob",    12, 2500),
-            ("Carol",  10, 1900),
-            ("Dave",    8, 1400),
-            ("Eve",     7, 600),
-            ("Frank",   6, 400),
-        };
-
-        // =====================================================================
         // CONSTRUCTOR
         // =====================================================================
         public sidebar_leaderboard()
         {
             _instance = this;
             InitializeComponent();
+
+            // ── Listen for XP changes from task form ──
             sidebar_task.EXPChanged += () =>
             {
                 if (this.IsHandleCreated && !this.IsDisposed)
                     this.Invoke(() => LoadLeaderboard());
             };
+
             LoadLeaderboard();
         }
 
@@ -54,8 +44,8 @@ namespace StudyQuest
         // =====================================================================
         public void LoadLeaderboard()
         {
-            // Build full board including real user
-            var fullBoard = new List<(string Username, int Level, int XP)>(otherPlayers)
+            // Build full board using SHARED list from GameSession
+            var fullBoard = new List<(string Username, int Level, int XP)>(GameSession.OtherPlayers)
             {
                 (GameSession.Username, GameSession.Level, GameSession.TotalXP)
             };
@@ -66,8 +56,8 @@ namespace StudyQuest
             // Current week date
             label2.Text = $"Week of {GetWeekStartDate()}";
 
-            // Find user rank
-            int myRank = fullBoard.FindIndex(p => p.Username == GameSession.Username) + 1;
+            // Rank using shared GameSession method
+            int myRank = GameSession.GetCurrentRank();
             label11.Text = $"You are #{myRank} this week! Study Hard!";
 
             FillPodium(fullBoard);

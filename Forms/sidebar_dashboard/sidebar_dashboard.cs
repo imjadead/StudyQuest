@@ -1,9 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace StudyQuest
@@ -21,15 +17,6 @@ namespace StudyQuest
         private int TasksMissed => sidebar_task.MissedCount;
         private int TasksTotal => sidebar_task.TotalCount;
 
-        private List<(string Name, int XP)> leaderboard = new List<(string, int)>
-        {
-            ("Alice",  5200),
-            ("Bob",    3800),
-            ("Carol",  3100),
-            ("Dave",   2500),
-            ("admin",  0),
-        };
-
         public sidebar_dashboard()
         {
             InitializeComponent();
@@ -37,11 +24,9 @@ namespace StudyQuest
 
         private void sidebar_dashboard_Load(object sender, EventArgs e)
         {
-            // Subscribe to EXP changes from sidebar_task
             sidebar_task.EXPChanged += OnEXPChanged;
 
             UpdateStreak();
-            UpdateRank();
             RefreshUI();
             HighlightTodayLabel();
         }
@@ -49,17 +34,12 @@ namespace StudyQuest
         // ── Called every time a task is completed or missed ───────────────────
         private void OnEXPChanged()
         {
-            // Marshal to UI thread if needed
             if (this.InvokeRequired)
                 this.Invoke(new Action(OnEXPChanged));
             else
-            {
-                UpdateRank();
                 RefreshUI();
-            }
         }
 
-        // ── Unsubscribe when dashboard is hidden / closed ─────────────────────
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             sidebar_task.EXPChanged -= OnEXPChanged;
@@ -81,66 +61,28 @@ namespace StudyQuest
         }
 
         // =====================================================================
-        // RANK  — uses live EXP from sidebar_task
-        // =====================================================================
-        private string rank = "1st";
-
-        private void UpdateRank()
-        {
-            // Update admin's XP in the leaderboard list
-            for (int i = 0; i < leaderboard.Count; i++)
-            {
-                if (leaderboard[i].Name == username)
-                {
-                    leaderboard[i] = (username, TotalXP);
-                    break;
-                }
-            }
-
-            leaderboard.Sort((a, b) => b.XP.CompareTo(a.XP));
-
-            int position = leaderboard.FindIndex(p => p.Name == username) + 1;
-            rank = GetOrdinal(position);
-        }
-
-        private string GetOrdinal(int position)
-        {
-            if (position % 100 >= 11 && position % 100 <= 13)
-                return $"{position}th";
-
-            return (position % 10) switch
-            {
-                1 => $"{position}st",
-                2 => $"{position}nd",
-                3 => $"{position}rd",
-                _ => $"{position}th"
-            };
-        }
-
-        // =====================================================================
-        // REFRESH UI — binds all labels to live sidebar_task data
+        // REFRESH UI
         // =====================================================================
         private void RefreshUI()
         {
+            // ── Sync to GameSession FIRST so rank calc uses latest XP ─────────
+            GameSession.TotalXP = TotalXP;
+            GameSession.Level = CurrentLevel;
+            GameSession.Username = username;
+
             if (greetingsUser != null)
                 greetingsUser.Text = $"Good day, {username}!";
 
-            // ── EXP & Level ───────────────────────────────────────────────────
             if (numTotalXP != null)
                 numTotalXP.Text = $"{TotalXP} XP";
 
-            // Show Level next to XP if you have a label for it
-            // e.g. numLevel.Text = $"Level {CurrentLevel}";
-
-            // ── Task counters from sidebar_task ───────────────────────────────
             if (numTaskDone != null)
                 numTaskDone.Text = TasksDone.ToString();
 
-            // ── Rank ──────────────────────────────────────────────────────────
+            // ── Rank — uses SAME GameSession method as leaderboard ────────────
             if (numRank != null)
-                numRank.Text = rank;
+                numRank.Text = GameSession.GetOrdinal(GameSession.GetCurrentRank());
 
-            // ── Streak ────────────────────────────────────────────────────────
             if (numDayStreak != null)
                 numDayStreak.Text = streakDays.ToString();
         }
@@ -152,7 +94,6 @@ namespace StudyQuest
         {
             Label[] days = { label1, label2, label3, label4, label6, label5, label7 };
             int todayIndex = ((int)DateTime.Today.DayOfWeek + 6) % 7;
-
             Color normal = Color.FromArgb(192, 255, 255);
             Color highlight = Color.FromArgb(100, 200, 255);
 
@@ -164,7 +105,7 @@ namespace StudyQuest
         }
 
         // =====================================================================
-        // STUBS (keep to satisfy designer)
+        // STUBS
         // =====================================================================
         private void mustDOListBox_DoubleClick(object sender, EventArgs e) { }
         private void myTaskListBox_DoubleClick(object sender, EventArgs e) { }
