@@ -81,6 +81,28 @@ namespace StudyQuest
         }
 
         // =====================================================================
+        // GET TODAY'S DUE TASKS — called by dashboard
+        // =====================================================================
+        public static List<string> GetTodayTasks()
+        {
+            var result = new List<string>();
+
+            if (_instance == null) return result;
+
+            foreach (var task in _instance._allTasks)
+            {
+                if (task.IsCompleted || task.IsMissed) continue;
+
+                if (task.Deadline.Date == DateTime.Today)
+                    result.Add($"🔴 {task.Title}  (+{task.ExpReward} EXP)");
+                else if (task.Deadline.Date > DateTime.Today && task.Deadline.Date <= DateTime.Today.AddDays(1))
+                    result.Add($"🟡 {task.Title}  (+{task.ExpReward} EXP)");
+            }
+
+            return result;
+        }
+
+        // =====================================================================
         // ADD TASK — button1 Click
         // =====================================================================
         private void button1_Click(object sender, EventArgs e)
