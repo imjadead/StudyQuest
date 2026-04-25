@@ -297,7 +297,10 @@
             lblEasyHeader.Name = "lblEasyHeader";
             lblEasyHeader.Size = new Size(181, 25);
             lblEasyHeader.TabIndex = 30;
-            lblEasyHeader.Text = "\U0001f7e2  Easy  (> 3 days)";
+            lblEasyHeader.Text = "🟢  Easy  (5+ days)";
+            lblEasyHeader.AutoSize = false;
+            lblEasyHeader.Size = new Size(291, 25);
+            lblEasyHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblMediumHeader
             // 
@@ -308,7 +311,10 @@
             lblMediumHeader.Name = "lblMediumHeader";
             lblMediumHeader.Size = new Size(216, 25);
             lblMediumHeader.TabIndex = 31;
-            lblMediumHeader.Text = "\U0001f7e1  Medium  (1–3 days)";
+            lblMediumHeader.Text = "🟡  Medium  (4-5 days)";
+            lblMediumHeader.AutoSize = false;
+            lblMediumHeader.Size = new Size(291, 25);
+            lblMediumHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblHardHeader
             // 
@@ -319,7 +325,10 @@
             lblHardHeader.Name = "lblHardHeader";
             lblHardHeader.Size = new Size(171, 25);
             lblHardHeader.TabIndex = 32;
-            lblHardHeader.Text = "🔴  Hard  (≤ 1 day)";
+            lblHardHeader.Text = "🔴  Hard  (1-3 days)";
+            lblHardHeader.AutoSize = false;
+            lblHardHeader.Size = new Size(291, 25);
+            lblHardHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // unlockButton  (Task Complete)
             // 

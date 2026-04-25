@@ -140,8 +140,8 @@ namespace StudyQuest
         private static string ClassifyByDeadline(DateTime deadline)
         {
             int daysLeft = (deadline.Date - DateTime.Today).Days;
-            if (daysLeft > 3) return "Easy";
-            if (daysLeft >= 1) return "Medium";
+            if (daysLeft > 5) return "Easy";
+            if (daysLeft >= 3) return "Medium";
             return "Hard";
         }
 
