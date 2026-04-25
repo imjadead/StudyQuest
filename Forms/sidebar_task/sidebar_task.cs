@@ -29,7 +29,7 @@ namespace StudyQuest
             public string Title { get; set; } = string.Empty;
             public string Details { get; set; } = string.Empty;
             public DateTime Deadline { get; set; }
-            public string Difficulty { get; set; } = string.Empty; // "Easy"|"Medium"|"Hard"
+            public string Difficulty { get; set; } = string.Empty;
             public bool IsCompleted { get; set; }
             public bool IsMissed { get; set; }
             public int ExpReward { get; set; }
@@ -45,7 +45,6 @@ namespace StudyQuest
         public static int CurrentLevel { get; private set; } = 1;
         public static event Action? EXPChanged;
 
-        // ── Live counters readable by dashboard ───────────────────────────────
         public static int CompletedCount { get; private set; } = 0;
         public static int MissedCount { get; private set; } = 0;
         public static int TotalCount { get; private set; } = 0;
@@ -57,7 +56,7 @@ namespace StudyQuest
         private System.Windows.Forms.Timer _deadlineTimer = null!;
 
         // =====================================================================
-        // CONSTRUCTOR — private (singleton)
+        // CONSTRUCTOR
         // =====================================================================
         private sidebar_task()
         {
@@ -67,7 +66,7 @@ namespace StudyQuest
         }
 
         // =====================================================================
-        // HIDE instead of CLOSE — preserves task data on navigation
+        // HIDE instead of CLOSE
         // =====================================================================
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -82,8 +81,7 @@ namespace StudyQuest
         }
 
         // =====================================================================
-        // STEP 1 — Input task details → Add task to list
-        // button1 Click
+        // ADD TASK — button1 Click
         // =====================================================================
         private void button1_Click(object sender, EventArgs e)
         {
@@ -138,9 +136,6 @@ namespace StudyQuest
 
         // =====================================================================
         // CLASSIFY by deadline
-        //   > 3 days  → Easy
-        //   1–3 days  → Medium
-        //   ≤ 0 days  → Hard
         // =====================================================================
         private static string ClassifyByDeadline(DateTime deadline)
         {
@@ -161,8 +156,7 @@ namespace StudyQuest
         }
 
         // =====================================================================
-        // HELPER — get the currently selected TaskItem across all three listboxes
-        // Returns (listbox, task) or (null, null) if nothing is selected
+        // HELPER — get selected task across all listboxes
         // =====================================================================
         private (ListBox? box, TaskItem? task) GetSelectedTask()
         {
@@ -176,7 +170,6 @@ namespace StudyQuest
 
         // =====================================================================
         // COMPLETE BUTTON — unlockButton Click
-        // Select a task first, then click "Task Complete"
         // =====================================================================
         private void unlockButton_Click(object sender, EventArgs e)
         {
@@ -218,14 +211,11 @@ namespace StudyQuest
 
             ApplyEXP(expGain);
 
-            // Replace TaskItem in the listbox with a completion indicator string
             int idx = listBox.Items.IndexOf(task);
             listBox.Items[idx] =
                 $"✓  {task.Title}  [{task.Deadline:MM/dd/yyyy}]  (+{expGain} EXP)";
 
-            // Deselect so the ✓ indicator is clearly visible
             listBox.ClearSelected();
-
             RefreshCounters();
 
             MessageBox.Show(
@@ -239,7 +229,6 @@ namespace StudyQuest
 
         // =====================================================================
         // DELETE BUTTON — button2 Click
-        // Select a task (pending OR completed string) then click "Delete Task"
         // =====================================================================
         private void button2_Click(object sender, EventArgs e)
         {
@@ -247,7 +236,6 @@ namespace StudyQuest
 
             if (listBox == null || task == null)
             {
-                // Check if a completed / missed string entry is selected
                 ListBox? strBox = null;
                 int strIdx = -1;
 
@@ -278,7 +266,6 @@ namespace StudyQuest
 
                 if (confirm != DialogResult.Yes) return;
 
-                // Remove matching TaskItem from master list
                 var match = _allTasks.Find(t =>
                     selected.Contains(t.Title) &&
                     selected.Contains(t.Deadline.ToString("MM/dd/yyyy")));
@@ -289,7 +276,6 @@ namespace StudyQuest
                 return;
             }
 
-            // Pending task selected
             var confirmPending = MessageBox.Show(
                 $"Delete \"{task.Title}\"?",
                 "Confirm Delete",
@@ -304,7 +290,7 @@ namespace StudyQuest
         }
 
         // =====================================================================
-        // DOUBLE-CLICK — shows task details (completing is now via button)
+        // DOUBLE-CLICK — show task details
         // =====================================================================
         private void TaskListBox_DoubleClick(object sender, EventArgs e)
         {
@@ -330,7 +316,7 @@ namespace StudyQuest
         }
 
         // =====================================================================
-        // EXP FORMULA
+        // EXP FORMULA — updated to sync GameSession
         // =====================================================================
         private const int MaxLevel = 100;
 
@@ -338,10 +324,17 @@ namespace StudyQuest
         {
             CurrentEXP += amount;
 
+            // ── Sync to GameSession so leaderboard can read it ──
+            GameSession.TotalXP = CurrentEXP;
+            GameSession.Level = CurrentLevel;
+
             while (CurrentLevel < MaxLevel &&
                    CurrentEXP >= (CurrentLevel + 1) * 100)
             {
                 CurrentLevel++;
+
+                // ── Update level in GameSession after level up ──
+                GameSession.Level = CurrentLevel;
 
                 if (CurrentLevel == MaxLevel)
                 {
@@ -366,6 +359,10 @@ namespace StudyQuest
         private static void ApplyEXPPenalty(int penalty = 10)
         {
             CurrentEXP = Math.Max(0, CurrentEXP - penalty);
+
+            // ── Sync penalty to GameSession too ──
+            GameSession.TotalXP = CurrentEXP;
+
             EXPChanged?.Invoke();
         }
 
@@ -469,11 +466,11 @@ namespace StudyQuest
         }
 
         // =====================================================================
-        // LEADERBOARD SORT HOOK
+        // LEADERBOARD SORT HOOK — refreshes leaderboard if it's open
         // =====================================================================
         private static void SortLeaderboard()
         {
-            // TODO: call LeaderboardForm.Instance?.SortByEXP();
+            sidebar_leaderboard.Instance?.LoadLeaderboard();
         }
 
         public static (int exp, int level) GetPlayerStats() => (CurrentEXP, CurrentLevel);
