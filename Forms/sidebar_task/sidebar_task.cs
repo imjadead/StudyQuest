@@ -81,6 +81,28 @@ namespace StudyQuest
         }
 
         // =====================================================================
+        // GET TODAY'S DUE TASKS — called by dashboard
+        // =====================================================================
+        public static List<string> GetTodayTasks()
+        {
+            var result = new List<string>();
+
+            if (_instance == null) return result;
+
+            foreach (var task in _instance._allTasks)
+            {
+                if (task.IsCompleted || task.IsMissed) continue;
+
+                if (task.Deadline.Date == DateTime.Today)
+                    result.Add($"🔴 {task.Title}  (+{task.ExpReward} EXP)");
+                else if (task.Deadline.Date > DateTime.Today && task.Deadline.Date <= DateTime.Today.AddDays(1))
+                    result.Add($"🟡 {task.Title}  (+{task.ExpReward} EXP)");
+            }
+
+            return result;
+        }
+
+        // =====================================================================
         // ADD TASK — button1 Click
         // =====================================================================
         private void button1_Click(object sender, EventArgs e)
@@ -140,8 +162,8 @@ namespace StudyQuest
         private static string ClassifyByDeadline(DateTime deadline)
         {
             int daysLeft = (deadline.Date - DateTime.Today).Days;
-            if (daysLeft > 3) return "Easy";
-            if (daysLeft >= 1) return "Medium";
+            if (daysLeft > 5) return "Easy";
+            if (daysLeft >= 3) return "Medium";
             return "Hard";
         }
 
@@ -324,22 +346,24 @@ namespace StudyQuest
         {
             CurrentEXP += amount;
 
-            // ── Sync to GameSession so leaderboard can read it ──
+            // ── Sync to GameSession ──
             GameSession.TotalXP = CurrentEXP;
             GameSession.Level = CurrentLevel;
 
+            // ── Level up check — every 100 XP = 1 level ──
+            // Level 1: 0-99 XP
+            // Level 2: 100-199 XP
+            // Level 3: 200-299 XP
             while (CurrentLevel < MaxLevel &&
-                   CurrentEXP >= (CurrentLevel + 1) * 100)
+                   CurrentEXP >= CurrentLevel * 100)
             {
                 CurrentLevel++;
-
-                // ── Update level in GameSession after level up ──
                 GameSession.Level = CurrentLevel;
 
                 if (CurrentLevel == MaxLevel)
                 {
                     MessageBox.Show(
-                        "🏆  MAX LEVEL REACHED!\nYou are now Level 100 — the highest rank!",
+                        "🏆  MAX LEVEL REACHED!\nYou are now Level 100!",
                         "Max Level!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else

@@ -57,8 +57,9 @@ namespace StudyQuest
             panel1.Controls.Add(progressBar1);
             panel1.Controls.Add(userPicture);
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(244, 164);
+            panel1.Size = new Size(256, 164);
             panel1.TabIndex = 0;
             // 
             // userCurrentLvl
@@ -71,6 +72,7 @@ namespace StudyQuest
             userCurrentLvl.Size = new Size(61, 23);
             userCurrentLvl.TabIndex = 2;
             userCurrentLvl.Text = "Lvl. 10";
+            userCurrentLvl.Click += userCurrentLvl_Click;
             // 
             // usernameTextbox
             // 
@@ -99,19 +101,22 @@ namespace StudyQuest
             // progressBar1
             // 
             progressBar1.ForeColor = Color.DarkSeaGreen;
-            progressBar1.Location = new Point(12, 135);
+            progressBar1.Location = new Point(10, 101);
+            progressBar1.Margin = new Padding(3, 2, 3, 2);
             progressBar1.MarqueeAnimationSpeed = 150;
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(171, 10);
+            progressBar1.Size = new Size(150, 8);
             progressBar1.TabIndex = 1;
             progressBar1.Value = 50;
+            progressBar1.Click += progressBar1_Click;
             // 
             // userPicture
             // 
             userPicture.Image = (Image)resources.GetObject("userPicture.Image");
-            userPicture.Location = new Point(22, 36);
+            userPicture.Location = new Point(19, 27);
+            userPicture.Margin = new Padding(3, 2, 3, 2);
             userPicture.Name = "userPicture";
-            userPicture.Size = new Size(69, 64);
+            userPicture.Size = new Size(60, 48);
             userPicture.SizeMode = PictureBoxSizeMode.Zoom;
             userPicture.TabIndex = 1;
             userPicture.TabStop = false;
@@ -129,10 +134,11 @@ namespace StudyQuest
             sidebar.Controls.Add(dashboardButton);
             sidebar.Controls.Add(panel1);
             sidebar.Dock = DockStyle.Left;
-            sidebar.Font = new Font("Urbanist", 10F);
+            sidebar.Font = new Font("Microsoft Sans Serif", 10F);
             sidebar.Location = new Point(0, 0);
+            sidebar.Margin = new Padding(3, 2, 3, 2);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(244, 744);
+            sidebar.Size = new Size(214, 558);
             sidebar.TabIndex = 0;
             sidebar.Paint += sidebar_Paint;
             // 
@@ -141,7 +147,7 @@ namespace StudyQuest
             pnlNav.BackColor = Color.FromArgb(0, 126, 249);
             pnlNav.Location = new Point(3, 244);
             pnlNav.Name = "pnlNav";
-            pnlNav.Size = new Size(3, 100);
+            pnlNav.Size = new Size(3, 75);
             pnlNav.TabIndex = 7;
             // 
             // logoutButton
@@ -209,7 +215,7 @@ namespace StudyQuest
             leaderboardButton.Image = (Image)resources.GetObject("leaderboardButton.Image");
             leaderboardButton.Location = new Point(0, 345);
             leaderboardButton.Name = "leaderboardButton";
-            leaderboardButton.Size = new Size(244, 52);
+            leaderboardButton.Size = new Size(214, 39);
             leaderboardButton.TabIndex = 3;
             leaderboardButton.Text = "Leaderboard";
             leaderboardButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -256,21 +262,23 @@ namespace StudyQuest
             // pnlFormLoader
             // 
             pnlFormLoader.Dock = DockStyle.Bottom;
-            pnlFormLoader.Location = new Point(244, 0);
+            pnlFormLoader.Location = new Point(214, 0);
+            pnlFormLoader.Margin = new Padding(3, 2, 3, 2);
             pnlFormLoader.Name = "pnlFormLoader";
-            pnlFormLoader.Size = new Size(1011, 744);
+            pnlFormLoader.Size = new Size(884, 558);
             pnlFormLoader.TabIndex = 1;
             // 
             // dashboard_ui
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 23, 42);
-            ClientSize = new Size(1255, 744);
+            ClientSize = new Size(1098, 558);
             Controls.Add(pnlFormLoader);
             Controls.Add(sidebar);
             FormBorderStyle = FormBorderStyle.None;
-            MinimumSize = new Size(1255, 744);
+            Margin = new Padding(3, 2, 3, 2);
+            MinimumSize = new Size(1098, 558);
             Name = "dashboard_ui";
             StartPosition = FormStartPosition.CenterScreen;
             Text = " ";

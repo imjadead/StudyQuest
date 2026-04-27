@@ -28,6 +28,7 @@ namespace StudyQuest
 
             UpdateStreak();
             RefreshUI();
+            RefreshTodayTasks();
             HighlightTodayLabel();
         }
 
@@ -37,7 +38,10 @@ namespace StudyQuest
             if (this.InvokeRequired)
                 this.Invoke(new Action(OnEXPChanged));
             else
+            {
                 RefreshUI();
+                RefreshTodayTasks(); // ← also refresh today's task list
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -58,6 +62,28 @@ namespace StudyQuest
             else if (daysSince > 1) streakDays = 1;
 
             lastLoginDate = today;
+        }
+
+        // =====================================================================
+        // TODAY'S TASKS — populates the mustDOListBox
+        // =====================================================================
+        private void RefreshTodayTasks()
+        {
+            mustDOListBox.Items.Clear();
+
+            var todayTasks = sidebar_task.GetTodayTasks();
+
+            if (todayTasks.Count == 0)
+            {
+                mustDOListBox.Items.Add("✅ No tasks due today!");
+                mustDOListBox.ForeColor = Color.FromArgb(52, 211, 153); // green
+            }
+            else
+            {
+                mustDOListBox.ForeColor = Color.White;
+                foreach (var t in todayTasks)
+                    mustDOListBox.Items.Add(t);
+            }
         }
 
         // =====================================================================
