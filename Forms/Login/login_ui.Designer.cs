@@ -50,6 +50,7 @@
             // 
             // panel1
             // 
+            panel1.Font = new Font("Pixelify Sans", 13F);
             panel1.Location = new Point(458, 421);
             panel1.Name = "panel1";
             panel1.Size = new Size(360, 3);
@@ -58,7 +59,7 @@
             // 
             // loginButton
             // 
-            loginButton.Font = new Font("Microsoft Sans Serif", 11F);
+            loginButton.Font = new Font("Pixelify Sans", 13F);
             loginButton.Location = new Point(562, 545);
             loginButton.Name = "loginButton";
             loginButton.Size = new Size(169, 36);
@@ -71,12 +72,12 @@
             // 
             usernameTextbox.BackColor = Color.FromArgb(15, 23, 42);
             usernameTextbox.BorderStyle = BorderStyle.FixedSingle;
-            usernameTextbox.Font = new Font("Microsoft Sans Serif", 11F);
+            usernameTextbox.Font = new Font("Pixelify Sans", 13F);
             usernameTextbox.ForeColor = Color.White;
             usernameTextbox.Location = new Point(497, 388);
             usernameTextbox.Name = "usernameTextbox";
             usernameTextbox.PlaceholderText = "Username";
-            usernameTextbox.Size = new Size(292, 28);
+            usernameTextbox.Size = new Size(292, 33);
             usernameTextbox.TabIndex = 5;
             usernameTextbox.TextAlign = HorizontalAlignment.Center;
             usernameTextbox.TextChanged += usernameTextbox_TextChanged;
@@ -85,18 +86,19 @@
             // 
             passwordTextbox.BackColor = Color.FromArgb(15, 23, 42);
             passwordTextbox.BorderStyle = BorderStyle.FixedSingle;
-            passwordTextbox.Font = new Font("Microsoft Sans Serif", 11F);
+            passwordTextbox.Font = new Font("Pixelify Sans", 13F);
             passwordTextbox.ForeColor = Color.White;
             passwordTextbox.Location = new Point(497, 453);
             passwordTextbox.Name = "passwordTextbox";
             passwordTextbox.PlaceholderText = "Password";
-            passwordTextbox.Size = new Size(292, 28);
+            passwordTextbox.Size = new Size(292, 33);
             passwordTextbox.TabIndex = 7;
             passwordTextbox.TextAlign = HorizontalAlignment.Center;
             passwordTextbox.TextChanged += usernameTextbox_TextChanged;
             // 
             // panel2
             // 
+            panel2.Font = new Font("Pixelify Sans", 13F);
             panel2.Location = new Point(458, 487);
             panel2.Name = "panel2";
             panel2.Size = new Size(360, 3);

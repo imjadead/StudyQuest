@@ -125,5 +125,15 @@ namespace StudyQuest
         private void label10_Click(object sender, EventArgs e) { }
         private void pictureBox1_Click(object sender, EventArgs e) { }
         private void label1_Click_2(object sender, EventArgs e) { }
+
+        private void numRank_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numTotalXP_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -51,14 +51,14 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Urbanist", 18F);
+            label1.Font = new Font("Pixelify Sans", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
             label1.Location = new Point(31, 20);
             label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(134, 39);
+            label1.Size = new Size(151, 37);
             label1.TabIndex = 0;
-            label1.Text = "My tasks";
+            label1.Text = "My Tasks";
             label1.Click += label1_Click;
             // 
             // panel2
@@ -75,20 +75,20 @@
             // numTaskDone
             // 
             numTaskDone.AutoSize = true;
-            numTaskDone.Font = new Font("Urbanist", 25F);
-            numTaskDone.Location = new Point(143, 6);
+            numTaskDone.Font = new Font("Pixelify Sans", 26F);
+            numTaskDone.Location = new Point(143, 14);
             numTaskDone.Name = "numTaskDone";
-            numTaskDone.Size = new Size(49, 55);
+            numTaskDone.Size = new Size(49, 54);
             numTaskDone.TabIndex = 1;
             numTaskDone.Text = "0";
             // 
             // noOfTasktext
             // 
             noOfTasktext.AutoSize = true;
-            noOfTasktext.Font = new Font("Urbanist", 10F);
+            noOfTasktext.Font = new Font("Pixelify Sans", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             noOfTasktext.Location = new Point(3, 6);
             noOfTasktext.Name = "noOfTasktext";
-            noOfTasktext.Size = new Size(94, 22);
+            noOfTasktext.Size = new Size(99, 21);
             noOfTasktext.TabIndex = 0;
             noOfTasktext.Text = "No. of Task";
             // 
@@ -106,20 +106,20 @@
             // numTaskCompleted
             // 
             numTaskCompleted.AutoSize = true;
-            numTaskCompleted.Font = new Font("Urbanist", 25F);
+            numTaskCompleted.Font = new Font("Pixelify Sans", 26F);
             numTaskCompleted.Location = new Point(143, 6);
             numTaskCompleted.Name = "numTaskCompleted";
-            numTaskCompleted.Size = new Size(49, 55);
+            numTaskCompleted.Size = new Size(49, 54);
             numTaskCompleted.TabIndex = 1;
             numTaskCompleted.Text = "0";
             // 
             // completedTaskText
             // 
             completedTaskText.AutoSize = true;
-            completedTaskText.Font = new Font("Urbanist", 10F);
+            completedTaskText.Font = new Font("Pixelify Sans", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             completedTaskText.Location = new Point(3, 6);
             completedTaskText.Name = "completedTaskText";
-            completedTaskText.Size = new Size(134, 22);
+            completedTaskText.Size = new Size(140, 21);
             completedTaskText.TabIndex = 0;
             completedTaskText.Text = "Completed Task";
             // 
@@ -137,20 +137,20 @@
             // numTaskMissed
             // 
             numTaskMissed.AutoSize = true;
-            numTaskMissed.Font = new Font("Urbanist", 25F);
+            numTaskMissed.Font = new Font("Pixelify Sans", 26F);
             numTaskMissed.Location = new Point(143, 6);
             numTaskMissed.Name = "numTaskMissed";
-            numTaskMissed.Size = new Size(49, 55);
+            numTaskMissed.Size = new Size(49, 54);
             numTaskMissed.TabIndex = 1;
             numTaskMissed.Text = "0";
             // 
             // missedtaskText
             // 
             missedtaskText.AutoSize = true;
-            missedtaskText.Font = new Font("Urbanist", 10F);
+            missedtaskText.Font = new Font("Pixelify Sans", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             missedtaskText.Location = new Point(3, 6);
             missedtaskText.Name = "missedtaskText";
-            missedtaskText.Size = new Size(101, 22);
+            missedtaskText.Size = new Size(109, 21);
             missedtaskText.TabIndex = 0;
             missedtaskText.Text = "Missed Task";
             // 
@@ -172,7 +172,7 @@
             // button1
             // 
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Urbanist", 11F);
+            button1.Font = new Font("Pixelify Sans", 11F);
             button1.ForeColor = Color.White;
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleLeft;
@@ -188,30 +188,30 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Urbanist", 10F);
+            label4.Font = new Font("Pixelify Sans", 11F);
             label4.Location = new Point(18, 154);
             label4.Name = "label4";
-            label4.Size = new Size(117, 22);
+            label4.Size = new Size(135, 23);
             label4.TabIndex = 5;
             label4.Text = "Task Deadline:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Urbanist", 10F);
+            label3.Font = new Font("Pixelify Sans", 11F);
             label3.Location = new Point(18, 104);
             label3.Name = "label3";
-            label3.Size = new Size(62, 22);
+            label3.Size = new Size(79, 23);
             label3.TabIndex = 4;
             label3.Text = "Details:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Urbanist", 10F);
+            label2.Font = new Font("Pixelify Sans", 11F);
             label2.Location = new Point(18, 44);
             label2.Name = "label2";
-            label2.Size = new Size(45, 22);
+            label2.Size = new Size(55, 23);
             label2.TabIndex = 3;
             label2.Text = "Title:";
             label2.Click += label2_Click;
@@ -219,19 +219,19 @@
             // textBox2
             // 
             textBox2.BackColor = Color.FromArgb(15, 23, 42);
-            textBox2.Font = new Font("Urbanist", 12F);
+            textBox2.Font = new Font("Pixelify Sans", 11F);
             textBox2.ForeColor = Color.White;
-            textBox2.Location = new Point(140, 98);
+            textBox2.Location = new Point(157, 100);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(456, 31);
+            textBox2.Size = new Size(439, 29);
             textBox2.TabIndex = 2;
             // 
             // dateTimePicker1
             // 
             dateTimePicker1.DropDownAlign = LeftRightAlignment.Right;
-            dateTimePicker1.Font = new Font("Urbanist", 11F);
+            dateTimePicker1.Font = new Font("Pixelify Sans", 11F);
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(140, 149);
+            dateTimePicker1.Location = new Point(159, 148);
             dateTimePicker1.MinDate = new DateTime(2026, 4, 24, 0, 0, 0, 0);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(161, 29);
@@ -241,23 +241,23 @@
             // textBox1
             // 
             textBox1.BackColor = Color.FromArgb(15, 23, 42);
-            textBox1.Font = new Font("Urbanist", 12F);
+            textBox1.Font = new Font("Pixelify Sans", 11F);
             textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(140, 38);
+            textBox1.Location = new Point(157, 40);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(456, 31);
+            textBox1.Size = new Size(439, 29);
             textBox1.TabIndex = 0;
             // 
             // EasyTaskListBox
             // 
             EasyTaskListBox.BackColor = Color.FromArgb(17, 28, 46);
             EasyTaskListBox.BorderStyle = BorderStyle.FixedSingle;
-            EasyTaskListBox.Font = new Font("Urbanist", 12F);
+            EasyTaskListBox.Font = new Font("Pixelify Sans", 12F);
             EasyTaskListBox.ForeColor = Color.White;
             EasyTaskListBox.FormattingEnabled = true;
             EasyTaskListBox.Location = new Point(31, 380);
             EasyTaskListBox.Name = "EasyTaskListBox";
-            EasyTaskListBox.Size = new Size(291, 288);
+            EasyTaskListBox.Size = new Size(291, 266);
             EasyTaskListBox.TabIndex = 27;
             EasyTaskListBox.DoubleClick += TaskListBox_DoubleClick;
             // 
@@ -265,12 +265,12 @@
             // 
             MediumTaskListBox.BackColor = Color.FromArgb(17, 28, 46);
             MediumTaskListBox.BorderStyle = BorderStyle.FixedSingle;
-            MediumTaskListBox.Font = new Font("Urbanist", 12F);
+            MediumTaskListBox.Font = new Font("Pixelify Sans", 12F);
             MediumTaskListBox.ForeColor = Color.White;
             MediumTaskListBox.FormattingEnabled = true;
             MediumTaskListBox.Location = new Point(361, 380);
             MediumTaskListBox.Name = "MediumTaskListBox";
-            MediumTaskListBox.Size = new Size(291, 288);
+            MediumTaskListBox.Size = new Size(291, 266);
             MediumTaskListBox.TabIndex = 28;
             MediumTaskListBox.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             MediumTaskListBox.DoubleClick += TaskListBox_DoubleClick;
@@ -279,52 +279,52 @@
             // 
             HardTaskListBox.BackColor = Color.FromArgb(17, 28, 46);
             HardTaskListBox.BorderStyle = BorderStyle.FixedSingle;
-            HardTaskListBox.Font = new Font("Urbanist", 12F);
+            HardTaskListBox.Font = new Font("Pixelify Sans", 12F);
             HardTaskListBox.ForeColor = Color.White;
             HardTaskListBox.FormattingEnabled = true;
             HardTaskListBox.Location = new Point(688, 380);
             HardTaskListBox.Name = "HardTaskListBox";
-            HardTaskListBox.Size = new Size(291, 288);
+            HardTaskListBox.Size = new Size(291, 266);
             HardTaskListBox.TabIndex = 29;
             HardTaskListBox.DoubleClick += TaskListBox_DoubleClick;
             // 
             // lblEasyHeader
             // 
             lblEasyHeader.AutoSize = true;
-            lblEasyHeader.Font = new Font("Urbanist", 11F, FontStyle.Bold);
+            lblEasyHeader.Font = new Font("Pixelify Sans SemiBold", 11F, FontStyle.Bold);
             lblEasyHeader.ForeColor = Color.FromArgb(52, 211, 153);
             lblEasyHeader.Location = new Point(31, 352);
             lblEasyHeader.Name = "lblEasyHeader";
-            lblEasyHeader.Size = new Size(181, 25);
+            lblEasyHeader.Size = new Size(182, 23);
             lblEasyHeader.TabIndex = 30;
             lblEasyHeader.Text = "\U0001f7e2  Easy  (> 3 days)";
             // 
             // lblMediumHeader
             // 
             lblMediumHeader.AutoSize = true;
-            lblMediumHeader.Font = new Font("Urbanist", 11F, FontStyle.Bold);
+            lblMediumHeader.Font = new Font("Pixelify Sans SemiBold", 11F, FontStyle.Bold);
             lblMediumHeader.ForeColor = Color.FromArgb(251, 191, 36);
             lblMediumHeader.Location = new Point(361, 352);
             lblMediumHeader.Name = "lblMediumHeader";
-            lblMediumHeader.Size = new Size(216, 25);
+            lblMediumHeader.Size = new Size(206, 23);
             lblMediumHeader.TabIndex = 31;
             lblMediumHeader.Text = "\U0001f7e1  Medium  (1–3 days)";
             // 
             // lblHardHeader
             // 
             lblHardHeader.AutoSize = true;
-            lblHardHeader.Font = new Font("Urbanist", 11F, FontStyle.Bold);
+            lblHardHeader.Font = new Font("Pixelify Sans SemiBold", 11F, FontStyle.Bold);
             lblHardHeader.ForeColor = Color.FromArgb(248, 113, 113);
             lblHardHeader.Location = new Point(688, 352);
             lblHardHeader.Name = "lblHardHeader";
-            lblHardHeader.Size = new Size(171, 25);
+            lblHardHeader.Size = new Size(168, 23);
             lblHardHeader.TabIndex = 32;
             lblHardHeader.Text = "🔴  Hard  (≤ 1 day)";
             // 
-            // unlockButton  (Task Complete)
+            // unlockButton
             // 
             unlockButton.FlatStyle = FlatStyle.Flat;
-            unlockButton.Font = new Font("Urbanist", 11F);
+            unlockButton.Font = new Font("Pixelify Sans", 10.7999992F);
             unlockButton.ForeColor = Color.White;
             unlockButton.ImageAlign = ContentAlignment.MiddleLeft;
             unlockButton.Location = new Point(799, 689);
@@ -334,12 +334,12 @@
             unlockButton.Text = "Task Complete";
             unlockButton.TextImageRelation = TextImageRelation.ImageBeforeText;
             unlockButton.UseVisualStyleBackColor = true;
-            unlockButton.Click += unlockButton_Click;   // ← wired up
+            unlockButton.Click += unlockButton_Click;
             // 
-            // button2  (Delete Task)
+            // button2
             // 
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Urbanist", 11F);
+            button2.Font = new Font("Pixelify Sans", 10.7999992F);
             button2.ForeColor = Color.White;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
             button2.Location = new Point(595, 689);
@@ -349,7 +349,7 @@
             button2.Text = "Delete Task";
             button2.TextImageRelation = TextImageRelation.ImageBeforeText;
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;             // ← wired up
+            button2.Click += button2_Click;
             // 
             // sidebar_task
             // 

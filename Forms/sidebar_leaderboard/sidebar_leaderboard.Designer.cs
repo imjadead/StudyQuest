@@ -72,11 +72,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Urbanist", 18F);
+            label1.Font = new Font("Pixelify Sans", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
             label1.Location = new Point(31, 31);
             label1.Name = "label1";
-            label1.Size = new Size(295, 39);
+            label1.Size = new Size(318, 37);
             label1.TabIndex = 0;
             label1.Text = "Weekly Leaderboard";
             label1.Click += label1_Click;
@@ -84,11 +84,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Urbanist", 10F);
+            label2.Font = new Font("Pixelify Sans", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
             label2.Location = new Point(42, 70);
             label2.Name = "label2";
-            label2.Size = new Size(225, 22);
+            label2.Size = new Size(252, 21);
             label2.TabIndex = 1;
             label2.Text = "Week of {current week date}";
             label2.Click += label2_Click;
@@ -109,44 +109,44 @@
             // player2LvlNum
             // 
             player2LvlNum.AutoSize = true;
-            player2LvlNum.Font = new Font("Urbanist", 10F);
+            player2LvlNum.Font = new Font("Pixelify Sans", 10.7999992F);
             player2LvlNum.ForeColor = Color.White;
-            player2LvlNum.Location = new Point(19, 220);
+            player2LvlNum.Location = new Point(6, 227);
             player2LvlNum.Name = "player2LvlNum";
-            player2LvlNum.Size = new Size(75, 22);
+            player2LvlNum.Size = new Size(82, 22);
             player2LvlNum.TabIndex = 4;
             player2LvlNum.Text = "{Lvl. no }";
             // 
             // player2CurrentXP
             // 
             player2CurrentXP.AutoSize = true;
-            player2CurrentXP.Font = new Font("Urbanist", 10F);
+            player2CurrentXP.Font = new Font("Pixelify Sans", 10.7999992F);
             player2CurrentXP.ForeColor = Color.White;
-            player2CurrentXP.Location = new Point(100, 220);
+            player2CurrentXP.Location = new Point(87, 227);
             player2CurrentXP.Name = "player2CurrentXP";
-            player2CurrentXP.Size = new Size(101, 22);
+            player2CurrentXP.Size = new Size(123, 22);
             player2CurrentXP.TabIndex = 3;
             player2CurrentXP.Text = "{CurrentXP}";
             // 
             // player2Username
             // 
             player2Username.AutoSize = true;
-            player2Username.Font = new Font("Urbanist", 12F);
+            player2Username.Font = new Font("Pixelify Sans", 10.7999992F);
             player2Username.ForeColor = Color.White;
             player2Username.Location = new Point(45, 174);
             player2Username.Name = "player2Username";
-            player2Username.Size = new Size(117, 26);
+            player2Username.Size = new Size(115, 22);
             player2Username.TabIndex = 2;
             player2Username.Text = "{username}";
             // 
             // player2RankCount
             // 
             player2RankCount.AutoSize = true;
-            player2RankCount.Font = new Font("Urbanist", 18F);
+            player2RankCount.Font = new Font("Pixelify Sans", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             player2RankCount.ForeColor = Color.White;
             player2RankCount.Location = new Point(87, 138);
             player2RankCount.Name = "player2RankCount";
-            player2RankCount.Size = new Size(33, 39);
+            player2RankCount.Size = new Size(35, 37);
             player2RankCount.TabIndex = 1;
             player2RankCount.Text = "2";
             player2RankCount.Click += rankCount_Click;
@@ -176,44 +176,44 @@
             // player1LvlNum
             // 
             player1LvlNum.AutoSize = true;
-            player1LvlNum.Font = new Font("Urbanist", 10F);
+            player1LvlNum.Font = new Font("Pixelify Sans", 10.7999992F);
             player1LvlNum.ForeColor = Color.White;
             player1LvlNum.Location = new Point(37, 243);
             player1LvlNum.Name = "player1LvlNum";
-            player1LvlNum.Size = new Size(75, 22);
+            player1LvlNum.Size = new Size(82, 22);
             player1LvlNum.TabIndex = 4;
             player1LvlNum.Text = "{Lvl. no }";
             // 
             // player1CurrentXP
             // 
             player1CurrentXP.AutoSize = true;
-            player1CurrentXP.Font = new Font("Urbanist", 10F);
+            player1CurrentXP.Font = new Font("Pixelify Sans", 10.7999992F);
             player1CurrentXP.ForeColor = Color.White;
             player1CurrentXP.Location = new Point(118, 243);
             player1CurrentXP.Name = "player1CurrentXP";
-            player1CurrentXP.Size = new Size(101, 22);
+            player1CurrentXP.Size = new Size(123, 22);
             player1CurrentXP.TabIndex = 3;
             player1CurrentXP.Text = "{CurrentXP}";
             // 
             // player1Username
             // 
             player1Username.AutoSize = true;
-            player1Username.Font = new Font("Urbanist", 12F);
+            player1Username.Font = new Font("Pixelify Sans", 10.7999992F);
             player1Username.ForeColor = Color.White;
             player1Username.Location = new Point(60, 203);
             player1Username.Name = "player1Username";
-            player1Username.Size = new Size(117, 26);
+            player1Username.Size = new Size(115, 22);
             player1Username.TabIndex = 2;
             player1Username.Text = "{username}";
             // 
             // player1RankCount
             // 
             player1RankCount.AutoSize = true;
-            player1RankCount.Font = new Font("Urbanist", 20F);
+            player1RankCount.Font = new Font("Pixelify Sans", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             player1RankCount.ForeColor = Color.White;
             player1RankCount.Location = new Point(107, 164);
             player1RankCount.Name = "player1RankCount";
-            player1RankCount.Size = new Size(28, 44);
+            player1RankCount.Size = new Size(32, 41);
             player1RankCount.TabIndex = 1;
             player1RankCount.Text = "1";
             player1RankCount.Click += player1RankCount_Click;
@@ -242,44 +242,44 @@
             // player3LvlNum
             // 
             player3LvlNum.AutoSize = true;
-            player3LvlNum.Font = new Font("Urbanist", 10F);
+            player3LvlNum.Font = new Font("Pixelify Sans", 10.7999992F);
             player3LvlNum.ForeColor = Color.White;
             player3LvlNum.Location = new Point(13, 193);
             player3LvlNum.Name = "player3LvlNum";
-            player3LvlNum.Size = new Size(75, 22);
+            player3LvlNum.Size = new Size(82, 22);
             player3LvlNum.TabIndex = 4;
             player3LvlNum.Text = "{Lvl. no }";
             // 
             // player3CurrentXP
             // 
             player3CurrentXP.AutoSize = true;
-            player3CurrentXP.Font = new Font("Urbanist", 10F);
+            player3CurrentXP.Font = new Font("Pixelify Sans", 10.7999992F);
             player3CurrentXP.ForeColor = Color.White;
             player3CurrentXP.Location = new Point(94, 193);
             player3CurrentXP.Name = "player3CurrentXP";
-            player3CurrentXP.Size = new Size(101, 22);
+            player3CurrentXP.Size = new Size(123, 22);
             player3CurrentXP.TabIndex = 3;
             player3CurrentXP.Text = "{CurrentXP}";
             // 
             // player3Username
             // 
             player3Username.AutoSize = true;
-            player3Username.Font = new Font("Urbanist", 12F);
+            player3Username.Font = new Font("Pixelify Sans", 10.7999992F);
             player3Username.ForeColor = Color.White;
             player3Username.Location = new Point(42, 167);
             player3Username.Name = "player3Username";
-            player3Username.Size = new Size(117, 26);
+            player3Username.Size = new Size(115, 22);
             player3Username.TabIndex = 2;
             player3Username.Text = "{username}";
             // 
             // player3RankCount
             // 
             player3RankCount.AutoSize = true;
-            player3RankCount.Font = new Font("Urbanist", 16F);
+            player3RankCount.Font = new Font("Pixelify Sans", 16.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
             player3RankCount.ForeColor = Color.White;
             player3RankCount.Location = new Point(94, 134);
             player3RankCount.Name = "player3RankCount";
-            player3RankCount.Size = new Size(28, 36);
+            player3RankCount.Size = new Size(31, 33);
             player3RankCount.TabIndex = 1;
             player3RankCount.Text = "3";
             // 
@@ -294,11 +294,11 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new Font("Urbanist", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Font = new Font("Pixelify Sans", 11F);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(604, 44);
+            label11.Location = new Point(570, 45);
             label11.Name = "label11";
-            label11.Size = new Size(357, 24);
+            label11.Size = new Size(412, 23);
             label11.TabIndex = 5;
             label11.Text = "You are #{numRank} this week! Study Hard! ";
             // 
@@ -315,11 +315,11 @@
             // player4RankCount
             // 
             player4RankCount.AutoSize = true;
-            player4RankCount.Font = new Font("Urbanist", 14F);
+            player4RankCount.Font = new Font("Pixelify Sans", 13.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
             player4RankCount.ForeColor = Color.White;
             player4RankCount.Location = new Point(13, 10);
             player4RankCount.Name = "player4RankCount";
-            player4RankCount.Size = new Size(27, 31);
+            player4RankCount.Size = new Size(25, 28);
             player4RankCount.TabIndex = 5;
             player4RankCount.Text = "4";
             player4RankCount.Click += label14_Click;
@@ -327,11 +327,11 @@
             // player4RankInfo
             // 
             player4RankInfo.AutoSize = true;
-            player4RankInfo.Font = new Font("Urbanist", 12F);
+            player4RankInfo.Font = new Font("Pixelify Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             player4RankInfo.ForeColor = Color.White;
             player4RankInfo.Location = new Point(45, 13);
             player4RankInfo.Name = "player4RankInfo";
-            player4RankInfo.Size = new Size(375, 26);
+            player4RankInfo.Size = new Size(397, 24);
             player4RankInfo.TabIndex = 3;
             player4RankInfo.Text = "{username}{Lvl} --- {player4TotalXP} XP";
             player4RankInfo.Click += label6_Click;
@@ -349,22 +349,22 @@
             // player5RankCount
             // 
             player5RankCount.AutoSize = true;
-            player5RankCount.Font = new Font("Urbanist", 14F);
+            player5RankCount.Font = new Font("Pixelify Sans", 13.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
             player5RankCount.ForeColor = Color.White;
             player5RankCount.Location = new Point(15, 10);
             player5RankCount.Name = "player5RankCount";
-            player5RankCount.Size = new Size(27, 31);
+            player5RankCount.Size = new Size(25, 28);
             player5RankCount.TabIndex = 6;
             player5RankCount.Text = "5";
             // 
             // player5RankInfo
             // 
             player5RankInfo.AutoSize = true;
-            player5RankInfo.Font = new Font("Urbanist", 12F);
+            player5RankInfo.Font = new Font("Pixelify Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             player5RankInfo.ForeColor = Color.White;
             player5RankInfo.Location = new Point(45, 13);
             player5RankInfo.Name = "player5RankInfo";
-            player5RankInfo.Size = new Size(375, 26);
+            player5RankInfo.Size = new Size(398, 24);
             player5RankInfo.TabIndex = 3;
             player5RankInfo.Text = "{username} {Lvl}--- {player5TotalXP} XP";
             // 
@@ -381,22 +381,22 @@
             // player6RankCount
             // 
             player6RankCount.AutoSize = true;
-            player6RankCount.Font = new Font("Urbanist", 14F);
+            player6RankCount.Font = new Font("Pixelify Sans", 13.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
             player6RankCount.ForeColor = Color.White;
             player6RankCount.Location = new Point(13, 10);
             player6RankCount.Name = "player6RankCount";
-            player6RankCount.Size = new Size(27, 31);
+            player6RankCount.Size = new Size(25, 28);
             player6RankCount.TabIndex = 6;
             player6RankCount.Text = "6";
             // 
             // player6RankInfo
             // 
             player6RankInfo.AutoSize = true;
-            player6RankInfo.Font = new Font("Urbanist", 12F);
+            player6RankInfo.Font = new Font("Pixelify Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             player6RankInfo.ForeColor = Color.White;
             player6RankInfo.Location = new Point(45, 13);
             player6RankInfo.Name = "player6RankInfo";
-            player6RankInfo.Size = new Size(375, 26);
+            player6RankInfo.Size = new Size(398, 24);
             player6RankInfo.TabIndex = 3;
             player6RankInfo.Text = "{username} {Lvl}--- {player6TotalXP} XP";
             // 
