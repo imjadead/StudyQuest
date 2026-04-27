@@ -346,22 +346,24 @@ namespace StudyQuest
         {
             CurrentEXP += amount;
 
-            // ── Sync to GameSession so leaderboard can read it ──
+            // ── Sync to GameSession ──
             GameSession.TotalXP = CurrentEXP;
             GameSession.Level = CurrentLevel;
 
+            // ── Level up check — every 100 XP = 1 level ──
+            // Level 1: 0-99 XP
+            // Level 2: 100-199 XP
+            // Level 3: 200-299 XP
             while (CurrentLevel < MaxLevel &&
-                   CurrentEXP >= (CurrentLevel + 1) * 100)
+                   CurrentEXP >= CurrentLevel * 100)
             {
                 CurrentLevel++;
-
-                // ── Update level in GameSession after level up ──
                 GameSession.Level = CurrentLevel;
 
                 if (CurrentLevel == MaxLevel)
                 {
                     MessageBox.Show(
-                        "🏆  MAX LEVEL REACHED!\nYou are now Level 100 — the highest rank!",
+                        "🏆  MAX LEVEL REACHED!\nYou are now Level 100!",
                         "Max Level!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else

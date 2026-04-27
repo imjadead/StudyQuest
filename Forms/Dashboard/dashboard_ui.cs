@@ -17,8 +17,6 @@ namespace StudyQuest
             int nRightRect, int nBottomRect,
             int nWidthEllipse, int nHeightEllipse);
 
-        // ── Keep a single embedded instance for each sidebar panel ────────────
-        //private sidebar_task? _taskPanel;
         private sidebar_dashboard? _dashPanel;
         private sidebar_leaderboard? _leaderPanel;
         private sidebar_badges? _badgesPanel;
@@ -35,12 +33,50 @@ namespace StudyQuest
             pnlNav.Left = dashboardButton.Left;
             dashboardButton.BackColor = Color.FromArgb(15, 23, 42);
 
+            // ── Subscribe to EXP changes to update sidebar live ───────────────
+            sidebar_task.EXPChanged += RefreshSidebar;
+
+            // ── Set username from GameSession ─────────────────────────────────
+            usernameTextbox.Text = GameSession.Username;
+
+            RefreshSidebar();
             ShowPanel(ref _dashPanel, () => new sidebar_dashboard());
         }
 
         // =====================================================================
+        // REFRESH SIDEBAR — updates username, level, progress bar
+        // =====================================================================
+        private void RefreshSidebar()
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(RefreshSidebar));
+                return;
+            }
+
+            usernameTextbox.Text = GameSession.Username;
+
+            int level = sidebar_task.CurrentLevel;
+            int currentEXP = sidebar_task.CurrentEXP;
+            userCurrentLvl.Text = $"Lvl. {level}";
+
+            // ── Matches ApplyEXP formula ──────────────────────────────────────
+            // Level 1: 0-99 XP   → xpAtLevelStart = 0   (level-1 * 100)
+            // Level 2: 100-199XP → xpAtLevelStart = 100
+            // Level 3: 200-299XP → xpAtLevelStart = 200
+            int xpAtLevelStart = (level - 1) * 100;
+            int xpWithinLevel = currentEXP - xpAtLevelStart;
+            int xpNeededPerLevel = 100;
+
+            int percent = (int)((float)xpWithinLevel / xpNeededPerLevel * 100);
+            percent = Math.Max(0, Math.Min(100, percent));
+
+            progressBar1.Value = percent;
+            percentCount.Text = $"{percent}%";
+        }
+
+        // =====================================================================
         // GENERIC PANEL SWITCHER
-        // Reuses the existing panel if already created (keeps state alive).
         // =====================================================================
         private void ShowPanel<T>(ref T? field, Func<T> factory) where T : Form
         {
@@ -78,7 +114,6 @@ namespace StudyQuest
             pnlNav.Top = taskButton.Top;
             taskButton.BackColor = Color.FromArgb(15, 23, 42);
 
-            // ── FIX: use the singleton instead of new sidebar_task() ──────────
             this.pnlFormLoader.Controls.Clear();
 
             var taskForm = sidebar_task.Instance;
@@ -128,6 +163,9 @@ namespace StudyQuest
 
             if (result == DialogResult.Yes)
             {
+                // ── Unsubscribe before closing ────────────────────────────────
+                sidebar_task.EXPChanged -= RefreshSidebar;
+
                 login_ui loginForm = new login_ui();
                 loginForm.Show();
                 this.Close();
@@ -142,7 +180,7 @@ namespace StudyQuest
         private void avatarButton_Leave(object sender, EventArgs e) => avatarButton.BackColor = Color.FromArgb(17, 28, 46);
         private void logoutButton_Leave(object sender, EventArgs e) => logoutButton.BackColor = Color.FromArgb(17, 28, 46);
 
-        // ── Unused stubs (keep to satisfy designer) ───────────────────────────
+        // ── Stubs ─────────────────────────────────────────────────────────────
         private void button5_Click(object sender, EventArgs e) { pnlNav.Height = logoutButton.Height; pnlNav.Top = logoutButton.Top; logoutButton.BackColor = Color.FromArgb(15, 23, 42); }
         private void pictureBox1_Click(object sender, EventArgs e) { }
         private void textBox1_TextChanged(object sender, EventArgs e) { }
@@ -153,5 +191,7 @@ namespace StudyQuest
         private void sidebar_Paint(object sender, PaintEventArgs e) { }
         private void label1_Click(object sender, EventArgs e) { }
         private void dashboard_ui_Load(object sender, EventArgs e) { }
+        private void progressBar1_Click(object sender, EventArgs e) { }
+        private void userCurrentLvl_Click(object sender, EventArgs e) { }
     }
 }
