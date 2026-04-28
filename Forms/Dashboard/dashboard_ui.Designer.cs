@@ -57,9 +57,8 @@ namespace StudyQuest
             panel1.Controls.Add(progressBar1);
             panel1.Controls.Add(userPicture);
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(256, 164);
+            panel1.Size = new Size(247, 182);
             panel1.TabIndex = 0;
             // 
             // userCurrentLvl
@@ -67,7 +66,7 @@ namespace StudyQuest
             userCurrentLvl.AutoSize = true;
             userCurrentLvl.Font = new Font("Pixelify Sans", 11F);
             userCurrentLvl.ForeColor = Color.White;
-            userCurrentLvl.Location = new Point(97, 63);
+            userCurrentLvl.Location = new Point(97, 77);
             userCurrentLvl.Name = "userCurrentLvl";
             userCurrentLvl.Size = new Size(61, 23);
             userCurrentLvl.TabIndex = 2;
@@ -79,7 +78,7 @@ namespace StudyQuest
             usernameTextbox.AutoSize = true;
             usernameTextbox.Font = new Font("Pixelify Sans", 12F);
             usernameTextbox.ForeColor = Color.White;
-            usernameTextbox.Location = new Point(97, 37);
+            usernameTextbox.Location = new Point(97, 42);
             usernameTextbox.Name = "usernameTextbox";
             usernameTextbox.Size = new Size(114, 24);
             usernameTextbox.TabIndex = 1;
@@ -91,21 +90,21 @@ namespace StudyQuest
             percentCount.BorderStyle = BorderStyle.None;
             percentCount.Font = new Font("Press Start 2P", 7.20000029F, FontStyle.Regular, GraphicsUnit.Point, 0);
             percentCount.ForeColor = Color.White;
-            percentCount.Location = new Point(189, 135);
+            percentCount.Location = new Point(190, 134);
+            percentCount.Margin = new Padding(3, 4, 3, 4);
             percentCount.Name = "percentCount";
             percentCount.PlaceholderText = "50%";
-            percentCount.Size = new Size(43, 12);
+            percentCount.Size = new Size(49, 12);
             percentCount.TabIndex = 3;
             percentCount.TextChanged += textBox2_TextChanged;
             // 
             // progressBar1
             // 
             progressBar1.ForeColor = Color.DarkSeaGreen;
-            progressBar1.Location = new Point(10, 101);
-            progressBar1.Margin = new Padding(3, 2, 3, 2);
+            progressBar1.Location = new Point(11, 135);
             progressBar1.MarqueeAnimationSpeed = 150;
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(150, 8);
+            progressBar1.Size = new Size(171, 11);
             progressBar1.TabIndex = 1;
             progressBar1.Value = 50;
             progressBar1.Click += progressBar1_Click;
@@ -113,10 +112,9 @@ namespace StudyQuest
             // userPicture
             // 
             userPicture.Image = (Image)resources.GetObject("userPicture.Image");
-            userPicture.Location = new Point(19, 27);
-            userPicture.Margin = new Padding(3, 2, 3, 2);
+            userPicture.Location = new Point(22, 36);
             userPicture.Name = "userPicture";
-            userPicture.Size = new Size(60, 48);
+            userPicture.Size = new Size(69, 64);
             userPicture.SizeMode = PictureBoxSizeMode.Zoom;
             userPicture.TabIndex = 1;
             userPicture.TabStop = false;
@@ -136,18 +134,18 @@ namespace StudyQuest
             sidebar.Dock = DockStyle.Left;
             sidebar.Font = new Font("Microsoft Sans Serif", 10F);
             sidebar.Location = new Point(0, 0);
-            sidebar.Margin = new Padding(3, 2, 3, 2);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(214, 558);
+            sidebar.Size = new Size(245, 744);
             sidebar.TabIndex = 0;
             sidebar.Paint += sidebar_Paint;
             // 
             // pnlNav
             // 
             pnlNav.BackColor = Color.FromArgb(0, 126, 249);
-            pnlNav.Location = new Point(3, 244);
+            pnlNav.Location = new Point(3, 325);
+            pnlNav.Margin = new Padding(3, 4, 3, 4);
             pnlNav.Name = "pnlNav";
-            pnlNav.Size = new Size(3, 75);
+            pnlNav.Size = new Size(3, 100);
             pnlNav.TabIndex = 7;
             // 
             // logoutButton
@@ -158,9 +156,10 @@ namespace StudyQuest
             logoutButton.Font = new Font("Pixelify Sans", 15F);
             logoutButton.ForeColor = Color.White;
             logoutButton.Image = (Image)resources.GetObject("logoutButton.Image");
-            logoutButton.Location = new Point(-24, 674);
+            logoutButton.Location = new Point(-17, 688);
+            logoutButton.Margin = new Padding(3, 4, 3, 4);
             logoutButton.Name = "logoutButton";
-            logoutButton.Size = new Size(268, 52);
+            logoutButton.Size = new Size(262, 43);
             logoutButton.TabIndex = 6;
             logoutButton.Text = "Logout";
             logoutButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -177,9 +176,10 @@ namespace StudyQuest
             avatarButton.Font = new Font("Pixelify Sans", 15F);
             avatarButton.ForeColor = Color.White;
             avatarButton.Image = (Image)resources.GetObject("avatarButton.Image");
-            avatarButton.Location = new Point(-24, 517);
+            avatarButton.Location = new Point(-19, 517);
+            avatarButton.Margin = new Padding(3, 4, 3, 4);
             avatarButton.Name = "avatarButton";
-            avatarButton.Size = new Size(273, 52);
+            avatarButton.Size = new Size(268, 48);
             avatarButton.TabIndex = 5;
             avatarButton.Text = "Avatar";
             avatarButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -195,9 +195,10 @@ namespace StudyQuest
             badgesButton.Font = new Font("Pixelify Sans", 15F);
             badgesButton.ForeColor = Color.White;
             badgesButton.Image = (Image)resources.GetObject("badgesButton.Image");
-            badgesButton.Location = new Point(-24, 434);
+            badgesButton.Location = new Point(-17, 443);
+            badgesButton.Margin = new Padding(3, 4, 3, 4);
             badgesButton.Name = "badgesButton";
-            badgesButton.Size = new Size(268, 52);
+            badgesButton.Size = new Size(266, 47);
             badgesButton.TabIndex = 4;
             badgesButton.Text = "Badges";
             badgesButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -213,9 +214,10 @@ namespace StudyQuest
             leaderboardButton.Font = new Font("Pixelify Sans", 15F);
             leaderboardButton.ForeColor = Color.White;
             leaderboardButton.Image = (Image)resources.GetObject("leaderboardButton.Image");
-            leaderboardButton.Location = new Point(0, 345);
+            leaderboardButton.Location = new Point(6, 360);
+            leaderboardButton.Margin = new Padding(3, 4, 3, 4);
             leaderboardButton.Name = "leaderboardButton";
-            leaderboardButton.Size = new Size(214, 39);
+            leaderboardButton.Size = new Size(239, 45);
             leaderboardButton.TabIndex = 3;
             leaderboardButton.Text = "Leaderboard";
             leaderboardButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -231,9 +233,10 @@ namespace StudyQuest
             taskButton.Font = new Font("Pixelify Sans", 15F);
             taskButton.ForeColor = Color.White;
             taskButton.Image = (Image)resources.GetObject("taskButton.Image");
-            taskButton.Location = new Point(-36, 267);
+            taskButton.Location = new Point(-27, 283);
+            taskButton.Margin = new Padding(3, 4, 3, 4);
             taskButton.Name = "taskButton";
-            taskButton.Size = new Size(280, 52);
+            taskButton.Size = new Size(274, 43);
             taskButton.TabIndex = 2;
             taskButton.Text = "Task";
             taskButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -249,9 +252,10 @@ namespace StudyQuest
             dashboardButton.Font = new Font("Pixelify Sans", 15F);
             dashboardButton.ForeColor = Color.White;
             dashboardButton.Image = (Image)resources.GetObject("dashboardButton.Image");
-            dashboardButton.Location = new Point(-13, 185);
+            dashboardButton.Location = new Point(0, 209);
+            dashboardButton.Margin = new Padding(3, 4, 3, 4);
             dashboardButton.Name = "dashboardButton";
-            dashboardButton.Size = new Size(257, 52);
+            dashboardButton.Size = new Size(245, 44);
             dashboardButton.TabIndex = 1;
             dashboardButton.Text = "Dashboard";
             dashboardButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -262,23 +266,22 @@ namespace StudyQuest
             // pnlFormLoader
             // 
             pnlFormLoader.Dock = DockStyle.Bottom;
-            pnlFormLoader.Location = new Point(214, 0);
-            pnlFormLoader.Margin = new Padding(3, 2, 3, 2);
+            pnlFormLoader.Location = new Point(245, 0);
             pnlFormLoader.Name = "pnlFormLoader";
-            pnlFormLoader.Size = new Size(884, 558);
+            pnlFormLoader.Size = new Size(1010, 744);
             pnlFormLoader.TabIndex = 1;
+            pnlFormLoader.Paint += pnlFormLoader_Paint;
             // 
             // dashboard_ui
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 23, 42);
-            ClientSize = new Size(1098, 558);
+            ClientSize = new Size(1255, 744);
             Controls.Add(pnlFormLoader);
             Controls.Add(sidebar);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 2, 3, 2);
-            MinimumSize = new Size(1098, 558);
+            MinimumSize = new Size(1255, 744);
             Name = "dashboard_ui";
             StartPosition = FormStartPosition.CenterScreen;
             Text = " ";

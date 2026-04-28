@@ -138,5 +138,10 @@ namespace StudyQuest
         private void player1RankCount_Click(object sender, EventArgs e) { }
         private void label6_Click(object sender, EventArgs e) { }
         private void label14_Click(object sender, EventArgs e) { }
+
+        private void sidebar_leaderboard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

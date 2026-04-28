@@ -120,8 +120,8 @@ namespace StudyQuest
         {
             Label[] days = { label1, label2, label3, label4, label6, label5, label7 };
             int todayIndex = ((int)DateTime.Today.DayOfWeek + 6) % 7;
-            Color normal = Color.FromArgb(192, 255, 255);
-            Color highlight = Color.FromArgb(100, 200, 255);
+            Color normal = Color.FromArgb(49, 46, 129);
+            Color highlight = Color.FromArgb(167, 139, 250);
 
             foreach (Label l in days)
                 if (l != null) l.BackColor = normal;
@@ -158,6 +158,21 @@ namespace StudyQuest
         }
 
         private void numTotalXP_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numTaskDone_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void totalXPText_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void taskDonetext_Click(object sender, EventArgs e)
         {
 
         }

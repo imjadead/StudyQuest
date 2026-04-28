@@ -193,5 +193,10 @@ namespace StudyQuest
         private void dashboard_ui_Load(object sender, EventArgs e) { }
         private void progressBar1_Click(object sender, EventArgs e) { }
         private void userCurrentLvl_Click(object sender, EventArgs e) { }
+
+        private void pnlFormLoader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

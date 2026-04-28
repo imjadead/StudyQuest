@@ -17,23 +17,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sidebar_task));
             label1 = new Label();
-            panel2 = new Panel();
             numTaskDone = new Label();
             noOfTasktext = new Label();
-            panel4 = new Panel();
             numTaskCompleted = new Label();
             completedTaskText = new Label();
-            panel5 = new Panel();
             numTaskMissed = new Label();
             missedtaskText = new Label();
-            panel1 = new Panel();
-            button1 = new Button();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            textBox2 = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
-            textBox1 = new TextBox();
             EasyTaskListBox = new ListBox();
             MediumTaskListBox = new ListBox();
             HardTaskListBox = new ListBox();
@@ -42,10 +31,27 @@
             lblHardHeader = new Label();
             unlockButton = new Button();
             button2 = new Button();
-            panel2.SuspendLayout();
-            panel4.SuspendLayout();
-            panel5.SuspendLayout();
-            panel1.SuspendLayout();
+            pictureBox3 = new PictureBox();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            label3 = new Label();
+            label2 = new Label();
+            textBox2 = new TextBox();
+            label4 = new Label();
+            dateTimePicker1 = new DateTimePicker();
+            textBox1 = new TextBox();
+            button1 = new Button();
+            pictureBox5 = new PictureBox();
+            pictureBox6 = new PictureBox();
+            pictureBox7 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -61,22 +67,12 @@
             label1.Text = "My Tasks";
             label1.Click += label1_Click;
             // 
-            // panel2
-            // 
-            panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(numTaskDone);
-            panel2.Controls.Add(noOfTasktext);
-            panel2.ForeColor = Color.White;
-            panel2.Location = new Point(31, 71);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(237, 82);
-            panel2.TabIndex = 20;
-            // 
             // numTaskDone
             // 
             numTaskDone.AutoSize = true;
+            numTaskDone.BackColor = Color.FromArgb(5, 11, 38);
             numTaskDone.Font = new Font("Pixelify Sans", 26F);
-            numTaskDone.Location = new Point(143, 14);
+            numTaskDone.Location = new Point(177, 77);
             numTaskDone.Name = "numTaskDone";
             numTaskDone.Size = new Size(49, 54);
             numTaskDone.TabIndex = 1;
@@ -85,29 +81,21 @@
             // noOfTasktext
             // 
             noOfTasktext.AutoSize = true;
+            noOfTasktext.BackColor = Color.FromArgb(5, 11, 38);
             noOfTasktext.Font = new Font("Pixelify Sans", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            noOfTasktext.Location = new Point(3, 6);
+            noOfTasktext.Location = new Point(47, 77);
             noOfTasktext.Name = "noOfTasktext";
             noOfTasktext.Size = new Size(99, 21);
             noOfTasktext.TabIndex = 0;
             noOfTasktext.Text = "No. of Task";
-            // 
-            // panel4
-            // 
-            panel4.BorderStyle = BorderStyle.Fixed3D;
-            panel4.Controls.Add(numTaskCompleted);
-            panel4.Controls.Add(completedTaskText);
-            panel4.ForeColor = Color.White;
-            panel4.Location = new Point(31, 168);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(237, 82);
-            panel4.TabIndex = 24;
+            noOfTasktext.Click += noOfTasktext_Click;
             // 
             // numTaskCompleted
             // 
             numTaskCompleted.AutoSize = true;
+            numTaskCompleted.BackColor = Color.FromArgb(5, 11, 38);
             numTaskCompleted.Font = new Font("Pixelify Sans", 26F);
-            numTaskCompleted.Location = new Point(143, 6);
+            numTaskCompleted.Location = new Point(177, 173);
             numTaskCompleted.Name = "numTaskCompleted";
             numTaskCompleted.Size = new Size(49, 54);
             numTaskCompleted.TabIndex = 1;
@@ -116,29 +104,20 @@
             // completedTaskText
             // 
             completedTaskText.AutoSize = true;
+            completedTaskText.BackColor = Color.FromArgb(5, 11, 38);
             completedTaskText.Font = new Font("Pixelify Sans", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            completedTaskText.Location = new Point(3, 6);
+            completedTaskText.Location = new Point(43, 173);
             completedTaskText.Name = "completedTaskText";
             completedTaskText.Size = new Size(140, 21);
             completedTaskText.TabIndex = 0;
             completedTaskText.Text = "Completed Task";
             // 
-            // panel5
-            // 
-            panel5.BorderStyle = BorderStyle.Fixed3D;
-            panel5.Controls.Add(numTaskMissed);
-            panel5.Controls.Add(missedtaskText);
-            panel5.ForeColor = Color.White;
-            panel5.Location = new Point(31, 262);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(237, 82);
-            panel5.TabIndex = 25;
-            // 
             // numTaskMissed
             // 
             numTaskMissed.AutoSize = true;
+            numTaskMissed.BackColor = Color.FromArgb(5, 11, 38);
             numTaskMissed.Font = new Font("Pixelify Sans", 26F);
-            numTaskMissed.Location = new Point(143, 6);
+            numTaskMissed.Location = new Point(177, 267);
             numTaskMissed.Name = "numTaskMissed";
             numTaskMissed.Size = new Size(49, 54);
             numTaskMissed.TabIndex = 1;
@@ -147,187 +126,85 @@
             // missedtaskText
             // 
             missedtaskText.AutoSize = true;
+            missedtaskText.BackColor = Color.FromArgb(5, 11, 38);
             missedtaskText.Font = new Font("Pixelify Sans", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            missedtaskText.Location = new Point(3, 6);
+            missedtaskText.Location = new Point(47, 276);
             missedtaskText.Name = "missedtaskText";
             missedtaskText.Size = new Size(109, 21);
             missedtaskText.TabIndex = 0;
             missedtaskText.Text = "Missed Task";
             // 
-            // panel1
-            // 
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(dateTimePicker1);
-            panel1.Controls.Add(textBox1);
-            panel1.Location = new Point(361, 71);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(618, 273);
-            panel1.TabIndex = 26;
-            // 
-            // button1
-            // 
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Pixelify Sans", 11F);
-            button1.ForeColor = Color.White;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(471, 198);
-            button1.Name = "button1";
-            button1.Size = new Size(125, 38);
-            button1.TabIndex = 6;
-            button1.Text = "Add Task";
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Pixelify Sans", 11F);
-            label4.Location = new Point(18, 154);
-            label4.Name = "label4";
-            label4.Size = new Size(135, 23);
-            label4.TabIndex = 5;
-            label4.Text = "Task Deadline:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Pixelify Sans", 11F);
-            label3.Location = new Point(18, 104);
-            label3.Name = "label3";
-            label3.Size = new Size(79, 23);
-            label3.TabIndex = 4;
-            label3.Text = "Details:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Pixelify Sans", 11F);
-            label2.Location = new Point(18, 44);
-            label2.Name = "label2";
-            label2.Size = new Size(55, 23);
-            label2.TabIndex = 3;
-            label2.Text = "Title:";
-            label2.Click += label2_Click;
-            // 
-            // textBox2
-            // 
-            textBox2.BackColor = Color.FromArgb(15, 23, 42);
-            textBox2.Font = new Font("Pixelify Sans", 11F);
-            textBox2.ForeColor = Color.White;
-            textBox2.Location = new Point(157, 100);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(439, 29);
-            textBox2.TabIndex = 2;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.DropDownAlign = LeftRightAlignment.Right;
-            dateTimePicker1.Font = new Font("Pixelify Sans", 11F);
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(159, 148);
-            dateTimePicker1.MinDate = new DateTime(2026, 4, 24, 0, 0, 0, 0);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(161, 29);
-            dateTimePicker1.TabIndex = 1;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.FromArgb(15, 23, 42);
-            textBox1.Font = new Font("Pixelify Sans", 11F);
-            textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(157, 40);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(439, 29);
-            textBox1.TabIndex = 0;
-            // 
             // EasyTaskListBox
             // 
-            EasyTaskListBox.BackColor = Color.FromArgb(17, 28, 46);
-            EasyTaskListBox.BorderStyle = BorderStyle.FixedSingle;
+            EasyTaskListBox.BackColor = Color.FromArgb(5, 11, 38);
+            EasyTaskListBox.BorderStyle = BorderStyle.None;
             EasyTaskListBox.Font = new Font("Pixelify Sans", 12F);
             EasyTaskListBox.ForeColor = Color.White;
             EasyTaskListBox.FormattingEnabled = true;
-            EasyTaskListBox.Location = new Point(31, 380);
+            EasyTaskListBox.Location = new Point(32, 369);
             EasyTaskListBox.Name = "EasyTaskListBox";
-            EasyTaskListBox.Size = new Size(291, 266);
+            EasyTaskListBox.Size = new Size(291, 264);
             EasyTaskListBox.TabIndex = 27;
             EasyTaskListBox.DoubleClick += TaskListBox_DoubleClick;
             // 
             // MediumTaskListBox
             // 
-            MediumTaskListBox.BackColor = Color.FromArgb(17, 28, 46);
-            MediumTaskListBox.BorderStyle = BorderStyle.FixedSingle;
+            MediumTaskListBox.BackColor = Color.FromArgb(5, 11, 38);
+            MediumTaskListBox.BorderStyle = BorderStyle.None;
             MediumTaskListBox.Font = new Font("Pixelify Sans", 12F);
             MediumTaskListBox.ForeColor = Color.White;
             MediumTaskListBox.FormattingEnabled = true;
-            MediumTaskListBox.Location = new Point(361, 380);
+            MediumTaskListBox.Location = new Point(362, 369);
             MediumTaskListBox.Name = "MediumTaskListBox";
-            MediumTaskListBox.Size = new Size(291, 266);
+            MediumTaskListBox.Size = new Size(291, 264);
             MediumTaskListBox.TabIndex = 28;
             MediumTaskListBox.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             MediumTaskListBox.DoubleClick += TaskListBox_DoubleClick;
             // 
             // HardTaskListBox
             // 
-            HardTaskListBox.BackColor = Color.FromArgb(17, 28, 46);
-            HardTaskListBox.BorderStyle = BorderStyle.FixedSingle;
+            HardTaskListBox.BackColor = Color.FromArgb(5, 11, 38);
+            HardTaskListBox.BorderStyle = BorderStyle.None;
             HardTaskListBox.Font = new Font("Pixelify Sans", 12F);
             HardTaskListBox.ForeColor = Color.White;
             HardTaskListBox.FormattingEnabled = true;
-            HardTaskListBox.Location = new Point(688, 380);
+            HardTaskListBox.Location = new Point(689, 369);
             HardTaskListBox.Name = "HardTaskListBox";
-            HardTaskListBox.Size = new Size(291, 266);
+            HardTaskListBox.Size = new Size(291, 264);
             HardTaskListBox.TabIndex = 29;
             HardTaskListBox.DoubleClick += TaskListBox_DoubleClick;
             // 
             // lblEasyHeader
             // 
-            lblEasyHeader.AutoSize = true;
             lblEasyHeader.Font = new Font("Pixelify Sans SemiBold", 11F, FontStyle.Bold);
             lblEasyHeader.ForeColor = Color.FromArgb(52, 211, 153);
-            lblEasyHeader.Location = new Point(31, 352);
+            lblEasyHeader.Location = new Point(32, 648);
             lblEasyHeader.Name = "lblEasyHeader";
-            lblEasyHeader.Size = new Size(182, 23);
-            lblEasyHeader.TabIndex = 30;
-            lblEasyHeader.Text = "🟢  Easy  (5+ days)";
-            lblEasyHeader.AutoSize = false;
             lblEasyHeader.Size = new Size(291, 25);
+            lblEasyHeader.TabIndex = 30;
+            lblEasyHeader.Text = "\U0001f7e2  Easy  (5+ days)";
             lblEasyHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblMediumHeader
             // 
-            lblMediumHeader.AutoSize = true;
             lblMediumHeader.Font = new Font("Pixelify Sans SemiBold", 11F, FontStyle.Bold);
             lblMediumHeader.ForeColor = Color.FromArgb(251, 191, 36);
-            lblMediumHeader.Location = new Point(361, 352);
+            lblMediumHeader.Location = new Point(362, 648);
             lblMediumHeader.Name = "lblMediumHeader";
-            lblMediumHeader.Size = new Size(206, 23);
-            lblMediumHeader.TabIndex = 31;
-            lblMediumHeader.Text = "🟡  Medium  (4-5 days)";
-            lblMediumHeader.AutoSize = false;
             lblMediumHeader.Size = new Size(291, 25);
+            lblMediumHeader.TabIndex = 31;
+            lblMediumHeader.Text = "\U0001f7e1  Medium  (4-5 days)";
             lblMediumHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblHardHeader
             // 
-            lblHardHeader.AutoSize = true;
             lblHardHeader.Font = new Font("Pixelify Sans SemiBold", 11F, FontStyle.Bold);
             lblHardHeader.ForeColor = Color.FromArgb(248, 113, 113);
-            lblHardHeader.Location = new Point(688, 352);
+            lblHardHeader.Location = new Point(689, 648);
             lblHardHeader.Name = "lblHardHeader";
-            lblHardHeader.Size = new Size(168, 23);
+            lblHardHeader.Size = new Size(291, 25);
             lblHardHeader.TabIndex = 32;
             lblHardHeader.Text = "🔴  Hard  (1-3 days)";
-            lblHardHeader.AutoSize = false;
-            lblHardHeader.Size = new Size(291, 25);
             lblHardHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // unlockButton
@@ -336,7 +213,7 @@
             unlockButton.Font = new Font("Pixelify Sans", 10.7999992F);
             unlockButton.ForeColor = Color.White;
             unlockButton.ImageAlign = ContentAlignment.MiddleLeft;
-            unlockButton.Location = new Point(799, 689);
+            unlockButton.Location = new Point(800, 686);
             unlockButton.Name = "unlockButton";
             unlockButton.Size = new Size(159, 43);
             unlockButton.TabIndex = 33;
@@ -351,7 +228,7 @@
             button2.Font = new Font("Pixelify Sans", 10.7999992F);
             button2.ForeColor = Color.White;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(595, 689);
+            button2.Location = new Point(596, 686);
             button2.Name = "button2";
             button2.Size = new Size(159, 43);
             button2.TabIndex = 34;
@@ -360,12 +237,178 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.FromArgb(5, 11, 38);
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(32, 68);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(237, 82);
+            pictureBox3.TabIndex = 35;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.FromArgb(5, 11, 38);
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(32, 164);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(237, 82);
+            pictureBox1.TabIndex = 36;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.FromArgb(5, 11, 38);
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(32, 259);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(237, 82);
+            pictureBox2.TabIndex = 37;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.BackColor = Color.FromArgb(5, 11, 38);
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(362, 68);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(618, 273);
+            pictureBox4.TabIndex = 38;
+            pictureBox4.TabStop = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(5, 11, 38);
+            label3.Font = new Font("Pixelify Sans", 11F);
+            label3.Location = new Point(383, 164);
+            label3.Name = "label3";
+            label3.Size = new Size(79, 23);
+            label3.TabIndex = 4;
+            label3.Text = "Details:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(5, 11, 38);
+            label2.Font = new Font("Pixelify Sans", 11F);
+            label2.Location = new Point(383, 104);
+            label2.Name = "label2";
+            label2.Size = new Size(55, 23);
+            label2.TabIndex = 3;
+            label2.Text = "Title:";
+            label2.Click += label2_Click;
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = Color.FromArgb(5, 11, 38);
+            textBox2.Font = new Font("Pixelify Sans", 11F);
+            textBox2.ForeColor = Color.White;
+            textBox2.Location = new Point(520, 158);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(439, 29);
+            textBox2.TabIndex = 2;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.FromArgb(5, 11, 38);
+            label4.Font = new Font("Pixelify Sans", 11F);
+            label4.Location = new Point(383, 214);
+            label4.Name = "label4";
+            label4.Size = new Size(135, 23);
+            label4.TabIndex = 5;
+            label4.Text = "Task Deadline:";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.DropDownAlign = LeftRightAlignment.Right;
+            dateTimePicker1.Font = new Font("Pixelify Sans", 11F);
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(554, 209);
+            dateTimePicker1.MinDate = new DateTime(2026, 4, 24, 0, 0, 0, 0);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(161, 29);
+            dateTimePicker1.TabIndex = 1;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.FromArgb(5, 11, 38);
+            textBox1.Font = new Font("Pixelify Sans", 11F);
+            textBox1.ForeColor = Color.White;
+            textBox1.Location = new Point(520, 98);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(439, 29);
+            textBox1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(5, 11, 38);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Pixelify Sans", 11F);
+            button1.ForeColor = Color.White;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(811, 259);
+            button1.Name = "button1";
+            button1.Size = new Size(125, 38);
+            button1.TabIndex = 6;
+            button1.Text = "Add Task";
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.BackColor = Color.FromArgb(5, 11, 38);
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(22, 359);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(311, 286);
+            pictureBox5.TabIndex = 39;
+            pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.BackColor = Color.FromArgb(5, 11, 38);
+            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new Point(353, 359);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(311, 286);
+            pictureBox6.TabIndex = 40;
+            pictureBox6.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.BackColor = Color.FromArgb(5, 11, 38);
+            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
+            pictureBox7.Location = new Point(680, 359);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(311, 286);
+            pictureBox7.TabIndex = 41;
+            pictureBox7.TabStop = false;
+            // 
             // sidebar_task
             // 
             AutoScaleDimensions = new SizeF(17F, 39F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 23, 42);
             ClientSize = new Size(1011, 744);
+            Controls.Add(button1);
+            Controls.Add(numTaskMissed);
+            Controls.Add(label4);
+            Controls.Add(missedtaskText);
+            Controls.Add(label3);
+            Controls.Add(numTaskCompleted);
+            Controls.Add(label2);
+            Controls.Add(numTaskDone);
+            Controls.Add(textBox2);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(completedTaskText);
+            Controls.Add(textBox1);
+            Controls.Add(noOfTasktext);
             Controls.Add(button2);
             Controls.Add(unlockButton);
             Controls.Add(lblHardHeader);
@@ -374,25 +417,27 @@
             Controls.Add(HardTaskListBox);
             Controls.Add(MediumTaskListBox);
             Controls.Add(EasyTaskListBox);
-            Controls.Add(panel1);
-            Controls.Add(panel5);
-            Controls.Add(panel4);
-            Controls.Add(panel2);
             Controls.Add(label1);
+            Controls.Add(pictureBox3);
+            Controls.Add(pictureBox1);
+            Controls.Add(pictureBox2);
+            Controls.Add(pictureBox4);
+            Controls.Add(pictureBox5);
+            Controls.Add(pictureBox6);
+            Controls.Add(pictureBox7);
             Font = new Font("Urbanist", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.White;
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(6);
             Name = "sidebar_task";
             Text = "sidebar_task";
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -401,23 +446,12 @@
 
         // ── Control declarations ───────────────────────────────────────────────
         private Label label1;
-        private Panel panel2;
         private Label numTaskDone;
         private Label noOfTasktext;
-        private Panel panel4;
         private Label numTaskCompleted;
         private Label completedTaskText;
-        private Panel panel5;
         private Label numTaskMissed;
         private Label missedtaskText;
-        private Panel panel1;
-        private TextBox textBox1;
-        private DateTimePicker dateTimePicker1;
-        private Label label2;
-        private TextBox textBox2;
-        private Label label3;
-        private Button button1;
-        private Label label4;
         private ListBox EasyTaskListBox;
         private ListBox MediumTaskListBox;
         private ListBox HardTaskListBox;
@@ -426,5 +460,19 @@
         private Label lblHardHeader;
         private Button unlockButton;
         private Button button2;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox4;
+        private Label label3;
+        private Label label2;
+        private TextBox textBox2;
+        private Label label4;
+        private DateTimePicker dateTimePicker1;
+        private TextBox textBox1;
+        private Button button1;
+        private PictureBox pictureBox5;
+        private PictureBox pictureBox6;
+        private PictureBox pictureBox7;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sidebar_leaderboard));
             label1 = new Label();
             label2 = new Label();
             panel1 = new Panel();
@@ -36,7 +37,6 @@
             player2Username = new Label();
             player2RankCount = new Label();
             player2Picture = new PictureBox();
-            panel2 = new Panel();
             player1LvlNum = new Label();
             player1CurrentXP = new Label();
             player1Username = new Label();
@@ -58,15 +58,16 @@
             panel6 = new Panel();
             player6RankCount = new Label();
             player6RankInfo = new Label();
+            pictureBox4 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)player2Picture).BeginInit();
-            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)player1Picture).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)player3Picture).BeginInit();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -160,25 +161,13 @@
             player2Picture.TabStop = false;
             player2Picture.Click += pictureBox1_Click;
             // 
-            // panel2
-            // 
-            panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(player1LvlNum);
-            panel2.Controls.Add(player1CurrentXP);
-            panel2.Controls.Add(player1Username);
-            panel2.Controls.Add(player1RankCount);
-            panel2.Controls.Add(player1Picture);
-            panel2.Location = new Point(380, 107);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(242, 342);
-            panel2.TabIndex = 3;
-            // 
             // player1LvlNum
             // 
             player1LvlNum.AutoSize = true;
+            player1LvlNum.BackColor = Color.FromArgb(5, 11, 38);
             player1LvlNum.Font = new Font("Pixelify Sans", 10.7999992F);
             player1LvlNum.ForeColor = Color.White;
-            player1LvlNum.Location = new Point(37, 243);
+            player1LvlNum.Location = new Point(416, 340);
             player1LvlNum.Name = "player1LvlNum";
             player1LvlNum.Size = new Size(82, 22);
             player1LvlNum.TabIndex = 4;
@@ -187,9 +176,10 @@
             // player1CurrentXP
             // 
             player1CurrentXP.AutoSize = true;
+            player1CurrentXP.BackColor = Color.FromArgb(5, 11, 38);
             player1CurrentXP.Font = new Font("Pixelify Sans", 10.7999992F);
             player1CurrentXP.ForeColor = Color.White;
-            player1CurrentXP.Location = new Point(118, 243);
+            player1CurrentXP.Location = new Point(497, 340);
             player1CurrentXP.Name = "player1CurrentXP";
             player1CurrentXP.Size = new Size(123, 22);
             player1CurrentXP.TabIndex = 3;
@@ -198,9 +188,10 @@
             // player1Username
             // 
             player1Username.AutoSize = true;
+            player1Username.BackColor = Color.FromArgb(5, 11, 38);
             player1Username.Font = new Font("Pixelify Sans", 10.7999992F);
             player1Username.ForeColor = Color.White;
-            player1Username.Location = new Point(60, 203);
+            player1Username.Location = new Point(439, 300);
             player1Username.Name = "player1Username";
             player1Username.Size = new Size(115, 22);
             player1Username.TabIndex = 2;
@@ -209,9 +200,10 @@
             // player1RankCount
             // 
             player1RankCount.AutoSize = true;
+            player1RankCount.BackColor = Color.FromArgb(5, 11, 38);
             player1RankCount.Font = new Font("Pixelify Sans", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             player1RankCount.ForeColor = Color.White;
-            player1RankCount.Location = new Point(107, 164);
+            player1RankCount.Location = new Point(486, 261);
             player1RankCount.Name = "player1RankCount";
             player1RankCount.Size = new Size(32, 41);
             player1RankCount.TabIndex = 1;
@@ -220,7 +212,7 @@
             // 
             // player1Picture
             // 
-            player1Picture.Location = new Point(60, 55);
+            player1Picture.Location = new Point(439, 152);
             player1Picture.Name = "player1Picture";
             player1Picture.Size = new Size(123, 106);
             player1Picture.TabIndex = 0;
@@ -400,29 +392,43 @@
             player6RankInfo.TabIndex = 3;
             player6RankInfo.Text = "{username} {Lvl}--- {player6TotalXP} XP";
             // 
+            // pictureBox4
+            // 
+            pictureBox4.BackColor = Color.FromArgb(5, 11, 38);
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(379, 107);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(242, 342);
+            pictureBox4.TabIndex = 39;
+            pictureBox4.TabStop = false;
+            // 
             // sidebar_leaderboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 23, 42);
             ClientSize = new Size(1011, 744);
+            Controls.Add(player1LvlNum);
+            Controls.Add(player1CurrentXP);
             Controls.Add(panel6);
+            Controls.Add(player1Username);
             Controls.Add(panel5);
+            Controls.Add(player1RankCount);
             Controls.Add(panel4);
+            Controls.Add(player1Picture);
             Controls.Add(label11);
             Controls.Add(panel3);
-            Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(pictureBox4);
             FormBorderStyle = FormBorderStyle.None;
             Name = "sidebar_leaderboard";
             Text = "sidebar_leaderboard";
+            Load += sidebar_leaderboard_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)player2Picture).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)player1Picture).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -433,6 +439,7 @@
             panel5.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -447,7 +454,6 @@
         private Label player2LvlNum;
         private Label player2CurrentXP;
         private Label player2Username;
-        private Panel panel2;
         private Label player1LvlNum;
         private Label player1CurrentXP;
         private Label player1Username;
@@ -469,5 +475,6 @@
         private Label player6RankInfo;
         private Label player5RankCount;
         private Label player6RankCount;
+        private PictureBox pictureBox4;
     }
 }

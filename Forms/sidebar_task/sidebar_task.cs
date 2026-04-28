@@ -504,5 +504,10 @@ namespace StudyQuest
         private void label2_Click(object sender, EventArgs e) { }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) { }
         private void label1_Click(object sender, EventArgs e) { }
+
+        private void noOfTasktext_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
