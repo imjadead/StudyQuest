@@ -7,9 +7,6 @@ namespace StudyQuest
 {
     public partial class sidebar_task : Form
     {
-        // =====================================================================
-        // SINGLETON
-        // =====================================================================
         private static sidebar_task? _instance;
         public static sidebar_task Instance
         {
@@ -21,9 +18,6 @@ namespace StudyQuest
             }
         }
 
-        // =====================================================================
-        // TASK MODEL
-        // =====================================================================
         private class TaskItem
         {
             public string Title { get; set; } = string.Empty;
@@ -38,9 +32,6 @@ namespace StudyQuest
                 $"{Title}  [{Deadline:MM/dd/yyyy}]  +{ExpReward} EXP";
         }
 
-        // =====================================================================
-        // SHARED APP STATE
-        // =====================================================================
         public static int CurrentEXP { get; private set; } = 0;
         public static int CurrentLevel { get; private set; } = 1;
         public static event Action? EXPChanged;
@@ -49,15 +40,9 @@ namespace StudyQuest
         public static int MissedCount { get; private set; } = 0;
         public static int TotalCount { get; private set; } = 0;
 
-        // =====================================================================
-        // FIELDS
-        // =====================================================================
         private readonly List<TaskItem> _allTasks = new();
         private System.Windows.Forms.Timer _deadlineTimer = null!;
 
-        // =====================================================================
-        // CONSTRUCTOR
-        // =====================================================================
         private sidebar_task()
         {
             InitializeComponent();
@@ -65,9 +50,6 @@ namespace StudyQuest
             RefreshCounters();
         }
 
-        // =====================================================================
-        // HIDE instead of CLOSE
-        // =====================================================================
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.ApplicationExitCall ||
@@ -80,9 +62,6 @@ namespace StudyQuest
             this.Hide();
         }
 
-        // =====================================================================
-        // GET TODAY'S DUE TASKS — called by dashboard
-        // =====================================================================
         public static List<string> GetTodayTasks()
         {
             var result = new List<string>();
@@ -102,9 +81,6 @@ namespace StudyQuest
             return result;
         }
 
-        // =====================================================================
-        // ADD TASK — button1 Click
-        // =====================================================================
         private void button1_Click(object sender, EventArgs e)
         {
             string title = textBox1.Text.Trim();
@@ -156,9 +132,6 @@ namespace StudyQuest
             RefreshCounters();
         }
 
-        // =====================================================================
-        // CLASSIFY by deadline
-        // =====================================================================
         private static string ClassifyByDeadline(DateTime deadline)
         {
             int daysLeft = (deadline.Date - DateTime.Today).Days;
@@ -177,9 +150,6 @@ namespace StudyQuest
             }
         }
 
-        // =====================================================================
-        // HELPER — get selected task across all listboxes
-        // =====================================================================
         private (ListBox? box, TaskItem? task) GetSelectedTask()
         {
             foreach (var lb in new[] { EasyTaskListBox, MediumTaskListBox, HardTaskListBox })
@@ -190,9 +160,6 @@ namespace StudyQuest
             return (null, null);
         }
 
-        // =====================================================================
-        // COMPLETE BUTTON — unlockButton Click
-        // =====================================================================
         private void unlockButton_Click(object sender, EventArgs e)
         {
             var (listBox, task) = GetSelectedTask();
@@ -220,7 +187,6 @@ namespace StudyQuest
                 return;
             }
 
-            // ── Mark as completed ─────────────────────────────────────────────
             task.IsCompleted = true;
 
             int expGain = task.Difficulty switch
@@ -249,9 +215,6 @@ namespace StudyQuest
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // =====================================================================
-        // DELETE BUTTON — button2 Click
-        // =====================================================================
         private void button2_Click(object sender, EventArgs e)
         {
             var (listBox, task) = GetSelectedTask();
@@ -311,9 +274,6 @@ namespace StudyQuest
             RefreshCounters();
         }
 
-        // =====================================================================
-        // DOUBLE-CLICK — show task details
-        // =====================================================================
         private void TaskListBox_DoubleClick(object sender, EventArgs e)
         {
             var listBox = (ListBox)sender;
@@ -337,23 +297,15 @@ namespace StudyQuest
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // =====================================================================
-        // EXP FORMULA — updated to sync GameSession
-        // =====================================================================
         private const int MaxLevel = 100;
 
         private static void ApplyEXP(int amount)
         {
             CurrentEXP += amount;
 
-            // ── Sync to GameSession ──
             GameSession.TotalXP = CurrentEXP;
             GameSession.Level = CurrentLevel;
 
-            // ── Level up check — every 100 XP = 1 level ──
-            // Level 1: 0-99 XP
-            // Level 2: 100-199 XP
-            // Level 3: 200-299 XP
             while (CurrentLevel < MaxLevel &&
                    CurrentEXP >= CurrentLevel * 100)
             {
@@ -377,22 +329,15 @@ namespace StudyQuest
             EXPChanged?.Invoke();
         }
 
-        // =====================================================================
-        // EXP PENALTY (missed task)
-        // =====================================================================
         private static void ApplyEXPPenalty(int penalty = 10)
         {
             CurrentEXP = Math.Max(0, CurrentEXP - penalty);
 
-            // ── Sync penalty to GameSession too ──
             GameSession.TotalXP = CurrentEXP;
 
             EXPChanged?.Invoke();
         }
 
-        // =====================================================================
-        // DEADLINE CHECKER — fires every 60 s
-        // =====================================================================
         private void InitDeadlineTimer()
         {
             _deadlineTimer = new System.Windows.Forms.Timer { Interval = 60_000 };
@@ -425,9 +370,6 @@ namespace StudyQuest
             }
         }
 
-        // =====================================================================
-        // REFRESH LIST BOXES
-        // =====================================================================
         private void RefreshAllListBoxes()
         {
             EasyTaskListBox.Items.Clear();
@@ -473,9 +415,6 @@ namespace StudyQuest
             }
         }
 
-        // =====================================================================
-        // COUNTERS
-        // =====================================================================
         private void RefreshCounters()
         {
             TotalCount = _allTasks.Count;
@@ -489,9 +428,6 @@ namespace StudyQuest
             EXPChanged?.Invoke();
         }
 
-        // =====================================================================
-        // LEADERBOARD SORT HOOK — refreshes leaderboard if it's open
-        // =====================================================================
         private static void SortLeaderboard()
         {
             sidebar_leaderboard.Instance?.LoadLeaderboard();
@@ -499,7 +435,6 @@ namespace StudyQuest
 
         public static (int exp, int level) GetPlayerStats() => (CurrentEXP, CurrentLevel);
 
-        // ── Designer stubs ────────────────────────────────────────────────────
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e) { }
         private void label2_Click(object sender, EventArgs e) { }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) { }

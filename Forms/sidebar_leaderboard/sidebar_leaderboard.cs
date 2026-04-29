@@ -7,9 +7,6 @@ namespace StudyQuest
 {
     public partial class sidebar_leaderboard : Form
     {
-        // =====================================================================
-        // SINGLETON
-        // =====================================================================
         private static sidebar_leaderboard? _instance;
         public static sidebar_leaderboard? Instance
         {
@@ -21,15 +18,11 @@ namespace StudyQuest
             }
         }
 
-        // =====================================================================
-        // CONSTRUCTOR
-        // =====================================================================
         public sidebar_leaderboard()
         {
             _instance = this;
             InitializeComponent();
 
-            // ── Listen for XP changes from task form ──
             sidebar_task.EXPChanged += () =>
             {
                 if (this.IsHandleCreated && !this.IsDisposed)
@@ -39,24 +32,17 @@ namespace StudyQuest
             LoadLeaderboard();
         }
 
-        // =====================================================================
-        // LOAD / REFRESH LEADERBOARD
-        // =====================================================================
         public void LoadLeaderboard()
         {
-            // Build full board using SHARED list from GameSession
             var fullBoard = new List<(string Username, int Level, int XP)>(GameSession.OtherPlayers)
             {
                 (GameSession.Username, GameSession.Level, GameSession.TotalXP)
             };
 
-            // Sort by XP descending
             fullBoard = fullBoard.OrderByDescending(p => p.XP).ToList();
 
-            // Current week date
             label2.Text = $"Week of {GetWeekStartDate()}";
 
-            // Rank using shared GameSession method
             int myRank = GameSession.GetCurrentRank();
             label11.Text = $"You are #{myRank} this week! Study Hard!";
 
@@ -64,12 +50,8 @@ namespace StudyQuest
             FillRows(fullBoard);
         }
 
-        // =====================================================================
-        // FILL TOP 3 PODIUM
-        // =====================================================================
         private void FillPodium(List<(string Username, int Level, int XP)> board)
         {
-            // 1st place
             if (board.Count > 0)
             {
                 player1Username.Text = board[0].Username;
@@ -80,7 +62,6 @@ namespace StudyQuest
                     : System.Drawing.Color.White;
             }
 
-            // 2nd place
             if (board.Count > 1)
             {
                 player2Username.Text = board[1].Username;
@@ -91,7 +72,6 @@ namespace StudyQuest
                     : System.Drawing.Color.White;
             }
 
-            // 3rd place
             if (board.Count > 2)
             {
                 player3Username.Text = board[2].Username;
@@ -103,9 +83,6 @@ namespace StudyQuest
             }
         }
 
-        // =====================================================================
-        // FILL ROWS 4-6
-        // =====================================================================
         private void FillRows(List<(string Username, int Level, int XP)> board)
         {
             var rowLabels = new[] { player4RankInfo, player5RankInfo, player6RankInfo };
@@ -120,9 +97,6 @@ namespace StudyQuest
             }
         }
 
-        // =====================================================================
-        // WEEK DATE HELPER
-        // =====================================================================
         private string GetWeekStartDate()
         {
             DateTime today = DateTime.Today;
@@ -130,7 +104,6 @@ namespace StudyQuest
             return today.AddDays(-diff).ToString("MMM dd, yyyy");
         }
 
-        // ── Designer stubs ────────────────────────────────────────────────────
         private void label1_Click(object sender, EventArgs e) { }
         private void label2_Click(object sender, EventArgs e) { }
         private void rankCount_Click(object sender, EventArgs e) { }

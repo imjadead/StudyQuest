@@ -10,7 +10,6 @@ namespace StudyQuest
         private int streakDays = 0;
         private DateTime lastLoginDate = DateTime.Today.AddDays(-1);
 
-        // ── Pull EXP and task counts directly from sidebar_task ──────────────
         private int TotalXP => sidebar_task.CurrentEXP;
         private int CurrentLevel => sidebar_task.CurrentLevel;
         private int TasksDone => sidebar_task.CompletedCount;
@@ -32,7 +31,6 @@ namespace StudyQuest
             HighlightTodayLabel();
         }
 
-        // ── Called every time a task is completed or missed ───────────────────
         private void OnEXPChanged()
         {
             if (this.InvokeRequired)
@@ -40,7 +38,7 @@ namespace StudyQuest
             else
             {
                 RefreshUI();
-                RefreshTodayTasks(); // ← also refresh today's task list
+                RefreshTodayTasks(); 
             }
         }
 
@@ -50,9 +48,6 @@ namespace StudyQuest
             base.OnFormClosing(e);
         }
 
-        // =====================================================================
-        // STREAK
-        // =====================================================================
         private void UpdateStreak()
         {
             DateTime today = DateTime.Today;
@@ -64,9 +59,6 @@ namespace StudyQuest
             lastLoginDate = today;
         }
 
-        // =====================================================================
-        // TODAY'S TASKS — populates the mustDOListBox
-        // =====================================================================
         private void RefreshTodayTasks()
         {
             mustDOListBox.Items.Clear();
@@ -86,12 +78,8 @@ namespace StudyQuest
             }
         }
 
-        // =====================================================================
-        // REFRESH UI
-        // =====================================================================
         private void RefreshUI()
         {
-            // ── Sync to GameSession FIRST so rank calc uses latest XP ─────────
             GameSession.TotalXP = TotalXP;
             GameSession.Level = CurrentLevel;
             GameSession.Username = username;
@@ -105,7 +93,6 @@ namespace StudyQuest
             if (numTaskDone != null)
                 numTaskDone.Text = TasksDone.ToString();
 
-            // ── Rank — uses SAME GameSession method as leaderboard ────────────
             if (numRank != null)
                 numRank.Text = GameSession.GetOrdinal(GameSession.GetCurrentRank());
 
@@ -113,9 +100,6 @@ namespace StudyQuest
                 numDayStreak.Text = streakDays.ToString();
         }
 
-        // =====================================================================
-        // HIGHLIGHT TODAY
-        // =====================================================================
         private void HighlightTodayLabel()
         {
             Label[] days = { label1, label2, label3, label4, label6, label5, label7 };
@@ -130,9 +114,6 @@ namespace StudyQuest
                 days[todayIndex].BackColor = highlight;
         }
 
-        // =====================================================================
-        // STUBS
-        // =====================================================================
         private void mustDOListBox_DoubleClick(object sender, EventArgs e) { }
         private void myTaskListBox_DoubleClick(object sender, EventArgs e) { }
         private void mustDOListBox_KeyDown(object sender, KeyEventArgs e) { }

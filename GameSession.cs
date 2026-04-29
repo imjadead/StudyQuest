@@ -9,7 +9,6 @@ namespace StudyQuest
         public static int Level { get; set; } = 1;
         public static int TotalXP { get; set; } = 0;
 
-        // ── ONE shared leaderboard list used by BOTH dashboard and leaderboard ──
         public static List<(string Username, int Level, int XP)> OtherPlayers = new()
         {
             ("Alice",  52, 5200),
@@ -20,7 +19,6 @@ namespace StudyQuest
             ("Frank",   4, 400),
         };
 
-        // ── Call this from anywhere to get the current user's rank ────────────
         public static int GetCurrentRank()
         {
             var fullBoard = new List<(string Username, int Level, int XP)>(OtherPlayers)

@@ -33,19 +33,14 @@ namespace StudyQuest
             pnlNav.Left = dashboardButton.Left;
             dashboardButton.BackColor = Color.FromArgb(15, 23, 42);
 
-            // ── Subscribe to EXP changes to update sidebar live ───────────────
             sidebar_task.EXPChanged += RefreshSidebar;
 
-            // ── Set username from GameSession ─────────────────────────────────
             usernameTextbox.Text = GameSession.Username;
 
             RefreshSidebar();
             ShowPanel(ref _dashPanel, () => new sidebar_dashboard());
         }
 
-        // =====================================================================
-        // REFRESH SIDEBAR — updates username, level, progress bar
-        // =====================================================================
         private void RefreshSidebar()
         {
             if (this.InvokeRequired)
@@ -60,10 +55,6 @@ namespace StudyQuest
             int currentEXP = sidebar_task.CurrentEXP;
             userCurrentLvl.Text = $"Lvl. {level}";
 
-            // ── Matches ApplyEXP formula ──────────────────────────────────────
-            // Level 1: 0-99 XP   → xpAtLevelStart = 0   (level-1 * 100)
-            // Level 2: 100-199XP → xpAtLevelStart = 100
-            // Level 3: 200-299XP → xpAtLevelStart = 200
             int xpAtLevelStart = (level - 1) * 100;
             int xpWithinLevel = currentEXP - xpAtLevelStart;
             int xpNeededPerLevel = 100;
@@ -75,9 +66,6 @@ namespace StudyQuest
             percentCount.Text = $"{percent}%";
         }
 
-        // =====================================================================
-        // GENERIC PANEL SWITCHER
-        // =====================================================================
         private void ShowPanel<T>(ref T? field, Func<T> factory) where T : Form
         {
             this.pnlFormLoader.Controls.Clear();
@@ -95,9 +83,6 @@ namespace StudyQuest
             field.Show();
         }
 
-        // =====================================================================
-        // NAV BUTTONS
-        // =====================================================================
         private void dashboardButton_Click(object sender, EventArgs e)
         {
             pnlNav.Height = dashboardButton.Height;
@@ -163,7 +148,6 @@ namespace StudyQuest
 
             if (result == DialogResult.Yes)
             {
-                // ── Unsubscribe before closing ────────────────────────────────
                 sidebar_task.EXPChanged -= RefreshSidebar;
 
                 login_ui loginForm = new login_ui();
@@ -172,7 +156,6 @@ namespace StudyQuest
             }
         }
 
-        // ── Leave (highlight reset) ───────────────────────────────────────────
         private void dashboardButton_Leave(object sender, EventArgs e) => dashboardButton.BackColor = Color.FromArgb(17, 28, 46);
         private void taskButton_Leave(object sender, EventArgs e) => taskButton.BackColor = Color.FromArgb(17, 28, 46);
         private void leaderboardButton_Leave(object sender, EventArgs e) => leaderboardButton.BackColor = Color.FromArgb(17, 28, 46);
@@ -180,7 +163,6 @@ namespace StudyQuest
         private void avatarButton_Leave(object sender, EventArgs e) => avatarButton.BackColor = Color.FromArgb(17, 28, 46);
         private void logoutButton_Leave(object sender, EventArgs e) => logoutButton.BackColor = Color.FromArgb(17, 28, 46);
 
-        // ── Stubs ─────────────────────────────────────────────────────────────
         private void button5_Click(object sender, EventArgs e) { pnlNav.Height = logoutButton.Height; pnlNav.Top = logoutButton.Top; logoutButton.BackColor = Color.FromArgb(15, 23, 42); }
         private void pictureBox1_Click(object sender, EventArgs e) { }
         private void textBox1_TextChanged(object sender, EventArgs e) { }
