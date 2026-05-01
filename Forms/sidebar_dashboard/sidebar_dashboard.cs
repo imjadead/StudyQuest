@@ -7,8 +7,7 @@ namespace StudyQuest
     public partial class sidebar_dashboard : Form
     {
         private string username = "admin";
-        private int streakDays = 0;
-        private DateTime lastLoginDate = DateTime.Today.AddDays(-1);
+        private StreakData _streak = new StreakData(); // ← replaced old streak fields
 
         private int TotalXP => sidebar_task.CurrentEXP;
         private int CurrentLevel => sidebar_task.CurrentLevel;
@@ -25,7 +24,7 @@ namespace StudyQuest
         {
             sidebar_task.EXPChanged += OnEXPChanged;
 
-            UpdateStreak();
+            UpdateStreak();       // ← loads from streak.json and updates
             RefreshUI();
             RefreshTodayTasks();
             HighlightTodayLabel();
@@ -38,7 +37,7 @@ namespace StudyQuest
             else
             {
                 RefreshUI();
-                RefreshTodayTasks(); 
+                RefreshTodayTasks();
             }
         }
 
@@ -50,13 +49,7 @@ namespace StudyQuest
 
         private void UpdateStreak()
         {
-            DateTime today = DateTime.Today;
-            int daysSince = (today - lastLoginDate.Date).Days;
-
-            if (daysSince == 1) streakDays++;
-            else if (daysSince > 1) streakDays = 1;
-
-            lastLoginDate = today;
+            _streak = StreakDatabase.UpdateStreak(); // ← reads, calculates, saves JSON
         }
 
         private void RefreshTodayTasks()
@@ -68,7 +61,7 @@ namespace StudyQuest
             if (todayTasks.Count == 0)
             {
                 mustDOListBox.Items.Add("✅ No tasks due today!");
-                mustDOListBox.ForeColor = Color.FromArgb(52, 211, 153); // green
+                mustDOListBox.ForeColor = Color.FromArgb(52, 211, 153);
             }
             else
             {
@@ -97,7 +90,7 @@ namespace StudyQuest
                 numRank.Text = GameSession.GetOrdinal(GameSession.GetCurrentRank());
 
             if (numDayStreak != null)
-                numDayStreak.Text = streakDays.ToString();
+                numDayStreak.Text = _streak.StreakDays.ToString(); // ← uses JSON data
         }
 
         private void HighlightTodayLabel()
@@ -132,30 +125,10 @@ namespace StudyQuest
         private void label10_Click(object sender, EventArgs e) { }
         private void pictureBox1_Click(object sender, EventArgs e) { }
         private void label1_Click_2(object sender, EventArgs e) { }
-
-        private void numRank_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numTotalXP_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numTaskDone_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void totalXPText_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void taskDonetext_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void numRank_Click(object sender, EventArgs e) { }
+        private void numTotalXP_Click(object sender, EventArgs e) { }
+        private void numTaskDone_Click(object sender, EventArgs e) { }
+        private void totalXPText_Click(object sender, EventArgs e) { }
+        private void taskDonetext_Click(object sender, EventArgs e) { }
     }
 }

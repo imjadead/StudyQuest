@@ -46,6 +46,7 @@ namespace StudyQuest
         private sidebar_task()
         {
             InitializeComponent();
+            LoadFromDatabase();     // ← load saved tasks on startup
             InitDeadlineTimer();
             RefreshCounters();
         }
@@ -55,11 +56,71 @@ namespace StudyQuest
             if (e.CloseReason == CloseReason.ApplicationExitCall ||
                 e.CloseReason == CloseReason.WindowsShutDown)
             {
+                SaveToDatabase();   // ← save before closing
                 base.OnFormClosing(e);
                 return;
             }
             e.Cancel = true;
             this.Hide();
+        }
+
+        // ── SAVE to tasks.json ───────────────────────────────────────────────
+        private void SaveToDatabase()
+        {
+            var saveData = new TaskSaveData
+            {
+                CurrentEXP = CurrentEXP,
+                CurrentLevel = CurrentLevel,
+                CompletedCount = CompletedCount,
+                MissedCount = MissedCount,
+                Tasks = new List<TaskData>()
+            };
+
+            foreach (var task in _allTasks)
+            {
+                saveData.Tasks.Add(new TaskData
+                {
+                    Title = task.Title,
+                    Details = task.Details,
+                    Deadline = task.Deadline.ToString("yyyy-MM-dd"),
+                    Difficulty = task.Difficulty,
+                    IsCompleted = task.IsCompleted,
+                    IsMissed = task.IsMissed,
+                    ExpReward = task.ExpReward
+                });
+            }
+
+            TaskDatabase.Save(saveData);
+        }
+
+        // ── LOAD from tasks.json ─────────────────────────────────────────────
+        private void LoadFromDatabase()
+        {
+            var saveData = TaskDatabase.Load();
+
+            CurrentEXP = saveData.CurrentEXP;
+            CurrentLevel = saveData.CurrentLevel;
+            CompletedCount = saveData.CompletedCount;
+            MissedCount = saveData.MissedCount;
+
+            _allTasks.Clear();
+
+            foreach (var data in saveData.Tasks)
+            {
+                var task = new TaskItem
+                {
+                    Title = data.Title,
+                    Details = data.Details,
+                    Deadline = DateTime.Parse(data.Deadline),
+                    Difficulty = data.Difficulty,
+                    IsCompleted = data.IsCompleted,
+                    IsMissed = data.IsMissed,
+                    ExpReward = data.ExpReward
+                };
+                _allTasks.Add(task);
+            }
+
+            RefreshAllListBoxes();  // ← rebuild the UI from loaded tasks
         }
 
         public static List<string> GetTodayTasks()
@@ -130,6 +191,7 @@ namespace StudyQuest
             dateTimePicker1.Value = DateTime.Today;
 
             RefreshCounters();
+            SaveToDatabase();   // ← save after adding a task
         }
 
         private static string ClassifyByDeadline(DateTime deadline)
@@ -205,6 +267,7 @@ namespace StudyQuest
 
             listBox.ClearSelected();
             RefreshCounters();
+            SaveToDatabase();   // ← save after completing a task
 
             MessageBox.Show(
                 $"Task \"{task.Title}\" completed!\n" +
@@ -258,6 +321,7 @@ namespace StudyQuest
                 if (match != null) _allTasks.Remove(match);
                 strBox.Items.RemoveAt(strIdx);
                 RefreshCounters();
+                SaveToDatabase();   // ← save after deleting
                 return;
             }
 
@@ -272,6 +336,7 @@ namespace StudyQuest
             _allTasks.Remove(task);
             listBox.Items.Remove(task);
             RefreshCounters();
+            SaveToDatabase();   // ← save after deleting
         }
 
         private void TaskListBox_DoubleClick(object sender, EventArgs e)
@@ -332,9 +397,7 @@ namespace StudyQuest
         private static void ApplyEXPPenalty(int penalty = 10)
         {
             CurrentEXP = Math.Max(0, CurrentEXP - penalty);
-
             GameSession.TotalXP = CurrentEXP;
-
             EXPChanged?.Invoke();
         }
 
@@ -366,6 +429,7 @@ namespace StudyQuest
             {
                 RefreshAllListBoxes();
                 RefreshCounters();
+                SaveToDatabase();   // ← save when tasks are marked missed
                 SortLeaderboard();
             }
         }
@@ -439,10 +503,6 @@ namespace StudyQuest
         private void label2_Click(object sender, EventArgs e) { }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) { }
         private void label1_Click(object sender, EventArgs e) { }
-
-        private void noOfTasktext_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void noOfTasktext_Click(object sender, EventArgs e) { }
     }
 }
