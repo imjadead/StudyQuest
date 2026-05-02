@@ -7,7 +7,7 @@ namespace StudyQuest
     public partial class sidebar_dashboard : Form
     {
         private string username = "admin";
-        private StreakData _streak = new StreakData(); // ← replaced old streak fields
+        private StreakData _streak = new StreakData();
 
         private int TotalXP => sidebar_task.CurrentEXP;
         private int CurrentLevel => sidebar_task.CurrentLevel;
@@ -20,16 +20,22 @@ namespace StudyQuest
             InitializeComponent();
         }
 
+        // =====================================================================
+        // FORM LOAD
+        // =====================================================================
         private void sidebar_dashboard_Load(object sender, EventArgs e)
         {
             sidebar_task.EXPChanged += OnEXPChanged;
 
-            UpdateStreak();       // ← loads from streak.json and updates
+            UpdateStreak();
             RefreshUI();
             RefreshTodayTasks();
             HighlightTodayLabel();
         }
 
+        // =====================================================================
+        // ON EXP CHANGED
+        // =====================================================================
         private void OnEXPChanged()
         {
             if (this.InvokeRequired)
@@ -47,11 +53,20 @@ namespace StudyQuest
             base.OnFormClosing(e);
         }
 
+        // =====================================================================
+        // STREAK
+        // =====================================================================
         private void UpdateStreak()
         {
-            _streak = StreakDatabase.UpdateStreak(); // ← reads, calculates, saves JSON
+            _streak = StreakDatabase.UpdateStreak();
+
+            // ── Sync streak to GameSession so badges can read it ──────────────
+            GameSession.StreakDays = _streak.StreakDays;
         }
 
+        // =====================================================================
+        // TODAY'S TASKS
+        // =====================================================================
         private void RefreshTodayTasks()
         {
             mustDOListBox.Items.Clear();
@@ -71,11 +86,16 @@ namespace StudyQuest
             }
         }
 
+        // =====================================================================
+        // REFRESH UI
+        // =====================================================================
         private void RefreshUI()
         {
+            // ── Sync to GameSession FIRST ─────────────────────────────────────
             GameSession.TotalXP = TotalXP;
             GameSession.Level = CurrentLevel;
             GameSession.Username = username;
+            GameSession.StreakDays = _streak.StreakDays;
 
             if (greetingsUser != null)
                 greetingsUser.Text = $"Good day, {username}!";
@@ -90,9 +110,12 @@ namespace StudyQuest
                 numRank.Text = GameSession.GetOrdinal(GameSession.GetCurrentRank());
 
             if (numDayStreak != null)
-                numDayStreak.Text = _streak.StreakDays.ToString(); // ← uses JSON data
+                numDayStreak.Text = _streak.StreakDays.ToString();
         }
 
+        // =====================================================================
+        // HIGHLIGHT TODAY
+        // =====================================================================
         private void HighlightTodayLabel()
         {
             Label[] days = { label1, label2, label3, label4, label6, label5, label7 };
@@ -107,6 +130,9 @@ namespace StudyQuest
                 days[todayIndex].BackColor = highlight;
         }
 
+        // =====================================================================
+        // STUBS
+        // =====================================================================
         private void mustDOListBox_DoubleClick(object sender, EventArgs e) { }
         private void myTaskListBox_DoubleClick(object sender, EventArgs e) { }
         private void mustDOListBox_KeyDown(object sender, KeyEventArgs e) { }

@@ -8,15 +8,16 @@ namespace StudyQuest
         public static string Username { get; set; } = "admin";
         public static int Level { get; set; } = 1;
         public static int TotalXP { get; set; } = 0;
+        public static int StreakDays { get; set; } = 0;
 
         public static List<(string Username, int Level, int XP)> OtherPlayers = new()
         {
             ("Alice",  52, 5200),
             ("Bob",    25, 2500),
             ("Carol",  19, 1900),
-            ("Dave",    14, 1400),
-            ("Eve",     6, 600),
-            ("Frank",   4, 400),
+            ("Dave",   14, 1400),
+            ("Eve",     6,  600),
+            ("Frank",   4,  400),
         };
 
         public static int GetCurrentRank()
