@@ -46,7 +46,7 @@ namespace StudyQuest
         private sidebar_task()
         {
             InitializeComponent();
-            LoadFromDatabase();     // ← load saved tasks on startup
+            LoadFromDatabase();
             InitDeadlineTimer();
             RefreshCounters();
         }
@@ -56,7 +56,7 @@ namespace StudyQuest
             if (e.CloseReason == CloseReason.ApplicationExitCall ||
                 e.CloseReason == CloseReason.WindowsShutDown)
             {
-                SaveToDatabase();   // ← save before closing
+                SaveToDatabase();
                 base.OnFormClosing(e);
                 return;
             }
@@ -120,7 +120,7 @@ namespace StudyQuest
                 _allTasks.Add(task);
             }
 
-            RefreshAllListBoxes();  // ← rebuild the UI from loaded tasks
+            RefreshAllListBoxes();
         }
 
         public static List<string> GetTodayTasks()
@@ -191,7 +191,7 @@ namespace StudyQuest
             dateTimePicker1.Value = DateTime.Today;
 
             RefreshCounters();
-            SaveToDatabase();   // ← save after adding a task
+            SaveToDatabase();
         }
 
         private static string ClassifyByDeadline(DateTime deadline)
@@ -266,8 +266,9 @@ namespace StudyQuest
                 $"✓  {task.Title}  [{task.Deadline:MM/dd/yyyy}]  (+{expGain} EXP)";
 
             listBox.ClearSelected();
-            RefreshCounters();
-            SaveToDatabase();   // ← save after completing a task
+            StreakDatabase.OnTaskCompleted(); // ← update streak FIRST before EXPChanged fires
+            RefreshCounters();               // ← fires EXPChanged, dashboard reads updated streak
+            SaveToDatabase();
 
             MessageBox.Show(
                 $"Task \"{task.Title}\" completed!\n" +
@@ -321,7 +322,7 @@ namespace StudyQuest
                 if (match != null) _allTasks.Remove(match);
                 strBox.Items.RemoveAt(strIdx);
                 RefreshCounters();
-                SaveToDatabase();   // ← save after deleting
+                SaveToDatabase();
                 return;
             }
 
@@ -336,7 +337,7 @@ namespace StudyQuest
             _allTasks.Remove(task);
             listBox.Items.Remove(task);
             RefreshCounters();
-            SaveToDatabase();   // ← save after deleting
+            SaveToDatabase();
         }
 
         private void TaskListBox_DoubleClick(object sender, EventArgs e)
@@ -364,6 +365,18 @@ namespace StudyQuest
 
         private const int MaxLevel = 100;
 
+        private static int ExpToNextLevel(int level)
+        {
+            if (level == 1) return 200;
+            return 100;
+        }
+
+        private static int GetCumulativeEXP(int level)
+        {
+            if (level == 1) return 200;
+            return 200 + (level - 1) * 100;
+        }
+
         private static void ApplyEXP(int amount)
         {
             CurrentEXP += amount;
@@ -372,9 +385,10 @@ namespace StudyQuest
             GameSession.Level = CurrentLevel;
 
             while (CurrentLevel < MaxLevel &&
-                   CurrentEXP >= CurrentLevel * 100)
+                   CurrentEXP >= GetCumulativeEXP(CurrentLevel))
             {
                 CurrentLevel++;
+                GameSession.TotalXP = CurrentEXP;
                 GameSession.Level = CurrentLevel;
 
                 if (CurrentLevel == MaxLevel)
@@ -398,6 +412,30 @@ namespace StudyQuest
         {
             CurrentEXP = Math.Max(0, CurrentEXP - penalty);
             GameSession.TotalXP = CurrentEXP;
+            EXPChanged?.Invoke();
+        }
+
+        // ── Reset all in-memory data (used by ResetManager) ──────────────────
+        public static void ResetInMemory()
+        {
+            CurrentEXP = 0;
+            CurrentLevel = 1;
+            CompletedCount = 0;
+            MissedCount = 0;
+            TotalCount = 0;
+
+            if (_instance != null && !_instance.IsDisposed)
+            {
+                _instance._allTasks.Clear();
+                _instance.EasyTaskListBox.Items.Clear();
+                _instance.MediumTaskListBox.Items.Clear();
+                _instance.HardTaskListBox.Items.Clear();
+                _instance.RefreshCounters();
+            }
+
+            GameSession.TotalXP = 0;
+            GameSession.Level = 1;
+
             EXPChanged?.Invoke();
         }
 
@@ -429,7 +467,7 @@ namespace StudyQuest
             {
                 RefreshAllListBoxes();
                 RefreshCounters();
-                SaveToDatabase();   // ← save when tasks are marked missed
+                SaveToDatabase();
                 SortLeaderboard();
             }
         }

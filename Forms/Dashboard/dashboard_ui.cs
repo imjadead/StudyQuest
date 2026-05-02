@@ -41,6 +41,14 @@ namespace StudyQuest
             ShowPanel(ref _dashPanel, () => new sidebar_dashboard());
         }
 
+        // Total cumulative EXP needed to reach the NEXT level
+        // Level 1 = 200, Level 2 = 300, Level 3 = 400, Level 4 = 500...
+        private static int GetCumulativeEXP(int level)
+        {
+            if (level == 1) return 200;
+            return 200 + (level - 1) * 100;
+        }
+
         private void RefreshSidebar()
         {
             if (this.InvokeRequired)
@@ -55,11 +63,16 @@ namespace StudyQuest
             int currentEXP = sidebar_task.CurrentEXP;
             userCurrentLvl.Text = $"Lvl. {level}";
 
-            int xpAtLevelStart = (level - 1) * 100;
-            int xpWithinLevel = currentEXP - xpAtLevelStart;
-            int xpNeededPerLevel = 100;
+            // Total EXP at the start of current level
+            int xpAtLevelStart = level == 1 ? 0 : GetCumulativeEXP(level - 1);
 
-            int percent = (int)((float)xpWithinLevel / xpNeededPerLevel * 100);
+            // EXP needed for THIS level only
+            int xpNeededForThisLevel = level == 1 ? 200 : 100;
+
+            // EXP progress within current level
+            int xpWithinLevel = currentEXP - xpAtLevelStart;
+
+            int percent = (int)((float)xpWithinLevel / xpNeededForThisLevel * 100);
             percent = Math.Max(0, Math.Min(100, percent));
 
             progressBar1.Value = percent;

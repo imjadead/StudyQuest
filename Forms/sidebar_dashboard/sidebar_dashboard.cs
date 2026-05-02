@@ -42,6 +42,7 @@ namespace StudyQuest
                 this.Invoke(new Action(OnEXPChanged));
             else
             {
+                _streak = StreakDatabase.GetCurrent(); // refresh streak from JSON
                 RefreshUI();
                 RefreshTodayTasks();
             }

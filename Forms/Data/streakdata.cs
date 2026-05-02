@@ -7,7 +7,7 @@ namespace StudyQuest
     public class StreakData
     {
         public int StreakDays { get; set; } = 0;
-        public string LastLoginDate { get; set; } = "2000-01-01";
+        public string LastStreakDate { get; set; } = "2000-01-01"; // last date a task was completed
     }
 
     public static class StreakDatabase
@@ -43,22 +43,52 @@ namespace StudyQuest
             catch { }
         }
 
-        public static StreakData UpdateStreak()
+        // ── Call this when a task is completed ───────────────────────────────
+        public static StreakData OnTaskCompleted()
         {
             StreakData streak = Load();
 
             DateTime today = DateTime.Today;
-            DateTime lastLogin = DateTime.Parse(streak.LastLoginDate).Date;
-            int daysSince = (today - lastLogin).Days;
+            DateTime lastStreak = DateTime.Parse(streak.LastStreakDate).Date;
+            int daysSince = (today - lastStreak).Days;
 
-            if (daysSince == 1) streak.StreakDays++;   // continued
-            else if (daysSince > 1) streak.StreakDays = 1; // reset
-            // daysSince == 0 → already logged in today, no change
+            if (daysSince == 0)
+            {
+                // Already completed a task today, no change
+                return streak;
+            }
+            else if (daysSince == 1)
+            {
+                // Completed a task the day before, streak continues
+                streak.StreakDays++;
+            }
+            else
+            {
+                // Missed a day, streak resets to 1
+                streak.StreakDays = 1;
+            }
 
-            streak.LastLoginDate = today.ToString("yyyy-MM-dd");
+            streak.LastStreakDate = today.ToString("yyyy-MM-dd");
             Save(streak);
 
             return streak;
+        }
+
+        // ── Load only, no streak update (used on app startup) ────────────────
+        public static StreakData GetCurrent()
+        {
+            return Load();
+        }
+
+        // ── Wipes streak.json back to zero ────────────────────────────────────
+        public static void Reset()
+        {
+            try
+            {
+                if (File.Exists(FilePath))
+                    File.Delete(FilePath);
+            }
+            catch { }
         }
     }
 }
