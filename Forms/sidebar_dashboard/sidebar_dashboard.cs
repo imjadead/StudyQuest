@@ -7,7 +7,7 @@ namespace StudyQuest
     public partial class sidebar_dashboard : Form
     {
         private string username = "admin";
-        private StreakData _streak = new StreakData(); // ← replaced old streak fields
+        private StreakData _streak = new StreakData();
 
         private int TotalXP => sidebar_task.CurrentEXP;
         private int CurrentLevel => sidebar_task.CurrentLevel;
@@ -24,7 +24,7 @@ namespace StudyQuest
         {
             sidebar_task.EXPChanged += OnEXPChanged;
 
-            UpdateStreak();       // ← loads from streak.json and updates
+            UpdateStreak();
             RefreshUI();
             RefreshTodayTasks();
             HighlightTodayLabel();
@@ -36,6 +36,7 @@ namespace StudyQuest
                 this.Invoke(new Action(OnEXPChanged));
             else
             {
+                _streak = StreakDatabase.GetCurrent(); // refresh streak from JSON
                 RefreshUI();
                 RefreshTodayTasks();
             }
@@ -49,7 +50,7 @@ namespace StudyQuest
 
         private void UpdateStreak()
         {
-            _streak = StreakDatabase.UpdateStreak(); // ← reads, calculates, saves JSON
+            _streak = StreakDatabase.GetCurrent(); // just read, don't update on login
         }
 
         private void RefreshTodayTasks()
@@ -90,7 +91,7 @@ namespace StudyQuest
                 numRank.Text = GameSession.GetOrdinal(GameSession.GetCurrentRank());
 
             if (numDayStreak != null)
-                numDayStreak.Text = _streak.StreakDays.ToString(); // ← uses JSON data
+                numDayStreak.Text = _streak.StreakDays.ToString();
         }
 
         private void HighlightTodayLabel()
