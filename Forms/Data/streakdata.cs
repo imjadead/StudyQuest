@@ -7,119 +7,86 @@ namespace StudyQuest
     public class StreakData
     {
         public int StreakDays { get; set; } = 0;
-        public DateTime LastLoginDate { get; set; } = DateTime.MinValue;
+        public string LastStreakDate { get; set; } = "2000-01-01"; // last date a task was completed
     }
 
     public static class StreakDatabase
     {
-        private static readonly string FilePath =
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "streak.json");
+        private static readonly string FilePath = Path.Combine(
+            AppDomain.CurrentDomain.BaseDirectory, "streak.json"
+        );
 
-        // =====================================================================
-        // UPDATE STREAK — call on app load
-        // =====================================================================
-        public static StreakData UpdateStreak()
+        public static StreakData Load()
         {
-            StreakData data = Load();
+            try
+            {
+                if (!File.Exists(FilePath))
+                    return new StreakData();
+
+                string json = File.ReadAllText(FilePath);
+                return JsonSerializer.Deserialize<StreakData>(json) ?? new StreakData();
+            }
+            catch
+            {
+                return new StreakData();
+            }
+        }
+
+        public static void Save(StreakData data)
+        {
+            try
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string json = JsonSerializer.Serialize(data, options);
+                File.WriteAllText(FilePath, json);
+            }
+            catch { }
+        }
+
+        // ── Call this when a task is completed ───────────────────────────────
+        public static StreakData OnTaskCompleted()
+        {
+            StreakData streak = Load();
 
             DateTime today = DateTime.Today;
+            DateTime lastStreak = DateTime.Parse(streak.LastStreakDate).Date;
+            int daysSince = (today - lastStreak).Days;
 
-            if (data.LastLoginDate == DateTime.MinValue)
+            if (daysSince == 0)
             {
-                // ── First time ever ───────────────────────────────────────────
-                data.StreakDays = 1;
-                data.LastLoginDate = today;
+                // Already completed a task today, no change
+                return streak;
+            }
+            else if (daysSince == 1)
+            {
+                // Completed a task the day before, streak continues
+                streak.StreakDays++;
             }
             else
             {
-                int daysSince = (today - data.LastLoginDate.Date).Days;
-
-                if (daysSince == 0)
-                {
-                    // ── Same day login — no change ────────────────────────────
-                }
-                else if (daysSince == 1)
-                {
-                    // ── Consecutive day — increment streak ────────────────────
-                    data.StreakDays++;
-                    data.LastLoginDate = today;
-                }
-                else
-                {
-                    // ── Missed a day — reset streak ───────────────────────────
-                    data.StreakDays = 1;
-                    data.LastLoginDate = today;
-                }
+                // Missed a day, streak resets to 1
+                streak.StreakDays = 1;
             }
 
-            Save(data);
-            return data;
+            streak.LastStreakDate = today.ToString("yyyy-MM-dd");
+            Save(streak);
+
+            return streak;
         }
 
-        // =====================================================================
-        // GET CURRENT — just reads without updating
-        // =====================================================================
+        // ── Load only, no streak update (used on app startup) ────────────────
         public static StreakData GetCurrent()
         {
             return Load();
         }
 
-        // =====================================================================
-        // ON TASK COMPLETED — call when a task is marked complete
-        // =====================================================================
-        public static void OnTaskCompleted()
-        {
-            StreakData data = Load();
-
-            DateTime today = DateTime.Today;
-
-            if (data.LastLoginDate.Date == today)
-            {
-                // Already updated today — no change needed
-                return;
-            }
-
-            int daysSince = (today - data.LastLoginDate.Date).Days;
-
-            if (data.LastLoginDate == DateTime.MinValue || daysSince > 1)
-                data.StreakDays = 1;       // First time or streak broken
-            else if (daysSince == 1)
-                data.StreakDays++;         // Consecutive day
-
-            data.LastLoginDate = today;
-            Save(data);
-        }
-
-        // =====================================================================
-        // LOAD from JSON
-        // =====================================================================
-        private static StreakData Load()
+        // ── Wipes streak.json back to zero ────────────────────────────────────
+        public static void Reset()
         {
             try
             {
                 if (File.Exists(FilePath))
-                {
-                    string json = File.ReadAllText(FilePath);
-                    return JsonSerializer.Deserialize<StreakData>(json) ?? new StreakData();
-                }
-            }
-            catch { }
-
-            return new StreakData();
-        }
-
-        // =====================================================================
-        // SAVE to JSON
-        // =====================================================================
-        private static void Save(StreakData data)
-        {
-            try
-            {
-                string json = JsonSerializer.Serialize(data, new JsonSerializerOptions
-                {
-                    WriteIndented = true
-                });
-                File.WriteAllText(FilePath, json);
+                    File.Delete(FilePath);
             }
             catch { }
         }
