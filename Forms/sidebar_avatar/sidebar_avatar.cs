@@ -19,6 +19,9 @@ namespace StudyQuest
         private const int BoyPrice = 200;
         private const int BananaPrice = 300;
 
+        // 🔥 Broadcasts the applied avatar image to dashboard
+        public static event Action<Image>? AvatarApplied;
+
         public sidebar_avatar()
         {
             InitializeComponent();
@@ -203,23 +206,23 @@ namespace StudyQuest
         {
             _equippedItem = item;
 
-            switch (item)
+            Image? avatarImage = item switch
             {
-                case AvatarItem.Egg:
-                    pictureBox26.Image = pictureBox3.Image;
-                    break;
-                case AvatarItem.Girl:
-                    pictureBox26.Image = pictureBox1.Image;
-                    break;
-                case AvatarItem.Boy:
-                    pictureBox26.Image = pictureBox2.Image;
-                    break;
-                case AvatarItem.Banana:
-                    pictureBox26.Image = pictureBox4.Image;
-                    break;
-            }
+                AvatarItem.Egg => pictureBox3.Image,
+                AvatarItem.Girl => pictureBox1.Image,
+                AvatarItem.Boy => pictureBox2.Image,
+                AvatarItem.Banana => pictureBox4.Image,
+                _ => null
+            };
 
+            // Update preview inside avatar panel
+            pictureBox26.Image = avatarImage;
             pictureBox26.SizeMode = PictureBoxSizeMode.CenterImage;
+
+            // 🔥 Send to dashboard_ui to update userPicture
+            if (avatarImage != null)
+                AvatarApplied?.Invoke(avatarImage);
+
             UpdateItemBorders();
 
             MessageBox.Show("Avatar applied! ✓",

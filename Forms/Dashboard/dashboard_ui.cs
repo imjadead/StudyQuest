@@ -35,10 +35,26 @@ namespace StudyQuest
 
             sidebar_task.EXPChanged += RefreshSidebar;
 
+            // 🔥 Subscribe to avatar changes
+            sidebar_avatar.AvatarApplied += OnAvatarApplied;
+
             usernameTextbox.Text = GameSession.Username;
 
             RefreshSidebar();
             ShowPanel(ref _dashPanel, () => new sidebar_dashboard());
+        }
+
+        // 🔥 Updates userPicture in the sidebar when avatar is applied
+        private void OnAvatarApplied(Image img)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action<Image>(OnAvatarApplied), img);
+                return;
+            }
+
+            userPicture.Image = img;
+            userPicture.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private static int GetCumulativeEXP(int level)
@@ -171,10 +187,10 @@ namespace StudyQuest
 
             if (result == DialogResult.Yes)
             {
-                // ✅ Save notes FIRST before anything is closed
                 SaveNotesBeforeExit();
 
                 sidebar_task.EXPChanged -= RefreshSidebar;
+                sidebar_avatar.AvatarApplied -= OnAvatarApplied; // ✅ Unsubscribe
 
                 login_ui loginForm = new login_ui();
                 loginForm.Show();
@@ -201,7 +217,6 @@ namespace StudyQuest
         private void dashboard_ui_Load(object sender, EventArgs e) { }
         private void progressBar1_Click(object sender, EventArgs e) { }
         private void userCurrentLvl_Click(object sender, EventArgs e) { }
-
         private void pnlFormLoader_Paint(object sender, PaintEventArgs e) { }
     }
 }
