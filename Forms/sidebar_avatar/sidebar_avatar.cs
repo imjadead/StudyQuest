@@ -116,7 +116,7 @@ namespace StudyQuest
             }
             else
             {
-                unlockButton.Text = $"Unlock ({price} XP)";
+                unlockButton.Text = $"Unlock {price} XP";
                 unlockButton.Enabled = true;
                 MessageBox.Show(
                     $"{itemName}\n\n" +
