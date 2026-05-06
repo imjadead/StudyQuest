@@ -272,7 +272,7 @@ namespace StudyQuest
 
             int idx = listBox.Items.IndexOf(task);
             listBox.Items[idx] =
-                $"  {task.Title}  [{task.Deadline:MM/dd/yyyy}]  (+{expGain} EXP)";
+                $"✔  {task.Title}  [{task.Deadline:MM/dd/yyyy}]  (+{expGain} EXP)";
 
             listBox.ClearSelected();
             StreakDatabase.OnTaskCompleted();
