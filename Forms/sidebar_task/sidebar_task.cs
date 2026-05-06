@@ -228,6 +228,7 @@ namespace StudyQuest
             CurrentEXP = Math.Max(0, CurrentEXP - amount);
             GameSession.TotalXP = CurrentEXP;
             EXPChanged?.Invoke();
+            _instance?.SaveToDatabase();
         }
 
         private void unlockButton_Click(object sender, EventArgs e)

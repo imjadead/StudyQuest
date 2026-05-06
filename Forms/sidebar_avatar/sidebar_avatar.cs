@@ -21,6 +21,12 @@ namespace StudyQuest
 
         public static event Action<Image>? AvatarApplied;
 
+        // ── Public image getters so dashboard_ui can load saved avatar ────────
+        public Image? GetEggImage() => pictureBox3.Image;
+        public Image? GetGirlImage() => pictureBox1.Image;
+        public Image? GetBoyImage() => pictureBox2.Image;
+        public Image? GetBananaImage() => pictureBox4.Image;
+
         public sidebar_avatar()
         {
             InitializeComponent();
@@ -43,6 +49,7 @@ namespace StudyQuest
         private void sidebar_avatar_Load(object sender, EventArgs e)
         {
             sidebar_task.EXPChanged += OnEXPChanged;
+            LoadFromDatabase();
             RefreshXP();
             UpdateItemBorders();
             UpdateUnlockButton();
@@ -60,6 +67,54 @@ namespace StudyQuest
                 this.Invoke(new Action(OnEXPChanged));
             else
                 RefreshXP();
+        }
+
+        // ── LOAD from avatar.json ─────────────────────────────────────────────
+        private void LoadFromDatabase()
+        {
+            var data = AvatarDatabase.Load();
+
+            _girlUnlocked = data.GirlUnlocked;
+            _boyUnlocked = data.BoyUnlocked;
+            _bananaUnlocked = data.BananaUnlocked;
+
+            _equippedItem = data.EquippedAvatar switch
+            {
+                "Girl" => AvatarItem.Girl,
+                "Boy" => AvatarItem.Boy,
+                "Banana" => AvatarItem.Banana,
+                _ => AvatarItem.Egg
+            };
+
+            _selectedItem = _equippedItem;
+
+            Image? avatarImage = _equippedItem switch
+            {
+                AvatarItem.Girl => pictureBox1.Image,
+                AvatarItem.Boy => pictureBox2.Image,
+                AvatarItem.Banana => pictureBox4.Image,
+                _ => pictureBox3.Image
+            };
+
+            if (avatarImage != null)
+            {
+                pictureBox26.Image = avatarImage;
+                pictureBox26.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+        }
+
+        // ── SAVE to avatar.json ───────────────────────────────────────────────
+        private void SaveToDatabase()
+        {
+            var data = new AvatarData
+            {
+                EquippedAvatar = _equippedItem.ToString(),
+                GirlUnlocked = _girlUnlocked,
+                BoyUnlocked = _boyUnlocked,
+                BananaUnlocked = _bananaUnlocked
+            };
+
+            AvatarDatabase.Save(data);
         }
 
         private void RefreshXP()
@@ -217,6 +272,7 @@ namespace StudyQuest
 
             UpdateUnlockButton();
             UpdateItemBorders();
+            SaveToDatabase();
 
             MessageBox.Show(
                 $"Avatar unlocked! 🎉\n" +
@@ -243,12 +299,13 @@ namespace StudyQuest
             };
 
             pictureBox26.Image = avatarImage;
-            pictureBox26.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox26.SizeMode = PictureBoxSizeMode.Zoom;
 
             if (avatarImage != null)
                 AvatarApplied?.Invoke(avatarImage);
 
             UpdateItemBorders();
+            SaveToDatabase();
 
             MessageBox.Show("Avatar applied! ✓",
                             "Avatar Changed",

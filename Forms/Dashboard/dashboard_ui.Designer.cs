@@ -64,11 +64,11 @@ namespace StudyQuest
             // userCurrentLvl
             // 
             userCurrentLvl.AutoSize = true;
-            userCurrentLvl.Font = new Font("Pixelify Sans", 11F);
+            userCurrentLvl.Font = new Font("Microsoft Sans Serif", 11F);
             userCurrentLvl.ForeColor = Color.White;
-            userCurrentLvl.Location = new Point(97, 77);
+            userCurrentLvl.Location = new Point(105, 68);
             userCurrentLvl.Name = "userCurrentLvl";
-            userCurrentLvl.Size = new Size(61, 23);
+            userCurrentLvl.Size = new Size(63, 24);
             userCurrentLvl.TabIndex = 2;
             userCurrentLvl.Text = "Lvl. 10";
             userCurrentLvl.Click += userCurrentLvl_Click;
@@ -76,25 +76,26 @@ namespace StudyQuest
             // usernameTextbox
             // 
             usernameTextbox.AutoSize = true;
-            usernameTextbox.Font = new Font("Pixelify Sans", 12F);
+            usernameTextbox.Font = new Font("Microsoft Sans Serif", 12F);
             usernameTextbox.ForeColor = Color.White;
-            usernameTextbox.Location = new Point(97, 42);
+            usernameTextbox.Location = new Point(105, 43);
             usernameTextbox.Name = "usernameTextbox";
-            usernameTextbox.Size = new Size(114, 24);
+            usernameTextbox.Size = new Size(110, 25);
             usernameTextbox.TabIndex = 1;
             usernameTextbox.Text = "User Name";
+            usernameTextbox.Click += usernameTextbox_Click;
             // 
             // percentCount
             // 
             percentCount.BackColor = Color.FromArgb(17, 28, 46);
             percentCount.BorderStyle = BorderStyle.None;
-            percentCount.Font = new Font("Press Start 2P", 7.20000029F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            percentCount.Font = new Font("Microsoft Sans Serif", 7.20000029F, FontStyle.Regular, GraphicsUnit.Point, 0);
             percentCount.ForeColor = Color.White;
             percentCount.Location = new Point(190, 134);
             percentCount.Margin = new Padding(3, 4, 3, 4);
             percentCount.Name = "percentCount";
             percentCount.PlaceholderText = "50%";
-            percentCount.Size = new Size(49, 12);
+            percentCount.Size = new Size(49, 14);
             percentCount.TabIndex = 3;
             percentCount.TextChanged += textBox2_TextChanged;
             // 
@@ -112,9 +113,9 @@ namespace StudyQuest
             // userPicture
             // 
             userPicture.Image = (Image)resources.GetObject("userPicture.Image");
-            userPicture.Location = new Point(22, 36);
+            userPicture.Location = new Point(11, 22);
             userPicture.Name = "userPicture";
-            userPicture.Size = new Size(69, 64);
+            userPicture.Size = new Size(96, 97);
             userPicture.SizeMode = PictureBoxSizeMode.Zoom;
             userPicture.TabIndex = 1;
             userPicture.TabStop = false;
@@ -153,7 +154,7 @@ namespace StudyQuest
             logoutButton.BackColor = Color.FromArgb(17, 28, 46);
             logoutButton.FlatAppearance.BorderSize = 0;
             logoutButton.FlatStyle = FlatStyle.Flat;
-            logoutButton.Font = new Font("Pixelify Sans", 15F);
+            logoutButton.Font = new Font("Microsoft Sans Serif", 15F);
             logoutButton.ForeColor = Color.White;
             logoutButton.Image = (Image)resources.GetObject("logoutButton.Image");
             logoutButton.Location = new Point(-17, 688);
@@ -173,7 +174,7 @@ namespace StudyQuest
             avatarButton.BackColor = Color.FromArgb(17, 28, 46);
             avatarButton.FlatAppearance.BorderSize = 0;
             avatarButton.FlatStyle = FlatStyle.Flat;
-            avatarButton.Font = new Font("Pixelify Sans", 15F);
+            avatarButton.Font = new Font("Microsoft Sans Serif", 15F);
             avatarButton.ForeColor = Color.White;
             avatarButton.Image = (Image)resources.GetObject("avatarButton.Image");
             avatarButton.Location = new Point(-19, 517);
@@ -192,7 +193,7 @@ namespace StudyQuest
             badgesButton.BackColor = Color.FromArgb(17, 28, 46);
             badgesButton.FlatAppearance.BorderSize = 0;
             badgesButton.FlatStyle = FlatStyle.Flat;
-            badgesButton.Font = new Font("Pixelify Sans", 15F);
+            badgesButton.Font = new Font("Microsoft Sans Serif", 15F);
             badgesButton.ForeColor = Color.White;
             badgesButton.Image = (Image)resources.GetObject("badgesButton.Image");
             badgesButton.Location = new Point(-17, 443);
@@ -211,7 +212,7 @@ namespace StudyQuest
             leaderboardButton.BackColor = Color.FromArgb(17, 28, 46);
             leaderboardButton.FlatAppearance.BorderSize = 0;
             leaderboardButton.FlatStyle = FlatStyle.Flat;
-            leaderboardButton.Font = new Font("Pixelify Sans", 15F);
+            leaderboardButton.Font = new Font("Microsoft Sans Serif", 15F);
             leaderboardButton.ForeColor = Color.White;
             leaderboardButton.Image = (Image)resources.GetObject("leaderboardButton.Image");
             leaderboardButton.Location = new Point(6, 360);
@@ -230,7 +231,7 @@ namespace StudyQuest
             taskButton.BackColor = Color.FromArgb(17, 28, 46);
             taskButton.FlatAppearance.BorderSize = 0;
             taskButton.FlatStyle = FlatStyle.Flat;
-            taskButton.Font = new Font("Pixelify Sans", 15F);
+            taskButton.Font = new Font("Microsoft Sans Serif", 15F);
             taskButton.ForeColor = Color.White;
             taskButton.Image = (Image)resources.GetObject("taskButton.Image");
             taskButton.Location = new Point(-27, 283);
@@ -249,7 +250,7 @@ namespace StudyQuest
             dashboardButton.BackColor = Color.FromArgb(17, 28, 46);
             dashboardButton.FlatAppearance.BorderSize = 0;
             dashboardButton.FlatStyle = FlatStyle.Flat;
-            dashboardButton.Font = new Font("Pixelify Sans", 15F);
+            dashboardButton.Font = new Font("Microsoft Sans Serif", 15F);
             dashboardButton.ForeColor = Color.White;
             dashboardButton.Image = (Image)resources.GetObject("dashboardButton.Image");
             dashboardButton.Location = new Point(0, 209);

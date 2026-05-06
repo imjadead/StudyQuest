@@ -34,13 +34,62 @@ namespace StudyQuest
             dashboardButton.BackColor = Color.FromArgb(15, 23, 42);
 
             sidebar_task.EXPChanged += RefreshSidebar;
-
             sidebar_avatar.AvatarApplied += OnAvatarApplied;
 
             usernameTextbox.Text = GameSession.Username;
 
+            LoadSavedAvatar();  // ← restore avatar on login
+
             RefreshSidebar();
             ShowPanel(ref _dashPanel, () => new sidebar_dashboard());
+        }
+
+        // ── Load saved avatar from JSON on login ─────────────────────────────
+        private void LoadSavedAvatar()
+        {
+            var data = AvatarDatabase.Load();
+
+            // Get the image from sidebar_avatar picture boxes based on saved equipped avatar
+            // We need to create a temporary avatar form to access the images
+            var tempAvatar = new sidebar_avatar();
+
+            Image? avatarImage = data.EquippedAvatar switch
+            {
+                "Girl" => GetAvatarImage("Girl"),
+                "Boy" => GetAvatarImage("Boy"),
+                "Banana" => GetAvatarImage("Banana"),
+                _ => GetAvatarImage("Egg")
+            };
+
+            if (avatarImage != null)
+            {
+                userPicture.Image = avatarImage;
+                userPicture.SizeMode = PictureBoxSizeMode.Zoom; // ← zoomed in like half body
+            }
+        }
+
+        // ── Get avatar image by name from resources ───────────────────────────
+        private Image? GetAvatarImage(string avatarName)
+        {
+            // Access images from the sidebar_avatar form's picture boxes
+            // by creating a temporary instance just to grab the image
+            try
+            {
+                var tempForm = new sidebar_avatar();
+                Image? img = avatarName switch
+                {
+                    "Girl" => tempForm.GetGirlImage(),
+                    "Boy" => tempForm.GetBoyImage(),
+                    "Banana" => tempForm.GetBananaImage(),
+                    _ => tempForm.GetEggImage()
+                };
+                tempForm.Dispose();
+                return img;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private void OnAvatarApplied(Image img)
@@ -52,7 +101,7 @@ namespace StudyQuest
             }
 
             userPicture.Image = img;
-            userPicture.SizeMode = PictureBoxSizeMode.Zoom;
+            userPicture.SizeMode = PictureBoxSizeMode.Zoom; // ← zoomed in like half body
         }
 
         private static int GetCumulativeEXP(int level)
@@ -216,5 +265,10 @@ namespace StudyQuest
         private void progressBar1_Click(object sender, EventArgs e) { }
         private void userCurrentLvl_Click(object sender, EventArgs e) { }
         private void pnlFormLoader_Paint(object sender, PaintEventArgs e) { }
+
+        private void usernameTextbox_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
