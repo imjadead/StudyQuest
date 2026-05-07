@@ -336,10 +336,10 @@ namespace StudyQuest
 
         private void UpdateItemBorders()
         {
-            pictureBox3.BackColor = Color.FromArgb(17, 28, 46);
-            pictureBox1.BackColor = Color.FromArgb(17, 28, 46);
-            pictureBox2.BackColor = Color.FromArgb(17, 28, 46);
-            pictureBox4.BackColor = Color.FromArgb(17, 28, 46);
+            pictureBox3.BackColor = Color.FromArgb(5, 11, 38);
+            pictureBox1.BackColor = Color.FromArgb(5, 11, 38);
+            pictureBox2.BackColor = Color.FromArgb(5, 11, 38);
+            pictureBox4.BackColor = Color.FromArgb(5, 11, 38);
 
             PictureBox selected = _selectedItem switch
             {
@@ -348,7 +348,7 @@ namespace StudyQuest
                 AvatarItem.Banana => pictureBox4,
                 _ => pictureBox3
             };
-            selected.BackColor = Color.FromArgb(80, 70, 0);
+            selected.BackColor = Color.FromArgb(0, 183, 239);
 
             PictureBox equipped = _equippedItem switch
             {
@@ -357,7 +357,7 @@ namespace StudyQuest
                 AvatarItem.Banana => pictureBox4,
                 _ => pictureBox3
             };
-            equipped.BackColor = Color.FromArgb(20, 80, 40);
+            equipped.BackColor = Color.FromArgb(160, 130, 250);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e) { }
