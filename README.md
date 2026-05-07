@@ -1,4 +1,4 @@
-# 📚StudyQuest
+# 📚$\color{red}{\textsf{This text is red}}$
 
 <div align="center">
 
