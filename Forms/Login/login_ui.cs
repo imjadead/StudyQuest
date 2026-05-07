@@ -29,23 +29,33 @@ namespace StudyQuest
             passwordTextbox.UseSystemPasswordChar = true;
             InitializeLockoutTimer();
             InitializeTogglePasswordButton();
+            this.Load += Login_ui_Load;
+        }
+
+        private void Login_ui_Load(object? sender, EventArgs e)
+        {
+            passwordTextbox.Width = 292;
+
+            togglePasswordBtn.Location = new Point(
+                passwordTextbox.Right - togglePasswordBtn.Width - 2,
+                passwordTextbox.Top + (passwordTextbox.Height - togglePasswordBtn.Height) / 2
+            );
+
+            togglePasswordBtn.BringToFront();
         }
 
         private void InitializeTogglePasswordButton()
         {
-            togglePasswordBtn.Text = "👁 Show";
-            togglePasswordBtn.AutoSize = true;
+            togglePasswordBtn.Text = "👁";
+            togglePasswordBtn.Size = new Size(30, 29);
+            togglePasswordBtn.AutoSize = false;
             togglePasswordBtn.FlatStyle = FlatStyle.Flat;
             togglePasswordBtn.FlatAppearance.BorderSize = 0;
-            togglePasswordBtn.BackColor = Color.Transparent;
+            togglePasswordBtn.BackColor = Color.FromArgb(15, 23, 42);
             togglePasswordBtn.ForeColor = Color.White;
-            togglePasswordBtn.Font = new Font("Segoe UI", 8f);
+            togglePasswordBtn.Font = new Font("Segoe UI", 10f);
             togglePasswordBtn.Cursor = Cursors.Hand;
-
-            togglePasswordBtn.Location = new Point(
-                passwordTextbox.Right - togglePasswordBtn.Width - 5,
-                passwordTextbox.Bottom + 5
-            );
+            togglePasswordBtn.TabStop = false;
 
             togglePasswordBtn.Click += TogglePasswordBtn_Click;
             this.Controls.Add(togglePasswordBtn);
@@ -55,7 +65,7 @@ namespace StudyQuest
         {
             isPasswordVisible = !isPasswordVisible;
             passwordTextbox.UseSystemPasswordChar = !isPasswordVisible;
-            togglePasswordBtn.Text = isPasswordVisible ? "🙈 Hide" : "👁 Show";
+            togglePasswordBtn.Text = isPasswordVisible ? "🙈" : "👁";
         }
 
         private void InitializeLockoutTimer()
@@ -79,9 +89,7 @@ namespace StudyQuest
                 loginButton.Text = "Login";
                 usernameTextbox.Enabled = true;
                 passwordTextbox.Enabled = true;
-
                 togglePasswordBtn.Enabled = true;
-
                 usernameTextbox.Focus();
             }
         }
@@ -93,7 +101,6 @@ namespace StudyQuest
             loginButton.Text = $"Wait {remainingSeconds}s...";
             usernameTextbox.Enabled = false;
             passwordTextbox.Enabled = false;
-
             togglePasswordBtn.Enabled = false;
 
             lockoutTimer!.Start();
@@ -125,7 +132,7 @@ namespace StudyQuest
 
                 isPasswordVisible = false;
                 passwordTextbox.UseSystemPasswordChar = true;
-                togglePasswordBtn.Text = "👁 Show";
+                togglePasswordBtn.Text = "👁";
 
                 new dashboard_ui().Show();
                 this.Hide();
@@ -143,7 +150,7 @@ namespace StudyQuest
 
                     isPasswordVisible = false;
                     passwordTextbox.UseSystemPasswordChar = true;
-                    togglePasswordBtn.Text = "👁 Show";
+                    togglePasswordBtn.Text = "👁";
 
                     StartLockout();
                 }
