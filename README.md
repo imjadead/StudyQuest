@@ -1,6 +1,5 @@
 
 <img width="1408" height="768" alt="image" src="https://github.com/user-attachments/assets/a1876595-9060-4d44-a773-0d2d569cfd8f" />
-# 📚StudyQuest
 
 <div align="center">
 
