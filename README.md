@@ -52,6 +52,7 @@ StudyQuest reimagines the study experience as a role-playing game (RPG). Each ta
 ---
 
 ## 🗂️ UML Diagram
+<img width="1323" height="949" alt="Screenshot 2026-05-07 233245" src="https://github.com/user-attachments/assets/4ebddf80-33d9-4d37-a744-67a2d7822df5" />
 
 
 ---
