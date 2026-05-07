@@ -19,7 +19,7 @@ Turn your study tasks into quests — earn XP, level up, unlock avatars, collect
 
 ## 📑 Table of Contents
 
-- [Project Description and Purpose](#-project-description-and-purpose)
+- 📖[Project Description and Purpose](#-project-description-and-purpose)
 - [UML Diagram](#️-uml-diagram)
 - [Features and Functionalities](#-features-and-functionalities)
 - [System Architecture](#-system-architecture)
