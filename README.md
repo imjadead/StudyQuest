@@ -81,7 +81,7 @@ The login screen is the application's entry point and includes security mechanis
 
 The task panel is the core of StudyQuest. It is implemented as a *Singleton* to ensure task and XP data persists across navigation within a session.
 
-*Adding Tasks*
+***Adding Tasks***
 - Enter a task title (required), optional details, and a deadline date
 - Deadline must not be in the past
 - Difficulty is *automatically determined* based on days remaining:
@@ -92,12 +92,12 @@ The task panel is the core of StudyQuest. It is implemented as a *Singleton* to 
 | 🟡 Medium | 3 to 5 days | +30 XP |
 | 🔴 Hard | Fewer than 3 days | +50 XP |
 
-*Task Actions*
+***Task Actions***
 - *Complete* — Select a task and mark it done to claim XP. Triggers a streak update.
 - *Delete* — Remove any task with a confirmation dialog.
 - *Double-click* — View full task details (title, description, deadline, difficulty, status).
 
-*Deadline Enforcement*
+***Deadline Enforcement***
 - A background timer runs every *60 seconds* to check for overdue tasks
 - Any pending task past its deadline is automatically marked as *MISSED*
 - Each missed task deducts *-10 XP* as a penalty
@@ -135,14 +135,14 @@ StudyQuest features *8 unlockable badges* that are automatically awarded when co
 
 | # | Badge Name | Unlock Condition |
 |---|---|---|
-| 1 | 🌱 First Step | Complete at least 1 task |
-| 2 | 🔥 Week Warrior | Maintain a 7-day streak |
-| 3 | ⚡ Streak Legend | Maintain a 50-day streak |
-| 4 | 💯 Centurion | Maintain a 100-day streak |
-| 5 | 💎 XP Starter | Accumulate 100 total XP |
-| 6 | 👑 XP Master | Accumulate 10,000 total XP |
-| 7 | 🚀 High Achiever | Reach Level 30 |
-| 8 | 🏆 Elite Scholar | Reach Level 60 |
+| 1 | 🌱 First Task? Yey! | Complete at least 1 task |
+| 2 | 📅 Cant Stop Me! | Maintain a 3-day streak |
+| 3 | 🔥 Im On Fire! | Maintain a 7-day streak |
+| 4 | ⚡ Cant Stop Me! | Maintain a 15-day streak |
+| 5 | 💎 Just Starting... | Accumulate 100 total XP |
+| 6 | 👑 Do I Know Everything Now? | Accumulate 1,000 or Above total XP |
+| 7 | 🚀 MaSTER That's Me | Reach Level 5 |
+| 8 | 🏆 Legendary!!! | Reach Level 10 |
 
 - Locked badges are visually greyed out
 - Unlocked badges display a gold *UNLOCKED* stamp
@@ -213,7 +213,7 @@ The streak system rewards consistent daily engagement.
 
 ---
 
-## 🏗️ System Architecture
+### 🏗️ System Architecture
 
 StudyQuest uses a *multi-form shell architecture* where dashboard_ui acts as the host container. Sub-panels (Dashboard, Tasks, Leaderboard, Badges, Avatar) are embedded as TopLevel = false child forms within a shared pnlFormLoader panel.
 
@@ -228,7 +228,7 @@ StudyQuest uses a *multi-form shell architecture* where dashboard_ui acts as the
 
 ---
 
-## ⚙️ How the Program Works
+### ⚙️ How the Program Works
 
 **Step-by-step breakdown:**
  
@@ -242,7 +242,7 @@ StudyQuest uses a *multi-form shell architecture* where dashboard_ui acts as the
 
 ---
 
-## 💾 Data Persistence
+### 💾 Data Persistence
 
 All application data is stored locally as *JSON files* in the application's output directory. No external database or internet connection is required.
 
@@ -257,7 +257,7 @@ Data is loaded on application start and saved after every meaningful state chang
 
 ---
 
-## 🚀 How to Run the Application
+### 🚀 How to Run the Application
 
 ### System Requirements
 
@@ -301,7 +301,7 @@ Password : 1234
 
 ---
 
-## 📁 Project Structure
+### 📁 Project Structure
 StudyQuest/
 │
 ├── 📄 StudyQuest.sln                  
@@ -337,7 +337,7 @@ StudyQuest/
 
 ---
 
-## 👨‍💻 Developers / Team Members
+### 👨‍💻 Developers / Team Members
 
 | Name | GitHub | Role |
 |------|--------|------|
