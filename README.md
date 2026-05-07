@@ -19,15 +19,15 @@ Turn your study tasks into quests — earn XP, level up, unlock avatars, collect
 
 ## 📑 Table of Contents
 
-- 📖[Project Description and Purpose](#-project-description-and-purpose)
-- [UML Diagram](#️-uml-diagram)
-- [Features and Functionalities](#-features-and-functionalities)
-- [System Architecture](#-system-architecture)
-- [How the Program Works](#️-how-the-program-works)
-- [Data Persistence](#-data-persistence)
-- [How to Run the Application](#-how-to-run-the-application)
-- [Project Structure](#-project-structure)
-- [Developers](#-developers--team-members)
+- 📖 [Project Description and Purpose](#-project-description-and-purpose)
+- 🗂️ [UML Diagram](#️-uml-diagram)
+- ✨ [Features and Functionalities](#-features-and-functionalities)
+- 🏗️ [System Architecture](#-system-architecture)
+- ⚙️ [How the Program Works](#️-how-the-program-works)
+- 💾 [Data Persistence](#-data-persistence)
+- 🚀 [How to Run the Application](#-how-to-run-the-application)
+- 📁 [Project Structure](#-project-structure)
+- 👨‍💻 [Developers](#-developers--team-members)
 
 ---
 
