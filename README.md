@@ -1,4 +1,4 @@
-# 📚 + This text will be green
+# 📚StudyQuest
 
 <div align="center">
 
