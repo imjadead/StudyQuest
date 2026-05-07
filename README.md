@@ -3,9 +3,9 @@
 
 <div align="center">
 
-A gamified academic productivity desktop application built with C# and Windows Forms.
+**A gamified academic productivity desktop application built with C# and Windows Forms.
 Turn your study tasks into quests — earn XP, level up, unlock avatars, collect badges, and rise on the leaderboard.
-
+**
 
 ![Platform](https://img.shields.io/badge/Platform-Windows-blue?style=flat-square&logo=windows)
 ![Language](https://img.shields.io/badge/Language-C%23-purple?style=flat-square&logo=csharp)
