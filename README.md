@@ -1,6 +1,5 @@
-<img width="1773" height="592" alt="Study Quesst Logo" src="https://github.com/user-attachments/assets/bfd4f04d-282d-4f48-92c9-cc24601fc3c0" />
-
 # 📚 StudyQuest
+<img width="1773" height="592" alt="Study Quesst Logo" src="https://github.com/user-attachments/assets/bfd4f04d-282d-4f48-92c9-cc24601fc3c0" />
 
 <div align="center">
 
