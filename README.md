@@ -3,7 +3,7 @@
 
 <div align="center">
 
-**A gamified academic productivity desktop application built with C# and Windows Forms.**
+A gamified academic productivity desktop application built with C# and Windows Forms.
 Turn your study tasks into quests — earn XP, level up, unlock avatars, collect badges, and rise on the leaderboard.
 
 
