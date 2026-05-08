@@ -126,7 +126,7 @@
             player2Username.BackColor = Color.FromArgb(5, 11, 38);
             player2Username.Font = new Font("Pixelify Sans", 14F);
             player2Username.ForeColor = Color.White;
-            player2Username.Location = new Point(144, 343);
+            player2Username.Location = new Point(144, 355);
             player2Username.Name = "player2Username";
             player2Username.Size = new Size(150, 29);
             player2Username.TabIndex = 2;
@@ -139,7 +139,7 @@
             player2RankCount.BackColor = Color.FromArgb(5, 11, 38);
             player2RankCount.Font = new Font("Pixelify Sans", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             player2RankCount.ForeColor = Color.White;
-            player2RankCount.Location = new Point(167, 305);
+            player2RankCount.Location = new Point(167, 318);
             player2RankCount.Name = "player2RankCount";
             player2RankCount.Size = new Size(35, 37);
             player2RankCount.TabIndex = 1;
@@ -148,9 +148,12 @@
             // 
             // player2Picture
             // 
-            player2Picture.Location = new Point(125, 196);
+            player2Picture.BackColor = Color.FromArgb(5, 11, 38);
+            player2Picture.Image = (Image)resources.GetObject("player2Picture.Image");
+            player2Picture.Location = new Point(127, 177);
             player2Picture.Name = "player2Picture";
-            player2Picture.Size = new Size(123, 106);
+            player2Picture.Size = new Size(123, 138);
+            player2Picture.SizeMode = PictureBoxSizeMode.CenterImage;
             player2Picture.TabIndex = 0;
             player2Picture.TabStop = false;
             player2Picture.Click += pictureBox1_Click;
@@ -207,9 +210,12 @@
             // 
             // player1Picture
             // 
-            player1Picture.Location = new Point(439, 152);
+            player1Picture.BackColor = Color.FromArgb(5, 11, 38);
+            player1Picture.Image = (Image)resources.GetObject("player1Picture.Image");
+            player1Picture.Location = new Point(430, 139);
             player1Picture.Name = "player1Picture";
-            player1Picture.Size = new Size(123, 106);
+            player1Picture.Size = new Size(134, 119);
+            player1Picture.SizeMode = PictureBoxSizeMode.CenterImage;
             player1Picture.TabIndex = 0;
             player1Picture.TabStop = false;
             // 
@@ -219,7 +225,7 @@
             player3LvlNum.BackColor = Color.FromArgb(5, 11, 38);
             player3LvlNum.Font = new Font("Pixelify Sans", 11F);
             player3LvlNum.ForeColor = Color.White;
-            player3LvlNum.Location = new Point(747, 396);
+            player3LvlNum.Location = new Point(747, 406);
             player3LvlNum.Name = "player3LvlNum";
             player3LvlNum.Size = new Size(85, 23);
             player3LvlNum.TabIndex = 4;
@@ -231,7 +237,7 @@
             player3CurrentXP.BackColor = Color.FromArgb(5, 11, 38);
             player3CurrentXP.Font = new Font("Pixelify Sans", 11F);
             player3CurrentXP.ForeColor = Color.White;
-            player3CurrentXP.Location = new Point(838, 396);
+            player3CurrentXP.Location = new Point(838, 406);
             player3CurrentXP.Name = "player3CurrentXP";
             player3CurrentXP.Size = new Size(126, 23);
             player3CurrentXP.TabIndex = 3;
@@ -243,7 +249,7 @@
             player3Username.BackColor = Color.FromArgb(5, 11, 38);
             player3Username.Font = new Font("Pixelify Sans", 13F);
             player3Username.ForeColor = Color.White;
-            player3Username.Location = new Point(790, 370);
+            player3Username.Location = new Point(790, 380);
             player3Username.Name = "player3Username";
             player3Username.Size = new Size(139, 26);
             player3Username.TabIndex = 2;
@@ -257,7 +263,7 @@
             player3RankCount.BackColor = Color.FromArgb(5, 11, 38);
             player3RankCount.Font = new Font("Pixelify Sans", 16.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
             player3RankCount.ForeColor = Color.White;
-            player3RankCount.Location = new Point(811, 337);
+            player3RankCount.Location = new Point(812, 351);
             player3RankCount.Name = "player3RankCount";
             player3RankCount.Size = new Size(31, 33);
             player3RankCount.TabIndex = 1;
@@ -265,9 +271,12 @@
             // 
             // player3Picture
             // 
-            player3Picture.Location = new Point(759, 225);
+            player3Picture.BackColor = Color.FromArgb(5, 11, 38);
+            player3Picture.Image = (Image)resources.GetObject("player3Picture.Image");
+            player3Picture.Location = new Point(762, 230);
             player3Picture.Name = "player3Picture";
-            player3Picture.Size = new Size(123, 106);
+            player3Picture.Size = new Size(123, 118);
+            player3Picture.SizeMode = PictureBoxSizeMode.CenterImage;
             player3Picture.TabIndex = 0;
             player3Picture.TabStop = false;
             // 
@@ -413,9 +422,9 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(167, 1);
+            pictureBox3.Location = new Point(167, -1);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(839, 745);
+            pictureBox3.Size = new Size(839, 747);
             pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox3.TabIndex = 42;
             pictureBox3.TabStop = false;
