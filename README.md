@@ -6,29 +6,6 @@
 **A gamified academic productivity desktop application built with C# and Windows Forms.
 Turn your study tasks into quests — earn XP, level up, unlock avatars, collect badges, and rise on the leaderboard.**
 
-
-![Platform](https://img.shields.io/badge/Platform-Windows-blue?style=flat-square&logo=windows)
-![Language](https://img.shields.io/badge/Language-C%23-purple?style=flat-square&logo=csharp)
-![Framework](https://img.shields.io/badge/Framework-.NET%206.0-blueviolet?style=flat-square&logo=dotnet)
-![UI](https://img.shields.io/badge/UI-Windows%20Forms-informational?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Active-success?style=flat-square)
-
-</div>
-
----
-
-## 📑 Table of Contents
-
-- 📖 [Project Description and Purpose](#-project-description-and-purpose)
-- 🗂️ [UML Diagram](#️-uml-diagram)
-- ✨ [Features and Functionalities](#-features-and-functionalities)
-- 🏗️ [System Architecture](#-system-architecture)
-- ⚙️ [How the Program Works](#️-how-the-program-works)
-- 💾 [Data Persistence](#-data-persistence)
-- 🚀 [How to Run the Application](#-how-to-run-the-application)
-- 📁 [Project Structure](#-project-structure)
-- 👨‍💻 [Developers](#-developers--team-members)
-
 ---
 
 ## 📖 Project Description and Purpose
