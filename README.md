@@ -8,6 +8,8 @@ Turn your study tasks into quests — earn XP, level up, unlock avatars, collect
 
 ---
 
+</div>
+
 ## 📖 Project Description and Purpose
 
 StudyQuest is a desktop productivity application developed in *C# using Windows Forms* that applies game design principles — commonly known as gamification — to academic task management. It is designed specifically for students who struggle with procrastination, lack of motivation, or difficulty maintaining consistent study habits.
