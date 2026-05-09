@@ -20,6 +20,7 @@ namespace StudyQuest
         private const int BananaPrice = 300;
 
         public static event Action<Image>? AvatarApplied;
+        public static sidebar_avatar? AvatarFormInstance { get; private set; }
 
         public Image? GetEggImage() => pictureBox3.Image;
         public Image? GetGirlImage() => pictureBox1.Image;
@@ -28,6 +29,7 @@ namespace StudyQuest
 
         public sidebar_avatar()
         {
+            AvatarFormInstance = this;
             InitializeComponent();
 
             this.Load += sidebar_avatar_Load;
@@ -56,6 +58,7 @@ namespace StudyQuest
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            AvatarFormInstance = null;
             sidebar_task.EXPChanged -= OnEXPChanged;
             base.OnFormClosing(e);
         }
@@ -366,30 +369,10 @@ namespace StudyQuest
         private void label1_Click(object sender, EventArgs e) { }
         private void pictureBox26_Click(object sender, EventArgs e) { }
         private void label5_Click(object sender, EventArgs e) { }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox27_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox28_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void pictureBox27_Click(object sender, EventArgs e) { }
+        private void pictureBox5_Click(object sender, EventArgs e) { }
+        private void pictureBox1_Click(object sender, EventArgs e) { }
+        private void pictureBox28_Click(object sender, EventArgs e) { }
     }
 }

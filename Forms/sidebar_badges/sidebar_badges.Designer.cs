@@ -351,7 +351,7 @@
             label13.Name = "label13";
             label13.Size = new Size(156, 17);
             label13.TabIndex = 3;
-            label13.Text = "Have 1,000XP or above.";
+            label13.Text = "Have 10,000XP or above.";
             // 
             // pictureBox6
             // 
