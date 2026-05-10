@@ -78,7 +78,7 @@ namespace StudyQuest
             }
             catch
             {
-                // leave _myAvatarImage as null if anything fails
+                
             }
         }
 
@@ -113,7 +113,6 @@ namespace StudyQuest
 
         private void FillPodium(List<(string Username, int Level, int XP)> board)
         {
-            // --- Rank 1 ---
             if (board.Count > 0)
             {
                 var p = board[0];
@@ -130,7 +129,6 @@ namespace StudyQuest
                 }
             }
 
-            // --- Rank 2 ---
             if (board.Count > 1)
             {
                 var p = board[1];
@@ -147,7 +145,6 @@ namespace StudyQuest
                 }
             }
 
-            // --- Rank 3 ---
             if (board.Count > 2)
             {
                 var p = board[2];

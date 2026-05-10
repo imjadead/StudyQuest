@@ -63,21 +63,19 @@ namespace StudyQuest
             togglePasswordBtn.Text = isPasswordVisible ? "🙈" : "👁";
         }
 
-        // Designer event handlers (stubs) referenced by the Designer file.
-        // These are intentionally minimal to satisfy the event wiring from the .Designer.cs file.
         private void usernameTextbox_TextChanged(object? sender, EventArgs e)
         {
-            // No-op or add validation logic here if needed
+            
         }
 
         private void panel1_Paint_1(object? sender, PaintEventArgs e)
         {
-            // No custom painting required currently.
+            
         }
 
         private void studyQuestLogo_Click(object? sender, EventArgs e)
         {
-            // Logo click currently does nothing. Keep stub to avoid designer error.
+            
         }
 
         private void InitializeLockoutTimer()
