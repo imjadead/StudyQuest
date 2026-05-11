@@ -240,10 +240,10 @@
             label2.Click += label2_Click;
             // 
             // textBox1
-            // 
             textBox1.BackColor = Color.FromArgb(15, 23, 42);
             textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Font = new Font("Microsoft Sans Serif", 12F);
+            textBox1.ForeColor = Color.White;   
             textBox1.Location = new Point(171, 672);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(196, 30);
