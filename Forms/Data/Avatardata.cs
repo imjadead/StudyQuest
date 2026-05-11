@@ -10,7 +10,6 @@ namespace StudyQuest
         public bool GirlUnlocked { get; set; } = false;
         public bool BoyUnlocked { get; set; } = false;
         public bool BananaUnlocked { get; set; } = false;
-        public string AvatarName { get; set; } = "";
     }
 
     public static class AvatarDatabase

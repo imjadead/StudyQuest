@@ -79,8 +79,6 @@ namespace StudyQuest
             _boyUnlocked = data.BoyUnlocked;
             _bananaUnlocked = data.BananaUnlocked;
 
-            textBox1.Text = data.AvatarName ?? "";
-
             _equippedItem = data.EquippedAvatar switch
             {
                 "Girl" => AvatarItem.Girl,
@@ -113,8 +111,7 @@ namespace StudyQuest
                 EquippedAvatar = _equippedItem.ToString(),
                 GirlUnlocked = _girlUnlocked,
                 BoyUnlocked = _boyUnlocked,
-                BananaUnlocked = _bananaUnlocked,
-                AvatarName = textBox1.Text
+                BananaUnlocked = _bananaUnlocked
             };
 
             AvatarDatabase.Save(data);
@@ -372,9 +369,7 @@ namespace StudyQuest
         private void label1_Click(object sender, EventArgs e) { }
         private void pictureBox26_Click(object sender, EventArgs e) { }
         private void label5_Click(object sender, EventArgs e) { }
-        private void textBox1_TextChanged(object sender, EventArgs e) {
-            SaveToDatabase();
-        }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
         private void pictureBox27_Click(object sender, EventArgs e) { }
         private void pictureBox5_Click(object sender, EventArgs e) { }
         private void pictureBox1_Click(object sender, EventArgs e) { }
