@@ -301,10 +301,10 @@ StudyQuest/
 │   └── NotesData.cs                  
 │
 └── 📁 Save Files 
-    ├── tasks.json
-    ├── avatar.json
-    ├── streak.json
-    └── notes.json
+│   ├── tasks.json
+│   ├── avatar.json
+│   ├── streak.json
+│   └── notes.json
 
 
 ---
