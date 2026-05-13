@@ -271,10 +271,6 @@ dotnet restore
 - Press F5 to launch with the debugger, or Ctrl + F5 to run without
 - The login window will appear
 
-
-⚠️ **Note:** Save files (`tasks.json`, `avatar.json`, `streak.json`, `notes.json`) are automatically generated in the build output directory (`/bin/Debug/net6.0-windows/`) on first run. Do not manually delete these files unless you intend to reset all progress.
-
-
 ---
 
 ### 📁 Project Structure
