@@ -12,12 +12,12 @@ namespace StudyQuest
 
         public static List<(string Username, int Level, int XP)> OtherPlayers = new()
         {
-            ("Alice",  52, 5200),
-            ("Bob",    25, 2500),
-            ("Carol",  19, 1900),
-            ("Dave",   14, 1400),
-            ("Eve",     6,  600),
-            ("Frank",   4,  400),
+            ("Alice",  52, 500),
+            ("Bob",    25, 400),
+            ("Carol",  19, 300),
+            ("Dave",   14, 200),
+            ("Eve",     6,  150),
+            ("Frank",   4,  100),
         };
 
         public static int GetCurrentRank()
