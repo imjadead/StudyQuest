@@ -20,7 +20,7 @@ Students often find it difficult to stay motivated when managing academic tasks 
 
 ### Solution
 
-StudyQuest reimagines the study experience as a role-playing game (RPG). Each task completed rewards the student with *Experience Points (XP)*, contributing to character *level progression*. Missing a deadline incurs an *XP penalty*, reinforcing accountability. The application further motivates engagement through an *avatar customization shop*, a *badge achievement system*, a *weekly leaderboard*, and a *daily streak tracker* — all proven mechanics from game design that drive habitual behavior.
+StudyQuest reimagines the study experience as a role-playing game (RPG). Each task completed rewards the student with *Experience Points (XP)*, contributing to character *level progression*. The application further motivates engagement through an *avatar customization shop*, a *badge achievement system*, a *weekly leaderboard*, and a *daily streak tracker* — all proven mechanics from game design that drive habitual behavior.
 
 ### Goals
 
