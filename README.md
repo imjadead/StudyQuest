@@ -313,7 +313,7 @@ StudyQuest/
 
 | Name | GitHub | Role |
 |------|--------|------|
-| Atienza, Dhanreigh I | https://github.com/Dadanchiii | Lead Developer |
-| Coballes, Jade Ann | https://github.com/imjadead | UI/UX Designer |
-| Mayuga, Nash | https://github.com/shany20 | Backend / Logic |
-| Fabellar, Frances Iroll | https://github.com/Noobit2 | Tester |
+| Atienza, Dhanreigh I | https://github.com/Dadanchiii | Project Manager / Lead Dev |
+| Coballes, Jade Ann | https://github.com/imjadead | GUI |
+| Mayuga, Nash | https://github.com/shany20 | Logic Developer |
+| Fabellar, Frances Iroll | https://github.com/Noobit2 | Quality Assurance / Tester |
