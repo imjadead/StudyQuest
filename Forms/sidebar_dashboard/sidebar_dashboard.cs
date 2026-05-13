@@ -6,7 +6,7 @@ namespace StudyQuest
 {
     public partial class sidebar_dashboard : Form
     {
-        private string username = "admin";
+        private string username = "Nash";
         private StreakData _streak = new StreakData();
 
         private int TotalXP => sidebar_task.CurrentEXP;
